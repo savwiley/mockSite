@@ -100,7 +100,7 @@ export default App;
 
 
 
-//for info on func 'user already signed in': https://firebase.google.com/docs/auth/web/start
+//for info on func 'user already signed in' AND set up for testing: https://firebase.google.com/docs/auth/web/start
 
 //for info on signing out: https://firebase.google.com/docs/auth/web/password-auth
 

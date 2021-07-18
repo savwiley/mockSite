@@ -26,6 +26,8 @@ export const firebase = () => {
   firebase.initializeApp(firebaseConfig);
 }
 
+//FIREBASE HAS ALREADY BEEN DECLARED
+
 /*
 export const firebaseUI = () => {
   // Initialize the FirebaseUI Widget using Firebase.
