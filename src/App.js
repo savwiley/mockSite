@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import firebase from "./firebase";
-//import firebaseUI from "./firebase";
+import { auth } from "./firebase.js";
 
 const App = () => {
   const email = useRef();
   const password = useRef();
+
+  //IF user is already signed in (if firebase even remembers them) then take them straight to the home screen
 
   //Changes useRef
   useEffect(() => {
@@ -27,43 +28,37 @@ const App = () => {
 
     //SIGN IN
     const signIn = (email, password) => {
-      firebase.auth().signInWithEmailAndPassword(email, password)
+      auth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        // ...
+        const user = userCredential.user;
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        console.log(error.code);
+        alert(error.message);
       });
     };
 
     //SIGN UP
     const signUp = (email, password) => {
-      firebase.auth().createUserWithEmailAndPassword(email, password)
+      auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        // Signed in 
-        var user = userCredential.user;
-        // ...
+        const user = userCredential.user;
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ..
+        console.log(error.code);
+        alert(error.message);
       });
     };
 
     //SIGN IN ANONYMOUSLY
     const signAnon = () => {
-      firebase.auth().signInAnonymously()
+      auth.signInAnonymously()
       .then(() => {
         // Signed in..
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
+        console.log(error.code);
+        alert(error.message);
       });
     }
 
@@ -85,6 +80,7 @@ const App = () => {
 
       <div id="firebaseui-auth-container" className="signInSheet">
         <input type="email" placeholder="Email" className="emailInput" />
+        <input type="text" placeholder="Display Name" className="nameInput" />
         <input type="password" placeholder="Password" className="pwInput" />
         <input type="button" value="Sign In" className="signInBtn" />
         <input type="button" value="Sign Up" className="signUpBtn" />
