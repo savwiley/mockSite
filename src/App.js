@@ -79,6 +79,8 @@ const App = () => {
     <div className="home">
 
       <div id="firebaseui-auth-container" className="signInSheet">
+        <h1>Notagram</h1>
+
         <input type="email" placeholder="Email" className="emailInput" />
         <input type="text" placeholder="Display Name" className="nameInput" />
         <input type="password" placeholder="Password" className="pwInput" />
