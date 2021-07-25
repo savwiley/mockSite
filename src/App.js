@@ -84,8 +84,13 @@ const App = () => {
         <input type="email" placeholder="Email" className="emailInput" />
         <input type="text" placeholder="Display Name" className="nameInput" />
         <input type="password" placeholder="Password" className="pwInput" />
-        <input type="button" value="Sign In" className="signInBtn" />
-        <input type="button" value="Sign Up" className="signUpBtn" />
+
+        <div>
+          <input type="button" value="Sign In" className="signInBtn" />
+          <span id="inP">Sign In</span>
+          <span id="upP">Sign Up</span>
+          <input type="button" value="Sign Up" className="signUpBtn" />
+        </div>
 
         <input type="button" value="Sign In Anon" className="signInAnon" />
       </div>
@@ -96,6 +101,15 @@ const App = () => {
 
 export default App;
 
+/**
+ * #upP event listener makes nameInput, #inP, & signUpBtn appear and signInBtn disappear
+ * 
+ * #inP event listener makes nameInput, #inP, & signUpBtn disappear and signInBtn appear
+ * 
+ * Add a break with "OR" before the Anon Btn
+ * 
+ * Change text in Anon Btn
+ */
 
 
 //for info on func 'user already signed in' AND set up for testing: https://firebase.google.com/docs/auth/web/start
