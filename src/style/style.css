@@ -3,6 +3,7 @@
 :root {
   --background: #fafafa;
   --border: #dbdbdb;
+  --fontC: #252525;
 
   --blue: #0095f6;
 
@@ -12,6 +13,7 @@
 * {
   margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color: var(--fontC);
 }
 
 body {
@@ -22,6 +24,7 @@ input {
   border: 1px solid var(--border);
   padding: 5px;
   border-radius: 5px;
+  outline: none;
 }
 input[type="button"] {
   background: var(--blue);
@@ -50,4 +53,24 @@ h1 {
   height: 400px;
   background: #fff;
   border: 1px solid var(--border);
+}
+.signInSheet div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.signUpBtn, #inP, .nameInput {
+  display: none;
+}
+
+#inP, #upP {
+  color: var(--blue);
+  cursor: pointer;
+}
+#inP:before {
+  content: "< ";
+}
+#upP:after {
+  content: " >";
 }
