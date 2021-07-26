@@ -7,6 +7,32 @@ const App = () => {
 
   //IF user is already signed in (if firebase even remembers them) then take them straight to the home screen
 
+  //changes signIn/signUp screens
+  useEffect(() => {
+    //selectors
+    const upText = document.querySelector("#upP");
+    const inText = document.querySelector("#inP");
+    const signInBtn = document.querySelector(".signInBtn");
+    const signUpBtn = document.querySelector(".signUpBtn");
+    const nameInput = document.querySelector(".nameInput");
+
+    upText.addEventListener("click", () => {
+      nameInput.style.display = "block";
+      inText.style.display = "block";
+      signUpBtn.style.display = "block";
+      signInBtn.style.display = "none";
+      upText.style.display = "none";
+    });
+
+    inText.addEventListener("click", () => {
+      signInBtn.style.display = "block";
+      upText.style.display = "block";
+      nameInput.style.display = "none";
+      signUpBtn.style.display = "none";
+      inText.style.display = "none";
+    });
+  });
+
   //Changes useRef
   useEffect(() => {
     const emailInput = document.querySelector(".emailInput");
@@ -92,7 +118,7 @@ const App = () => {
           <input type="button" value="Sign Up" className="signUpBtn" />
         </div>
 
-        <input type="button" value="Sign In Anon" className="signInAnon" />
+        <input type="button" value="Enter Anonymously" className="signInAnon" />
       </div>
 
     </div>
@@ -100,16 +126,6 @@ const App = () => {
 }
 
 export default App;
-
-/**
- * #upP event listener makes nameInput, #inP, & signUpBtn appear and signInBtn disappear
- * 
- * #inP event listener makes nameInput, #inP, & signUpBtn disappear and signInBtn appear
- * 
- * Add a break with "OR" before the Anon Btn
- * 
- * Change text in Anon Btn
- */
 
 
 //for info on func 'user already signed in' AND set up for testing: https://firebase.google.com/docs/auth/web/start
