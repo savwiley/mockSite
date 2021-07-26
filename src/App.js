@@ -40,10 +40,10 @@ const App = () => {
 
     emailInput.addEventListener("change", () => {
       email.current = emailInput.value;
-    })
+    });
     pwInput.addEventListener("change", () => {
       password.current = pwInput.value;
-    })
+    });
   });
 
   //Btns & Firebase
@@ -54,39 +54,42 @@ const App = () => {
 
     //SIGN IN
     const signIn = (email, password) => {
-      auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        console.log(error.code);
-        alert(error.message);
-      });
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          console.log(error.code);
+          alert(error.message);
+        });
     };
 
     //SIGN UP
     const signUp = (email, password) => {
-      auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        console.log(error.code);
-        alert(error.message);
-      });
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          console.log(error.code);
+          alert(error.message);
+        });
     };
 
     //SIGN IN ANONYMOUSLY
     const signAnon = () => {
-      auth.signInAnonymously()
-      .then(() => {
-        // Signed in..
-      })
-      .catch((error) => {
-        console.log(error.code);
-        alert(error.message);
-      });
-    }
+      auth
+        .signInAnonymously()
+        .then(() => {
+          // Signed in..
+        })
+        .catch((error) => {
+          console.log(error.code);
+          alert(error.message);
+        });
+    };
 
     signInBtn.addEventListener("click", () => {
       signIn(email.current, password.current);
@@ -97,13 +100,8 @@ const App = () => {
     signInAnon.addEventListener("click", signAnon);
   });
 
-
-
-
-
   return (
     <div className="home">
-
       <div id="firebaseui-auth-container" className="signInSheet">
         <h1>Notagram</h1>
 
@@ -120,13 +118,11 @@ const App = () => {
 
         <input type="button" value="Enter Anonymously" className="signInAnon" />
       </div>
-
     </div>
   );
-}
+};
 
 export default App;
-
 
 //for info on func 'user already signed in' AND set up for testing: https://firebase.google.com/docs/auth/web/start
 
