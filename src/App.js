@@ -14,10 +14,8 @@ const App = () => {
     const inText = document.querySelector("#inP");
     const signInBtn = document.querySelector(".signInBtn");
     const signUpBtn = document.querySelector(".signUpBtn");
-    const nameInput = document.querySelector(".nameInput");
 
     upText.addEventListener("click", () => {
-      nameInput.style.display = "block";
       inText.style.display = "block";
       signUpBtn.style.display = "block";
       signInBtn.style.display = "none";
@@ -27,7 +25,6 @@ const App = () => {
     inText.addEventListener("click", () => {
       signInBtn.style.display = "block";
       upText.style.display = "block";
-      nameInput.style.display = "none";
       signUpBtn.style.display = "none";
       inText.style.display = "none";
     });
@@ -106,7 +103,6 @@ const App = () => {
         <h1>Notagram</h1>
 
         <input type="email" placeholder="Email" className="emailInput" />
-        <input type="text" placeholder="Display Name" className="nameInput" />
         <input type="password" placeholder="Password" className="pwInput" />
 
         <div>
