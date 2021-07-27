@@ -4,6 +4,15 @@ const NavBar = () => {
 
   return (
     <div id="NavBar">
+      <div className="inner">
+        <h1>
+          Notagram
+        </h1>
+
+        <input type="text" placeholder="Search" />
+
+        <div className="icons">icons</div>
+      </div>
     </div>
   )
 };
