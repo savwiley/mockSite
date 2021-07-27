@@ -88,11 +88,37 @@ h1 {
 /* NAVBAR */
 
 #NavBar {
+  display: flex;
+  align-items: center;
   background: #fff;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 54px;
   border-bottom: 1px solid var(--border);
+}
+
+#NavBar .inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 975px;
+  margin: auto;
+}
+
+#NavBar h1 {
+  font-size: 25px;
+}
+
+#NavBar input {
+  height: 2ch;
+  font-size: 15px;
+  text-align: center;
+  background: var(--background);
+}
+#NavBar input:focus {
+  text-align: left;
 }
