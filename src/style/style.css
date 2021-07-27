@@ -110,15 +110,26 @@ h1 {
 }
 
 #NavBar h1 {
+  display: block;
   font-size: 25px;
+  width: 28%;
 }
 
 #NavBar input {
   height: 2ch;
+  width: 20%;
   font-size: 15px;
   text-align: center;
   background: var(--background);
 }
 #NavBar input:focus {
   text-align: left;
+}
+
+#NavBar .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25px;
+  width: 28%;
 }

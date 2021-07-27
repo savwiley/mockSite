@@ -5,7 +5,7 @@ const Dashboard = () => {
 
   return (
     <div id="dash">
-      <NavBar />
+      <NavBar page={"dashboard"} />
     </div>
   )
 };
