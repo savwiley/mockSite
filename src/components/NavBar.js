@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase.js";
 import {
   RiHome2Fill,
   RiHome2Line,
   RiAddBoxFill,
   RiAddBoxLine,
-  RiUser3Fill,
   RiUser3Line,
   RiSettings3Fill,
 } from "react-icons/ri";
@@ -19,20 +19,38 @@ import {
   IoBookmarkOutline,
 } from "react-icons/io5";
 
-/**
- * Needs props to come into it to say what page we're on and which icons to use.
- * Also need to check if user has image or not.
- */
-
 const NavBar = (props) => {
   const { page } = props;
   const dash = useRef(false);
+  const userPic = useRef(false);
 
+  //user profile variables
+  const user = auth.currentUser;
+  const photoURL = user.photoURL;
+
+  //finds the page
+  if (page === "dashboard") {
+    dash.current = true;
+  }
+
+  //finds the user pic
+  if (photoURL !== null) {
+    userPic.current = true;
+  }
+
+  //clicking on the userpic
   useEffect(() => {
-    if (page === "dashboard") {
-      dash.current = true;
-    }
-  })
+    const userPicDrop = document.querySelector(".userDrop");
+    const drop = document.querySelector(".drop");
+
+    userPicDrop.addEventListener("click", () => {
+      if (drop.style.display !== "flex") {
+        drop.style.display = "flex";
+      } else {
+        drop.style.display = "none";
+      }
+    });
+  });
 
   return (
     <div id="NavBar">
@@ -43,13 +61,28 @@ const NavBar = (props) => {
 
         <div className="icons">
           <Link to="/dashboard">
-            {dash.current ? <RiHome2Fill /> : <RiHome2Line /> }
+            {dash.current ? <RiHome2Fill /> : <RiHome2Line />}
           </Link>
           <IoPaperPlaneOutline />
           <RiAddBoxLine />
           <IoCompassOutline />
           <IoHeartOutline />
-          <RiUser3Line />
+
+          {userPic.current ? (
+            <img className="userPic userDrop" src={photoURL}></img>
+          ) : (
+            <RiUser3Line className="userDrop" />
+          )}
+
+          <div className="drop">
+            <Link to="#">
+              <RiUser3Line /> Profile
+            </Link>
+            <Link to="/settings">
+              <RiSettings3Fill /> Settings
+            </Link>
+            <Link to="#">Log Out</Link>
+          </div>
         </div>
       </div>
     </div>
@@ -57,12 +90,3 @@ const NavBar = (props) => {
 };
 
 export default NavBar;
-
-
-/**
- * ONE:
- * make a useRef for every page and set them to booleans, use ternary ops in jsx
- * 
- * TWO:
- * make a useRef for a single value, use if/else in jsx
- */
