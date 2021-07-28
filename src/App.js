@@ -5,8 +5,6 @@ const App = () => {
   const email = useRef();
   const password = useRef();
 
-  //IF user is already signed in (if firebase even remembers them) then take them straight to the home screen
-
   //changes signIn/signUp screens
   useEffect(() => {
     //selectors
