@@ -45,20 +45,20 @@ const Settings = () => {
           <label>
             Username
           </label>
-          <input type="text" id="display"></input>
+          <input type="text" id="display" value={displayName}></input>
         </div><div>
           <label for="emailForm">
             Email
           </label>
-          <input type="email" id="emailForm"></input>
+          <input type="email" id="emailForm" value={email}></input>
         </div><div>
           <label for="passForm">
             Password
           </label>
           <input type="password" id="passForm"></input>
         </div><div>
-          <input type="button" value="Submit" />
-          <input type="button" value="Delete Account" />
+          <input type="button" value="Save Changes" />
+          <input type="button" value="Delete Account" id="delBtn" />
         </div>
       </div>
     </div>
