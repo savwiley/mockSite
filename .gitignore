@@ -12,11 +12,13 @@
 /build
 
 # firebase
+.firebase/
 .firebaserc
 firebase.json
 firestore-debug.log
 firestore.indexes.json
 firestore.rules
+storage.rules
 
 # misc
 .DS_Store
@@ -29,3 +31,6 @@ firestore.rules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# backups
+.git-old/

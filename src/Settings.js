@@ -27,22 +27,24 @@ const Settings = () => {
     const saveChanges = document.querySelector("#saveChanges");
 
     saveChanges.addEventListener("click", () => {
+      //profile image
       const file = uploadImage.files[0];
       const imgURL = `/profile/${file.name}`;
       
       const photoStore = firebase.storage().ref(imgURL);
       photoStore.put(file);
 
-      user.updateProfile({
-        photoURL: imgURL,
-      }).then(() => {
-        alert("Done!");
-      }).catch((err) => {
-        alert(err);
+      photoStore.getDownloadURL().then((url) => {
+        user.updateProfile({
+          photoURL: url,
+        }).then(() => {
+          alert("Done!");
+        }).catch((err) => {
+          alert(err);
+        })
       })
     })
 
-    //need to host on fb to see pic changes
   })
 
   return (
@@ -95,3 +97,10 @@ const Settings = () => {
 };
 
 export default Settings;
+
+
+/**TODO
+ * - connect other info to be saved
+ * - make sure not to resave something that hasn't been edited
+ * - remember to rebuild/rehost
+ */
