@@ -4,6 +4,7 @@ import { auth } from "./firebase.js";
 import App from "./App.js";
 import Dashboard from "./Dashboard.js";
 import Settings from "./Settings.js";
+import Profile from "./Profile.js";
 
 const Routes = () => {
   const [signed, setSigned] = useState(false);
@@ -26,6 +27,7 @@ const Routes = () => {
         />
         <Route exact path="/dashboard" render={() => <Dashboard />} />
         <Route exact path="/settings" render={() => <Settings />} />
+        <Route exact path="/:displayName" render={() => <Profile />} />
       </Switch>
     </BrowserRouter>
   );

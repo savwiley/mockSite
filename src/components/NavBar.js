@@ -26,6 +26,7 @@ const NavBar = (props) => {
 
   //user profile variables
   const user = auth.currentUser;
+  const displayName = user.displayName;
   const photoURL = user.photoURL;
 
   //finds the page
@@ -69,13 +70,13 @@ const NavBar = (props) => {
           <IoHeartOutline />
 
           {userPic.current ? (
-            <img className="userPic userDrop" src={photoURL}></img>
+            <img className="userPic userDrop" src={photoURL} alt="profile"></img>
           ) : (
             <RiUser3Line className="userDrop" />
           )}
 
           <div className="drop">
-            <Link to="#">
+            <Link to={`/` + displayName}>
               <RiUser3Line /> Profile
             </Link>
             <Link to="/settings">
