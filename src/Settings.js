@@ -23,28 +23,65 @@ const Settings = () => {
   }
 
   useEffect(() => {
+    const newName = document.querySelector("#display");
     const uploadImage = document.querySelector("#disImage");
+    const newEmail = document.querySelector("#emailForm");
+    const newPW = document.querySelector("#passForm");
     const saveChanges = document.querySelector("#saveChanges");
 
     saveChanges.addEventListener("click", () => {
-      //profile image
-      const file = uploadImage.files[0];
-      const imgURL = `/profile/${file.name}`;
-      
-      const photoStore = firebase.storage().ref(imgURL);
-      photoStore.put(file);
-
-      photoStore.getDownloadURL().then((url) => {
+      //display name
+      if (newName.value) {
         user.updateProfile({
-          photoURL: url,
+          displayName: newName.value,
         }).then(() => {
-          alert("Done!");
+          alert(`Name changed to ${newName.value}!`);
         }).catch((err) => {
           alert(err);
         })
-      })
-    })
+      }
 
+      //profile image
+      if (uploadImage.value) {
+        const file = uploadImage.files[0];
+        const imgURL = `/profile/${file.name}`;
+        
+        const photoStore = firebase.storage().ref(imgURL);
+        photoStore.put(file);
+
+        photoStore.getDownloadURL().then((url) => {
+          user.updateProfile({
+            photoURL: url,
+          }).then(() => {
+            alert("Profile Pic Uploaded!");
+          }).catch((err) => {
+            alert(err);
+          })
+        })
+      }
+
+      //email
+      if (newEmail.value) {
+        user.updateProfile({
+          email: newEmail.value,
+        }).then(() => {
+          alert(`Email changed to ${newEmail.value}!`);
+        }).catch((err) => {
+          alert(err);
+        })
+      }
+
+      //password
+      if (newPW.value) {
+        user.updatePassword((
+          newPW.value
+        )).then(() => {
+          alert(`Password changed!`);
+        }).catch((err) => {
+          alert(err);
+        })
+      }
+    })
   })
 
   return (
@@ -55,7 +92,7 @@ const Settings = () => {
       <div className="topper">
         <div className="setPic">
           {photoBoo.current ? (
-            <img className="userPic userSet" src={photoURL}></img>
+            <img className="userPic userSet" src={photoURL} alt="profile"></img>
           ) : (
             <RiUser3Line className="userSet" />
           )}
@@ -70,7 +107,7 @@ const Settings = () => {
           <label>
             Username
           </label>
-          <input type="text" id="display" value={displayName}></input>
+          <input type="text" id="display"></input>
         </div><div>
           <label>
             Display Image
@@ -80,7 +117,7 @@ const Settings = () => {
           <label for="emailForm">
             Email
           </label>
-          <input type="email" id="emailForm" value={email}></input>
+          <input type="email" id="emailForm"></input>
         </div><div>
           <label for="passForm">
             Password
