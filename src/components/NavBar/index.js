@@ -4,19 +4,19 @@ import { auth } from "../firebase.js";
 import {
   RiHome2Fill,
   RiHome2Line,
-  RiAddBoxFill,
+  //RiAddBoxFill,
   RiAddBoxLine,
   RiUser3Line,
   RiSettings3Fill,
 } from "react-icons/ri";
 import {
-  IoPaperPlane,
+  //IoPaperPlane,
   IoPaperPlaneOutline,
-  IoCompass,
+  //IoCompass,
   IoCompassOutline,
-  IoHeart,
+  //IoHeart,
   IoHeartOutline,
-  IoBookmarkOutline,
+  //IoBookmarkOutline,
 } from "react-icons/io5";
 
 const NavBar = (props) => {
@@ -53,6 +53,14 @@ const NavBar = (props) => {
     });
   });
 
+  const signOut = () => {
+    auth.signOut().then(() => {
+      alert("signed out")
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
   return (
     <div id="NavBar">
       <div className="inner">
@@ -82,7 +90,7 @@ const NavBar = (props) => {
             <Link to="/settings">
               <RiSettings3Fill /> Settings
             </Link>
-            <Link to="#">Log Out</Link>
+            <Link onClick={() => {signOut()}} to="/">Log Out</Link>
           </div>
         </div>
       </div>
