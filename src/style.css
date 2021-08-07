@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap");
+
+:root {
+  --background: #fafafa;
+  --border: #dbdbdb;
+  --fontC: #252525;
+
+  --blue: #0095f6;
+
+  --header: "Fontdiner Swanky", cursive;
+}
+
+* {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  color: var(--fontC);
+}
+
+body {
+  background: var(--background);
+}
+
+input {
+  border: 1px solid var(--border);
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+}
+input[type="button"] {
+  background: var(--blue);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+#delBtn {
+  background: red;
+}
+
+h1 {
+  font-family: var(--header);
+  font-weight: normal;
+  font-size: 35px;
+  cursor: default;
+}
+
+/* START */
+
+.signInSheet {
+  margin: 12vh auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  justify-content: space-around;
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  border: 1px solid var(--border);
+}
+.signInSheet div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.signUpBtn,
+#inP,
+.nameInput {
+  display: none;
+}
+
+#inP,
+#upP {
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  align-self: center;
+}
+#inP:before {
+  content: "< ";
+}
+#upP:after {
+  content: " >";
+}
+
+/* NAVBAR */
+
+#NavBar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  border-bottom: 1px solid var(--border);
+}
+
+#NavBar .inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 975px;
+  margin: auto;
+}
+
+#NavBar h1 {
+  display: block;
+  font-size: 25px;
+  width: 28%;
+}
+
+#NavBar input {
+  height: 2ch;
+  width: 20%;
+  font-size: 15px;
+  text-align: center;
+  background: var(--background);
+}
+#NavBar input:focus {
+  text-align: left;
+}
+
+#NavBar .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25px;
+  width: 28%;
+}
+
+.userPic {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+}
+.userDrop {
+  cursor: pointer;
+}
+
+.drop {
+  display: none;
+  flex-direction: column;
+  font-size: 14px;
+  background: #fff;
+  width: 200px;
+  position: absolute;
+  top: 54px;
+  margin-left: 8%;
+  border-radius: 8px;
+  box-shadow: 0 0 8px var(--border);
+  overflow: hidden;
+}
+.drop a {
+  text-decoration: none;
+  padding: 10px;
+}
+.drop a:hover {
+  background: var(--background);
+}
+
+/* SETTINGS */
+
+#settings {
+  background: #fff;
+  width: 100%;
+  max-width: 975px;
+  height: 120vh;
+  margin: 80px auto;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+
+.topper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 50px 10px 10px;
+  font-size: 20px;
+}
+.setPic {
+  width: 40%;
+  text-align: right;
+  padding-right: 30px;
+}
+.userSet {
+  width: 50px;
+  height: 50px;
+}
+
+.form {
+  width: 300px;
+  margin: 50px auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+.form div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.form label {
+  text-align: right;
+  width: 100%;
+  padding-right: 10px;
+  font-weight: bold;
+}
+.form input {
+  width: 100%;
+}
+.form input[type=button] {
+  width: fit-content;
+}
