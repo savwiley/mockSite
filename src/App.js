@@ -1,5 +1,4 @@
 import React from "react";
-import { auth } from "./components/firebase.js";
 import Home from "./components/Home";
 
 const App = () => {

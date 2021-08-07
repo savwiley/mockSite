@@ -12,7 +12,7 @@ const Settings = () => {
   const displayName = user.displayName;
   const email = user.email;
   const photoURL = user.photoURL;
-  const anonBoo = user.isAnonymous;
+  //const anonBoo = user.isAnonymous;
 
   //changes booleans
   if (displayName !== null) {
