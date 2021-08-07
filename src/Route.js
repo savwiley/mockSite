@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { auth } from "./firebase.js";
-import App from "./App.js";
-import Dashboard from "./Dashboard.js";
-import Settings from "./Settings.js";
-import Profile from "./Profile.js";
+import { auth } from "./components/firebase.js";
+import Home from "./components/Home";
+import Dashboard from "./components/Dashboard";
+import Settings from "./components/Settings";
+import Profile from "./components/Profile";
 
 const Routes = () => {
   const [signed, setSigned] = useState(false);
@@ -23,7 +23,7 @@ const Routes = () => {
         <Route
           exact
           path="/"
-          render={() => (signed ? <Dashboard /> : <App />)}
+          render={() => (signed ? <Dashboard /> : <Home />)}
         />
         <Route exact path="/dashboard" render={() => <Dashboard />} />
         <Route exact path="/settings" render={() => <Settings />} />
