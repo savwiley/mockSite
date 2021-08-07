@@ -1,13 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
+import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled.js";
+import DropDown from "./dropdown.js";
 import {
   RiHome2Fill,
   RiHome2Line,
   //RiAddBoxFill,
   RiAddBoxLine,
   RiUser3Line,
-  RiSettings3Fill,
 } from "react-icons/ri";
 import {
   //IoPaperPlane,
@@ -21,12 +22,12 @@ import {
 
 const NavBar = (props) => {
   const { page } = props;
+  const [drop, setDrop] = useState(false);
   const dash = useRef(false);
   const userPic = useRef(false);
 
   //user profile variables
   const user = auth.currentUser;
-  const displayName = user.displayName;
   const photoURL = user.photoURL;
 
   //finds the page
@@ -39,37 +40,15 @@ const NavBar = (props) => {
     userPic.current = true;
   }
 
-  //clicking on the userpic
-  useEffect(() => {
-    const userPicDrop = document.querySelector(".userDrop");
-    const drop = document.querySelector(".drop");
-
-    userPicDrop.addEventListener("click", () => {
-      if (drop.style.display !== "flex") {
-        drop.style.display = "flex";
-      } else {
-        drop.style.display = "none";
-      }
-    });
-  });
-
-  const signOut = () => {
-    auth.signOut().then(() => {
-      alert("signed out")
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
-
   return (
-    <div id="NavBar">
+    <NavBarStyle>
       <div className="inner">
         <h1>Notagram</h1>
 
         <input type="text" placeholder="Search" />
 
-        <div className="icons">
-          <Link to="/dashboard">
+        <NavBarIcons>
+          <Link to="/dashboard" title="Dashboard">
             {dash.current ? <RiHome2Fill /> : <RiHome2Line />}
           </Link>
           <IoPaperPlaneOutline />
@@ -77,24 +56,22 @@ const NavBar = (props) => {
           <IoCompassOutline />
           <IoHeartOutline />
 
-          {userPic.current ? (
-            <img className="userPic userDrop" src={photoURL} alt="profile"></img>
-          ) : (
-            <RiUser3Line className="userDrop" />
-          )}
+          <UserButton
+            onClick={() => {
+              drop ? setDrop(false) : setDrop(true);
+            }}
+          >
+            {userPic.current ? (
+              <UserPic src={photoURL} title="It's You!"></UserPic>
+            ) : (
+              <RiUser3Line title="It's You!" />
+            )}
+          </UserButton>
 
-          <div className="drop">
-            <Link to={`/` + displayName}>
-              <RiUser3Line /> Profile
-            </Link>
-            <Link to="/settings">
-              <RiSettings3Fill /> Settings
-            </Link>
-            <Link onClick={() => {signOut()}} to="/">Log Out</Link>
-          </div>
-        </div>
+          {drop && <DropDown />}
+        </NavBarIcons>
       </div>
-    </div>
+    </NavBarStyle>
   );
 };
 
