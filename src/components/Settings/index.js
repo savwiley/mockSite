@@ -1,9 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import firebase, { auth } from "../firebase.js";
+import { SettingsStyle, SettingsTop, SettingsPic, Form } from "./styled.js";
 import NavBar from "../NavBar";
 import { RiUser3Line } from "react-icons/ri";
 
 const Settings = () => {
+  const [userName, setUserName] = useState();
+  const [image, setImage] = useState();
+  const [newEmail, setEmail] = useState();
+  const [password, setPassword] = useState();
   const nameBoo = useRef(false);
   const photoBoo = useRef(false);
 
@@ -22,122 +27,142 @@ const Settings = () => {
     photoBoo.current = true;
   }
 
-  useEffect(() => {
-    const newName = document.querySelector("#display");
-    const uploadImage = document.querySelector("#disImage");
-    const newEmail = document.querySelector("#emailForm");
-    const newPW = document.querySelector("#passForm");
-    const saveChanges = document.querySelector("#saveChanges");
-
-    saveChanges.addEventListener("click", () => {
-      //display name
-      if (newName.value) {
-        user.updateProfile({
-          displayName: newName.value,
-        }).then(() => {
-          alert(`Name changed to ${newName.value}!`);
-        }).catch((err) => {
-          alert(err);
+  const saveChanges = () => {
+    //user name
+    if (userName) {
+      user
+        .updateProfile({
+          displayName: userName,
         })
-      }
+        .then(() => {
+          alert(`Name changed to ${userName}!`);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
 
-      //profile image
-      if (uploadImage.value) {
-        const file = uploadImage.files[0];
-        const imgURL = `/profile/${file.name}`;
-        
-        const photoStore = firebase.storage().ref(imgURL);
-        photoStore.put(file);
+    //profile image
+    if (image) {
+      const file = image.files[0];
+      const imgURL = `/profile/${file.name}`;
 
-        photoStore.getDownloadURL().then((url) => {
-          user.updateProfile({
+      const photoStore = firebase.storage().ref(imgURL);
+      photoStore.put(file);
+
+      photoStore.getDownloadURL().then((url) => {
+        user
+          .updateProfile({
             photoURL: url,
-          }).then(() => {
-            alert("Profile Pic Uploaded!");
-          }).catch((err) => {
-            alert(err);
           })
-        })
-      }
+          .then(() => {
+            alert("Profile Pic Uploaded!");
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      });
+    }
 
-      //email
-      if (newEmail.value) {
-        user.updateProfile({
-          email: newEmail.value,
-        }).then(() => {
-          alert(`Email changed to ${newEmail.value}!`);
-        }).catch((err) => {
+    //email
+    if (newEmail) {
+      user
+        .updateProfile({
+          email: newEmail,
+        })
+        .then(() => {
+          alert(`Email changed to ${newEmail}!`);
+        })
+        .catch((err) => {
           alert(err);
-        })
-      }
+        });
+    }
 
-      //password
-      if (newPW.value) {
-        user.updatePassword((
-          newPW.value
-        )).then(() => {
+    //password
+    if (password) {
+      user
+        .updatePassword(password)
+        .then(() => {
           alert(`Password changed!`);
-        }).catch((err) => {
-          alert(err);
         })
-      }
-    })
-  })
+        .catch((err) => {
+          alert(err);
+        });
+    }
+  };
 
   return (
     <>
-    <NavBar />
+      <NavBar />
 
-    <div id="settings">
-      <div className="topper">
-        <div className="setPic">
-          {photoBoo.current ? (
-            <img className="userPic userSet" src={photoURL} alt="profile"></img>
-          ) : (
-            <RiUser3Line className="userSet" />
-          )}
-        </div>
-        <div className="setName">
+      <SettingsStyle>
+        <SettingsTop>
+          <SettingsPic>
+            {photoBoo.current ? (
+              <img src={photoURL} alt="It's You!"></img>
+            ) : (
+              <RiUser3Line />
+            )}
+          </SettingsPic>
           {nameBoo.current ? displayName : email}
-        </div>
-      </div>
+        </SettingsTop>
 
-      <div className="form">
-        <div>
-          <label>
-            Username
-          </label>
-          <input type="text" id="display"></input>
-        </div><div>
-          <label>
-            Display Image
-          </label>
-          <input type="file" id="disImage" accept="image/*" />
-        </div><div>
-          <label for="emailForm">
-            Email
-          </label>
-          <input type="email" id="emailForm"></input>
-        </div><div>
-          <label for="passForm">
-            Password
-          </label>
-          <input type="password" id="passForm"></input>
-        </div><div>
-          <input type="button" value="Save Changes" id="saveChanges" />
-          <input type="button" value="Delete Account" id="delBtn" />
-        </div>
-      </div>
-    </div>
+        <Form>
+          <div>
+            <label>Username</label>
+            <input
+              type="text"
+              onChange={(e) => {
+                setUserName(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div>
+            <label>Display Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                setImage(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div>
+            <input
+              type="button"
+              value="Save Changes"
+              onClick={() => {
+                saveChanges();
+              }}
+            />
+            <input type="button" value="Delete Account" id="delBtn" />
+          </div>
+        </Form>
+      </SettingsStyle>
     </>
-  )
+  );
 };
 
 export default Settings;
 
-
 /**TODO
- * - connect other info to be saved
- * - make sure not to resave something that hasn't been edited
  * - remember to rebuild/rehost
  */
