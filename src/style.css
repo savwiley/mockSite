@@ -50,38 +50,12 @@ h1 {
 
 /* START */
 
-.signInSheet {
-  margin: 12vh auto;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 20px;
-  justify-content: space-around;
-  width: 300px;
-  height: 400px;
-  background: #fff;
-  border: 1px solid var(--border);
-}
-.signInSheet div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
 .signUpBtn,
 #inP,
 .nameInput {
   display: none;
 }
 
-#inP,
-#upP {
-  color: var(--blue);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  align-self: center;
-}
 #inP:before {
   content: "< ";
 }
