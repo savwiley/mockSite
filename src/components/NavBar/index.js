@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase.js";
 import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled.js";
 import DropDown from "./dropdown.js";
+import NewPost from "./newPost.js";
 import {
   RiHome2Fill,
   RiHome2Line,
@@ -23,6 +24,7 @@ import {
 const NavBar = (props) => {
   const { page } = props;
   const [drop, setDrop] = useState(false);
+  const [post, setPost] = useState(false);
   const dash = useRef(false);
   const userPic = useRef(false);
 
@@ -52,7 +54,12 @@ const NavBar = (props) => {
             {dash.current ? <RiHome2Fill /> : <RiHome2Line />}
           </Link>
           <IoPaperPlaneOutline />
-          <RiAddBoxLine />
+          <RiAddBoxLine
+            onClick={() => {
+              setPost(true);
+            }}
+            title="Make A Post!"
+          />
           <IoCompassOutline />
           <IoHeartOutline />
 
@@ -69,6 +76,7 @@ const NavBar = (props) => {
           </UserButton>
 
           {drop && <DropDown />}
+          {post && <NewPost setShown={setPost} />}
         </NavBarIcons>
       </div>
     </NavBarStyle>
