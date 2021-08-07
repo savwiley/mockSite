@@ -5,8 +5,8 @@ import { auth } from "../firebase.js";
 
 const Home = () => {
   const [signUpScreen, setSignUpScreen] = useState(false);
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const signAnon = () => {
     auth
@@ -27,15 +27,17 @@ const Home = () => {
       <input
         type="email"
         placeholder="Email"
-        onChange={() => {
-          setEmail(this.value);
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
         }}
       />
       <input
         type="password"
         placeholder="Password"
-        onChange={() => {
-          setPassword(this.value);
+        value={password}
+        onChange={(e) => {
+          setPassword(e.target.value);
         }}
       />
 
