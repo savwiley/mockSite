@@ -134,8 +134,21 @@ export const ChoosePic = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  input {
-    width: fit-content;
-    height: fit-content;
+  label {
+    background: var(--blue);
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
   }
 `;
+
+export const AcceptPic = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+//just extend the ChoosePic to AcceptPic

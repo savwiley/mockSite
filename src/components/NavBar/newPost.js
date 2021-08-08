@@ -1,10 +1,16 @@
-import { PostModal, PostTop, CloseButton, ChoosePic } from "./styled.js";
+import React, { useState } from "react";
+import ChooseFile from "./components/choosePic.js";
+import AcceptFile from "./components/acceptPic.js";
+import { PostModal, PostTop, CloseButton } from "./styled.js";
 import { RiCloseLine } from "react-icons/ri";
 
-const newPost = ({ setShown }) => {
+const NewPost = (props) => {
+  const { setShown } = props;
+  const [ image, setImage ] = useState();
+
   return (
     <PostModal>
-      <div class="inner">
+      <div className="inner">
         <PostTop>
           <h2>New Post</h2>
 
@@ -17,12 +23,15 @@ const newPost = ({ setShown }) => {
           </CloseButton>
         </PostTop>
 
-        <ChoosePic>
-          <input type="file" accept="image/*" />
-        </ChoosePic>
+        {image ? 
+          <AcceptFile image={image} /> 
+          : 
+          <ChooseFile pickedImage={setImage} 
+        />}
+
       </div>
     </PostModal>
   );
 };
 
-export default newPost;
+export default NewPost;
