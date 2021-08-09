@@ -145,10 +145,32 @@ export const ChoosePic = styled.div`
   }
 `;
 
-export const AcceptPic = styled.div`
-  height: 100%;
-  display: flex;
-  justify-content: center;
+export const AcceptPic = styled(ChoosePic)`
+  flex-direction: column;
+  justify-content: left;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 20vw;
+    margin-top: 50px;
+    input {
+      width: fit-content;
+      height: fit-content;
+      font-size: 25px;
+    }
+  }
 `;
 
-//just extend the ChoosePic to AcceptPic
+export const PreviewPic = styled.div`
+  max-width: 70vw;
+  max-height: 50vh;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+`;
+
+export const CreateMessage = styled(ChoosePic)`
+  border: none;
+`;
