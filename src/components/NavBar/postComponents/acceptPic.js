@@ -22,7 +22,7 @@ const PreviewImage = (props) => {
       <PreviewPic>
         <img src={URL.createObjectURL(image[0])} alt="testing" />
       </PreviewPic>
-      <div class="previewBtns">
+      <div className="previewBtns">
         <input
           type="button"
           value="Continue"
