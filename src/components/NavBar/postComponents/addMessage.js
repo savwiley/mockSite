@@ -1,7 +1,24 @@
 import { CreateMessage, MessagePic, MessageCenter } from "../styled.js";
 
 const AddMessage = (props) => {
-  const { image, /*firebase*/ } = props;
+  const { image, firebase, pickedImage, didAccept } = props;
+
+  const user = firebase.auth().currentUser;
+  const displayName = user.displayName;
+
+  const deletePost = () => {
+    const storageRef = firebase.storage().ref();
+    const imgURL = `/posts/${displayName}/${image[0].name}`;
+
+    const imgRef = storageRef.child(`${imgURL}`);
+    imgRef.delete().then(() => {
+      didAccept(false);
+      pickedImage(null);
+    }).catch((err) =>  {
+      alert("An error occured!");
+      console.log(err);
+    })
+  }
 
   return (
     <CreateMessage>
@@ -14,15 +31,16 @@ const AddMessage = (props) => {
 
         <input
           type="button"
-          value="Create"
+          value="Post!"
           //creates post
         />
         <input
           type="button"
           value="Start Over"
           id="delBtn"
-          //delets image from storage
-          //goes back to choosePic
+          onClick={() => {
+            deletePost();
+          }}
         />
       </MessageCenter>
     </CreateMessage>

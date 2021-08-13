@@ -55,6 +55,8 @@ const AcceptFile = (props) => {
         <AddMessage 
           image={image} 
           firebase={firebase}
+          pickedImage={pickedImage} 
+          didAccept={setAccept} 
         />
       ) : (
         <PreviewImage 
