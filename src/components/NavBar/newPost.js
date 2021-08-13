@@ -33,7 +33,6 @@ const NewPost = (props) => {
         ) : (
           <ChooseFile pickedImage={setImage} />
         )}
-
       </div>
     </PostModal>
   );

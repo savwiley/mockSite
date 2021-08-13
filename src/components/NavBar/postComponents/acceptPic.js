@@ -15,9 +15,9 @@ const PreviewImage = (props) => {
 
     const photoStore = firebase.storage().ref(imgURL);
     photoStore.put(file);
-  }
+  };
 
-  return(
+  return (
     <>
       <PreviewPic>
         <img src={URL.createObjectURL(image[0])} alt="testing" />
@@ -41,8 +41,8 @@ const PreviewImage = (props) => {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
 //switches between the preview & message edit screens
 const AcceptFile = (props) => {
@@ -52,18 +52,18 @@ const AcceptFile = (props) => {
   return (
     <AcceptPic>
       {accept ? (
-        <AddMessage 
-          image={image} 
+        <AddMessage
+          image={image}
           firebase={firebase}
-          pickedImage={pickedImage} 
-          didAccept={setAccept} 
+          pickedImage={pickedImage}
+          didAccept={setAccept}
         />
       ) : (
-        <PreviewImage 
-          image={image} 
-          pickedImage={pickedImage} 
-          didAccept={setAccept} 
-          firebase={firebase} 
+        <PreviewImage
+          image={image}
+          pickedImage={pickedImage}
+          didAccept={setAccept}
+          firebase={firebase}
         />
       )}
     </AcceptPic>
