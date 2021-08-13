@@ -148,7 +148,7 @@ export const ChoosePic = styled.div`
 export const AcceptPic = styled(ChoosePic)`
   flex-direction: column;
   justify-content: left;
-  div {
+  .previewBtns {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -171,5 +171,40 @@ export const PreviewPic = styled.div`
   }
 `;
 
-export const CreateMessage = styled(ChoosePic)`
+export const CreateMessage = styled.div`
+  background: green;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: fit-content(1fr) 50%;
+  grid-template-areas: "image message";
+  width: 100%;
+  overflow: hidden;
+`;
+
+export const MessagePic = styled.div`
+  max-width: 80%;
+  background: pink;
+  grid-area: image;
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    opacity: 0.2;
+  }
+`;
+
+export const MessageCenter = styled.div`
+  z-index: 2;
+  width: 500px;
+  height: fit-content;
+  grid-area: message;
+  background: blue;
+  margin: auto;
+  textarea {
+    margin: auto;
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 10px;
+  }
 `;

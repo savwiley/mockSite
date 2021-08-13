@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddMessage from "./addMessage.js";
 import { AcceptPic, PreviewPic } from "../styled.js";
 
+//shows & saves the image to firestore
 const PreviewImage = (props) => {
   const { image, pickedImage, didAccept, firebase } = props;
 
@@ -21,7 +22,7 @@ const PreviewImage = (props) => {
       <PreviewPic>
         <img src={URL.createObjectURL(image[0])} alt="testing" />
       </PreviewPic>
-      <div>
+      <div class="previewBtns">
         <input
           type="button"
           value="Continue"
@@ -43,6 +44,7 @@ const PreviewImage = (props) => {
   )
 }
 
+//switches between the preview & message edit screens
 const AcceptFile = (props) => {
   const { image, pickedImage, firebase } = props;
   const [accept, setAccept] = useState(false);

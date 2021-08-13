@@ -1,9 +1,32 @@
-import { CreateMessage } from "../styled.js";
+import { CreateMessage, MessagePic, MessageCenter } from "../styled.js";
 
 const AddMessage = (props) => {
-  const { images } = props;
+  const { image, /*firebase*/ } = props;
 
-  return <CreateMessage></CreateMessage>;
+  return (
+    <CreateMessage>
+      <MessagePic>
+        <img src={URL.createObjectURL(image[0])} alt="testing" />
+      </MessagePic>
+
+      <MessageCenter>
+        <textarea></textarea>
+
+        <input
+          type="button"
+          value="Create"
+          //creates post
+        />
+        <input
+          type="button"
+          value="Start Over"
+          id="delBtn"
+          //delets image from storage
+          //goes back to choosePic
+        />
+      </MessageCenter>
+    </CreateMessage>
+  );
 };
 
 export default AddMessage;
