@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import firebase from "../firebase.js";
 import ChooseFile from "./postComponents/choosePic.js";
 import AcceptFile from "./postComponents/acceptPic.js";
-import AddMessage from "./postComponents/addMessage.js";
 import { PostModal, PostTop, CloseButton } from "./styled.js";
 import { RiCloseLine } from "react-icons/ri";
 
 const NewPost = (props) => {
   const { setShown } = props;
-  const [image, setImage] = useState();
-  const [accept, setAccept] = useState(false);
+  const [image, setImage] = useState(null);
 
   return (
     <PostModal>
@@ -29,21 +28,12 @@ const NewPost = (props) => {
           <AcceptFile
             image={image}
             pickedImage={setImage}
-            didAccept={setAccept}
+            firebase={firebase}
           />
         ) : (
           <ChooseFile pickedImage={setImage} />
         )}
 
-        {accept ? (
-          <AddMessage image={image} />
-        ) : (
-          <AcceptFile
-            image={image}
-            pickedImage={setImage}
-            didAccept={setAccept}
-          />
-        )}
       </div>
     </PostModal>
   );

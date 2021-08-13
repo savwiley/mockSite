@@ -172,5 +172,4 @@ export const PreviewPic = styled.div`
 `;
 
 export const CreateMessage = styled(ChoosePic)`
-  border: none;
 `;

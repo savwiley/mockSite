@@ -1,10 +1,23 @@
+import React, { useState } from "react";
+import AddMessage from "./addMessage.js";
 import { AcceptPic, PreviewPic } from "../styled.js";
 
-const AcceptFile = (props) => {
-  const { image, pickedImage, didAccept } = props;
+const PreviewImage = (props) => {
+  const { image, pickedImage, didAccept, firebase } = props;
 
-  return (
-    <AcceptPic>
+  const user = firebase.auth().currentUser;
+  const displayName = user.displayName;
+
+  const storePic = () => {
+    const file = image[0];
+    const imgURL = `/posts/${displayName}/${file.name}`;
+
+    const photoStore = firebase.storage().ref(imgURL);
+    photoStore.put(file);
+  }
+
+  return(
+    <>
       <PreviewPic>
         <img src={URL.createObjectURL(image[0])} alt="testing" />
       </PreviewPic>
@@ -13,6 +26,7 @@ const AcceptFile = (props) => {
           type="button"
           value="Continue"
           onClick={() => {
+            storePic();
             didAccept(true);
           }}
         />
@@ -25,6 +39,29 @@ const AcceptFile = (props) => {
           }}
         />
       </div>
+    </>
+  )
+}
+
+const AcceptFile = (props) => {
+  const { image, pickedImage, firebase } = props;
+  const [accept, setAccept] = useState(false);
+
+  return (
+    <AcceptPic>
+      {accept ? (
+        <AddMessage 
+          image={image} 
+          firebase={firebase}
+        />
+      ) : (
+        <PreviewImage 
+          image={image} 
+          pickedImage={pickedImage} 
+          didAccept={setAccept} 
+          firebase={firebase} 
+        />
+      )}
     </AcceptPic>
   );
 };
