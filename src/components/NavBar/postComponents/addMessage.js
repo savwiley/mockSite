@@ -29,6 +29,9 @@ const AddMessage = (props) => {
   const createPost = () => {
     //save the imgURL, displayName, profilePic, message, time posted
     //should make .doc() the displayName
+
+    //need to create "download" url's of the images
+    //check at the bottom for docs
     firebase
       .firestore()
       .collection("posts")
@@ -87,3 +90,7 @@ export default AddMessage;
 // https://firebase.google.com/docs/storage/web/file-metadata
 
 // https://firebase.google.com/docs/database/web/start
+
+// https://firebase.google.com/docs/storage/web/download-files?authuser=0
+
+// ^to fix the images to show up from storage
