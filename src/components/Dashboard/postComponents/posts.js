@@ -1,13 +1,9 @@
 import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled.js";
 
 const PostBoard = (props) => {
-  const { posts, oldPosts } = props;
+  const { posts } = props;
 
   console.log("running");
-  console.log(posts);
-  posts.forEach((e) => {
-    console.log(e);
-  })
 
   return (
     <PostColumn>

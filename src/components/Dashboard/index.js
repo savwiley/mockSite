@@ -32,7 +32,7 @@ const Dashboard = () => {
     <>
       <NavBar page={"dashboard"} />
 
-      {ready ? <PostBoard posts={makePosts} oldPosts={posts} /> : "There's nothing here yet."}
+      {ready ? <PostBoard posts={makePosts} /> : "There's nothing here yet."}
     </>
   )
 };
