@@ -5,6 +5,7 @@ import firebase from "../firebase.js";
 
 const Dashboard = () => {
   const [ posts, setPosts ] = useState();
+  const [ makePosts, setMakePosts ] = useState();
   const [ ready, setReady ] = useState(false);
 
   async function callAsync() {
@@ -17,20 +18,21 @@ const Dashboard = () => {
     if (!posts) {
       callAsync();
     } else {
-      setReady(true);
+      let postsArr = [];
       posts.forEach((e) => {
-        console.log(posts);
-        console.log(e.data());
-      });
+        postsArr.push(e.data());
+      })
+      setMakePosts(postsArr);
+      setReady(true);
+      console.log("ready");
     };
-  });
+  }, [posts]);
 
   return (
     <>
       <NavBar page={"dashboard"} />
 
-      {ready ? <PostBoard posts={posts} /> : "There's nothing here yet."}
-
+      {ready ? <PostBoard posts={makePosts} oldPosts={posts} /> : "There's nothing here yet."}
     </>
   )
 };
