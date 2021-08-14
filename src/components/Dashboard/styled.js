@@ -34,9 +34,6 @@ export const PostImage = styled.div`
   width: 100%;
   max-height: 750px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-left: none;
-  border-right: none;
   img {
     max-width: 100%;
     max-height: 100%;
