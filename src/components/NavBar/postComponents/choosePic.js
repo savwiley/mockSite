@@ -1,5 +1,5 @@
-import React from 'react';
-import { ChoosePic } from '../styled';
+import React from "react";
+import { ChoosePic } from "../styled";
 
 const ChooseFile = ({ pickedImage }) => (
   <ChoosePic>

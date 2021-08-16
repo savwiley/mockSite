@@ -1,10 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { RiUser3Line } from 'react-icons/ri';
-import firebase, { auth } from '../firebase';
-import {
-  SettingsStyle, SettingsTop, SettingsPic, Form,
-} from './styled';
-import NavBar from '../NavBar';
+import React, { useRef, useState } from "react";
+import { RiUser3Line } from "react-icons/ri";
+import firebase, { auth } from "../firebase";
+import { SettingsStyle, SettingsTop, SettingsPic, Form } from "./styled";
+import NavBar from "../NavBar";
 
 const Settings = () => {
   const [userName, setUserName] = useState();
@@ -40,7 +38,7 @@ const Settings = () => {
           alert(`Name changed to ${userName}!`);
         })
         .catch((err) => {
-          alert('Something went wrong!');
+          alert("Something went wrong!");
           console.log(err);
         });
     }
@@ -59,10 +57,10 @@ const Settings = () => {
             photoURL: url,
           })
           .then(() => {
-            alert('Profile Pic Uploaded!');
+            alert("Profile Pic Uploaded!");
           })
           .catch((err) => {
-            alert('Something went wrong!');
+            alert("Something went wrong!");
             console.log(err);
           });
       });
@@ -78,7 +76,7 @@ const Settings = () => {
           alert(`Email changed to ${newEmail}!`);
         })
         .catch((err) => {
-          alert('Something went wrong!');
+          alert("Something went wrong!");
           console.log(err);
         });
     }
@@ -88,10 +86,10 @@ const Settings = () => {
       user
         .updatePassword(password)
         .then(() => {
-          alert('Password changed!');
+          alert("Password changed!");
         })
         .catch((err) => {
-          alert('Something went wrong!');
+          alert("Something went wrong!");
           console.log(err);
         });
     }

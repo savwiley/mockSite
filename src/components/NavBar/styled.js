@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const NavBarStyle = styled.div`
   z-index: 1;

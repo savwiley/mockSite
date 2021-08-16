@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PostColumn = styled.div`
   margin: 80px auto 0;
@@ -42,7 +42,8 @@ export const PostImage = styled.div`
 
 export const PostInteract = styled.div`
   font-size: 15px;
-  .message, .date {
+  .message,
+  .date {
     width: 100%;
   }
   .date {

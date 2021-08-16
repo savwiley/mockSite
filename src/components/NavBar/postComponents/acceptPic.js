@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import AddMessage from './addMessage';
-import { AcceptPic, PreviewPic } from '../styled';
+import React, { useState } from "react";
+import AddMessage from "./addMessage";
+import { AcceptPic, PreviewPic } from "../styled";
 
 // shows & saves the image to firestore
 const PreviewImage = (props) => {
-  const {
-    image, pickedImage, didAccept, firebase,
-  } = props;
+  const { image, pickedImage, didAccept, firebase } = props;
 
   const user = firebase.auth().currentUser;
   const { displayName } = user;

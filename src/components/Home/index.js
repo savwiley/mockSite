@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { SignInSheet, SignInControls } from './styled';
-import { SignIn, SignUp } from './screen';
-import { auth } from '../firebase';
+import React, { useState } from "react";
+import { SignInSheet, SignInControls } from "./styled";
+import { SignIn, SignUp } from "./screen";
+import { auth } from "../firebase";
 
 const Home = () => {
   const [signUpScreen, setSignUpScreen] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const signAnon = () => {
     auth

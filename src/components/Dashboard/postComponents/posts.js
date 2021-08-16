@@ -1,12 +1,10 @@
-import React from 'react';
-import {
-  PostColumn, PostBlock, PostImage, PostInteract,
-} from '../styled';
+import React from "react";
+import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled";
 
 const PostBoard = (props) => {
   const { posts } = props;
 
-  console.log('running');
+  console.log("running");
 
   return (
     <PostColumn>

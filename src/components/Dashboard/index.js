@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from '../NavBar';
-import PostBoard from './postComponents/posts';
-import firebase from '../firebase';
+import React, { useState, useEffect } from "react";
+import NavBar from "../NavBar";
+import PostBoard from "./postComponents/posts";
+import firebase from "../firebase";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState();
@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [ready, setReady] = useState(false);
 
   async function callAsync() {
-    const postRef = firebase.firestore().collection('posts');
+    const postRef = firebase.firestore().collection("posts");
     const eachPost = await postRef.get();
     setPosts(eachPost);
   }
@@ -24,7 +24,7 @@ const Dashboard = () => {
       });
       setMakePosts(postsArr);
       setReady(true);
-      console.log('ready');
+      console.log("ready");
     }
   }, [posts]);
 

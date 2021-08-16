@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SignInSheet = styled.div`
   margin: 12vh auto;

@@ -1,6 +1,6 @@
-import React from 'react';
-import { SwitchScreen } from './styled';
-import { auth } from '../firebase';
+import React from "react";
+import { SwitchScreen } from "./styled";
+import { auth } from "../firebase";
 
 // sign in screen
 export const SignIn = (props) => {

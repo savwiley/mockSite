@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { CreateMessage, MessagePic, MessageCenter } from '../styled';
+import React, { useState } from "react";
+import { CreateMessage, MessagePic, MessageCenter } from "../styled";
 
 const AddMessage = (props) => {
-  const {
-    image, firebase, pickedImage, didAccept,
-  } = props;
+  const { image, firebase, pickedImage, didAccept } = props;
   const [message, setMessage] = useState();
 
   const user = firebase.auth().currentUser;
@@ -23,7 +21,7 @@ const AddMessage = (props) => {
         pickedImage(null);
       })
       .catch((err) => {
-        alert('Something went wrong!');
+        alert("Something went wrong!");
         console.log(err);
       });
   };
@@ -41,13 +39,13 @@ const AddMessage = (props) => {
         imgPostURL = url;
       })
       .catch((err) => {
-        alert('Something went wrong!');
+        alert("Something went wrong!");
         console.log(err);
       });
 
     firebase
       .firestore()
-      .collection('posts')
+      .collection("posts")
       .doc()
       .set({
         postPic: `${imgPostURL}`,
@@ -60,7 +58,7 @@ const AddMessage = (props) => {
         window.location.reload();
       })
       .catch((err) => {
-        alert('Something went wrong!');
+        alert("Something went wrong!");
         console.log(err);
       });
   };

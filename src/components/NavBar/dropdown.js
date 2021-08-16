@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { RiUser3Line, RiSettings3Fill } from 'react-icons/ri';
-import { auth } from '../firebase';
-import { DropDownStyle } from './styled';
+import React from "react";
+import { Link } from "react-router-dom";
+import { RiUser3Line, RiSettings3Fill } from "react-icons/ri";
+import { auth } from "../firebase";
+import { DropDownStyle } from "./styled";
 
 const DropDown = () => {
   const user = auth.currentUser;
@@ -12,7 +12,7 @@ const DropDown = () => {
     auth
       .signOut()
       .then(() => {
-        alert('signed out');
+        alert("signed out");
       })
       .catch((error) => {
         console.log(error);
@@ -22,14 +22,10 @@ const DropDown = () => {
   return (
     <DropDownStyle>
       <Link to={`/${displayName}`} title="Profile">
-        <RiUser3Line />
-        {' '}
-        Profile
+        <RiUser3Line /> Profile
       </Link>
       <Link to="/settings" title="Settings">
-        <RiSettings3Fill />
-        {' '}
-        Settings
+        <RiSettings3Fill /> Settings
       </Link>
       <Link
         onClick={() => {

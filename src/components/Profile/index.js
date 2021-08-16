@@ -1,15 +1,15 @@
 //import { useParams } from "react-router-dom";
-import React from 'react';
+import React from "react";
 import NavBar from "../NavBar";
 
 const Profile = () => {
   //const displayName = useParams();
 
-  return(
+  return (
     <>
-    <NavBar />
+      <NavBar />
     </>
-  )
+  );
 };
 
 export default Profile;
@@ -18,8 +18,8 @@ export default Profile;
 
 /**
  * Can't retrieve data of other users. Solution:
- * 
+ *
  * The PROFILE is only for the signed-in user and displays their posts.
- * 
- * Each post will hold the user's displayName & image as metadata. Comments & likes will somehow be included. 
+ *
+ * Each post will hold the user's displayName & image as metadata. Comments & likes will somehow be included.
  */

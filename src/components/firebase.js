@@ -11,10 +11,10 @@ const firebaseConfig = {
   storageBucket: "mockproject-881e2.appspot.com",
   messagingSenderId: "611945416123",
   appId: "1:611945416123:web:ad1c5efc3401533862f09e",
-  measurementId: "G-DJRCEY9QSQ"
+  measurementId: "G-DJRCEY9QSQ",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
-export default firebase
+export default firebase;

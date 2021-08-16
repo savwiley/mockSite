@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   RiHome2Fill,
   RiHome2Line,
   // RiAddBoxFill,
   RiAddBoxLine,
   RiUser3Line,
-} from 'react-icons/ri';
+} from "react-icons/ri";
 import {
   // IoPaperPlane,
   IoPaperPlaneOutline,
@@ -15,13 +15,11 @@ import {
   // IoHeart,
   IoHeartOutline,
   // IoBookmarkOutline,
-} from 'react-icons/io5';
-import { auth } from '../firebase';
-import {
-  NavBarStyle, NavBarIcons, UserPic, UserButton,
-} from './styled';
-import DropDown from './dropdown';
-import NewPost from './newPost';
+} from "react-icons/io5";
+import { auth } from "../firebase";
+import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled";
+import DropDown from "./dropdown";
+import NewPost from "./newPost";
 
 const NavBar = (props) => {
   const { page } = props;
@@ -35,7 +33,7 @@ const NavBar = (props) => {
   const { photoURL } = user;
 
   // finds the page
-  if (page === 'dashboard') {
+  if (page === "dashboard") {
     dash.current = true;
   }
 
