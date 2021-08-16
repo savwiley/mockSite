@@ -10,12 +10,12 @@ const PostBoard = (props) => {
       {posts.map((e) => (
         <PostBlock key={e.date}>
           <header>
-            <img href={e.ownerPic} alt="profile" />
+            <img src={e.ownerPic} alt="profile" />
             {e.postOwner}
           </header>
 
           <PostImage>
-            <img href={e.postPic} alt="post" />
+            <img src={e.postPic} alt="post" />
           </PostImage>
 
           <PostInteract>

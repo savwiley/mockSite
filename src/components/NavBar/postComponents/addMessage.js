@@ -10,10 +10,10 @@ const AddMessage = (props) => {
   const profilePic = user.photoURL;
 
   const imgURL = `/posts/${displayName}/${image[0].name}`;
+  const storageRef = firebase.storage().ref();
+  const imgRef = storageRef.child(`${imgURL}`);
 
   const deletePost = () => {
-    const storageRef = firebase.storage().ref();
-    const imgRef = storageRef.child(`${imgURL}`);
     imgRef
       .delete()
       .then(() => {
@@ -27,22 +27,33 @@ const AddMessage = (props) => {
   };
 
   const createPost = () => {
+    let imgPostURL;
     //save the imgURL, displayName, profilePic, message, time posted
     //should make .doc() the displayName
 
     //need to create "download" url's of the images
     //check at the bottom for docs
-    firebase
-      .firestore()
-      .collection("posts")
-      .doc()
-      .set({
-        postPic: `${imgURL}`,
-        postOwner: `${displayName}`,
-        ownerPic: `${profilePic}`,
-        postMessage: `${message}`,
-        date: firebase.firestore.Timestamp.now(),
+    imgRef
+      .getDownloadURL()
+      .then((url) => {
+        imgPostURL = url;
       })
+      .catch((err) => {
+        alert("Something went wrong!");
+        console.log(err);
+      });
+
+      firebase
+        .firestore()
+        .collection("posts")
+        .doc()
+        .set({
+          postPic: `${imgPostURL}`,
+          postOwner: `${displayName}`,
+          ownerPic: `${profilePic}`,
+          postMessage: `${message}`,
+          date: firebase.firestore.Timestamp.now(),
+        })
       .then(() => {
         window.location.reload();
       })
