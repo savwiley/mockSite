@@ -1,15 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { SwitchScreen } from "./styled";
 import { auth } from "../firebase";
 
 // sign in screen
-export const SignIn = (props) => {
+const SignIn = (props) => {
   const { setShown, creds } = props;
 
   const signIn = (email, password) => {
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
+      .then((/*userCredential*/) => {
         // const user = userCredential.user;
       })
       .catch((error) => {
@@ -39,13 +40,13 @@ export const SignIn = (props) => {
 };
 
 // sign up screen
-export const SignUp = (props) => {
+const SignUp = (props) => {
   const { setShown, creds } = props;
 
   const signUp = (email, password) => {
     auth
       .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
+      .then((/*userCredential*/) => {
         // const user = userCredential.user;
       })
       .catch((error) => {
@@ -73,3 +74,15 @@ export const SignUp = (props) => {
     </>
   );
 };
+
+SignIn.propTypes = {
+  setShown: PropTypes.func,
+  creds: PropTypes.array,
+}
+
+SignUp.propTypes = {
+  setShown: PropTypes.func,
+  creds: PropTypes.array,
+}
+
+export {SignIn, SignUp};

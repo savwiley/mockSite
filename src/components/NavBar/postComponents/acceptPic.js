@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import AddMessage from "./addMessage";
 import { AcceptPic, PreviewPic } from "../styled";
 
@@ -44,6 +45,13 @@ const PreviewImage = (props) => {
   );
 };
 
+PreviewImage.propTypes = {
+  image: PropTypes.array,
+  pickedImage: PropTypes.func,
+  didAccept: PropTypes.func,
+  firebase: PropTypes.func,
+}
+
 // switches between the preview & message edit screens
 const AcceptFile = (props) => {
   const { image, pickedImage, firebase } = props;
@@ -69,5 +77,11 @@ const AcceptFile = (props) => {
     </AcceptPic>
   );
 };
+
+AcceptFile.propTypes = {
+  image: PropTypes.array,
+  pickedImage: PropTypes.func,
+  firebase: PropTypes.func,
+}
 
 export default AcceptFile;

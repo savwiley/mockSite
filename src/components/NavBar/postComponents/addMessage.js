@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { CreateMessage, MessagePic, MessageCenter } from "../styled";
 
 const AddMessage = (props) => {
@@ -28,11 +29,6 @@ const AddMessage = (props) => {
 
   const createPost = () => {
     let imgPostURL;
-    // save the imgURL, displayName, profilePic, message, time posted
-    // should make .doc() the displayName
-
-    // need to create "download" url's of the images
-    // check at the bottom for docs
     imgRef
       .getDownloadURL()
       .then((url) => {
@@ -95,6 +91,13 @@ const AddMessage = (props) => {
     </CreateMessage>
   );
 };
+
+AddMessage.propTypes = {
+  image: PropTypes.array,
+  firebase: PropTypes.func,
+  pickedImage: PropTypes.func,
+  didAccept: PropTypes.func,
+}
 
 export default AddMessage;
 

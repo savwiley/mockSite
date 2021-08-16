@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
   RiHome2Fill,
@@ -82,5 +83,9 @@ const NavBar = (props) => {
     </NavBarStyle>
   );
 };
+
+NavBar.propTypes = {
+  page: PropTypes.string,
+}
 
 export default NavBar;

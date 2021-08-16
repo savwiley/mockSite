@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled";
 
 const PostBoard = (props) => {
@@ -29,7 +30,12 @@ const PostBoard = (props) => {
   );
 };
 
+PostBoard.propTypes = {
+  posts: PropTypes.array,
+}
+
 export default PostBoard;
+
 // FIX DATE
 /**
  * profilePic displayName

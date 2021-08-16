@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ChoosePic } from "../styled";
 
 const ChooseFile = ({ pickedImage }) => (
@@ -15,5 +16,9 @@ const ChooseFile = ({ pickedImage }) => (
     <label htmlFor="uploadButton">Select From Computer</label>
   </ChoosePic>
 );
+
+ChooseFile.propTypes = {
+  pickedImage: PropTypes.func,
+}
 
 export default ChooseFile;

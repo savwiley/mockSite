@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { RiCloseLine } from "react-icons/ri";
 import firebase from "../firebase";
 import ChooseFile from "./postComponents/choosePic";
@@ -37,5 +38,9 @@ const NewPost = (props) => {
     </PostModal>
   );
 };
+
+NewPost.propTypes = {
+  setShown: PropTypes.func,
+}
 
 export default NewPost;
