@@ -1,21 +1,24 @@
-import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled.js";
+import React from 'react';
+import {
+  PostColumn, PostBlock, PostImage, PostInteract,
+} from '../styled';
 
 const PostBoard = (props) => {
   const { posts } = props;
 
-  console.log("running");
+  console.log('running');
 
   return (
     <PostColumn>
       {posts.map((e) => (
         <PostBlock key={e.date}>
           <header>
-            <img src={e.ownerPic} alt="profile" />
+            <img href={e.ownerPic} alt="profile" />
             {e.postOwner}
           </header>
 
           <PostImage>
-            <img src={e.postPic} alt="post" />
+            <img href={e.postPic} alt="post" />
           </PostImage>
 
           <PostInteract>
@@ -25,11 +28,11 @@ const PostBoard = (props) => {
         </PostBlock>
       ))}
     </PostColumn>
-  )
-}
+  );
+};
 
 export default PostBoard;
-//FIX DATE
+// FIX DATE
 /**
  * profilePic displayName
  * image

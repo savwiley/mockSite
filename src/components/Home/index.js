@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { SignInSheet, SignInControls } from "./styled.js";
-import { SignIn, SignUp } from "./screen.js";
-import { auth } from "../firebase.js";
+import React, { useState } from 'react';
+import { SignInSheet, SignInControls } from './styled';
+import { SignIn, SignUp } from './screen';
+import { auth } from '../firebase';
 
 const Home = () => {
   const [signUpScreen, setSignUpScreen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const signAnon = () => {
     auth
@@ -63,8 +63,8 @@ const Home = () => {
 
 export default Home;
 
-//for info on func 'user already signed in' AND set up for testing: https://firebase.google.com/docs/auth/web/start
+// for info on func 'user already signed in' AND set up for testing: https://firebase.google.com/docs/auth/web/start
 
-//for info on signing out: https://firebase.google.com/docs/auth/web/password-auth
+// for info on signing out: https://firebase.google.com/docs/auth/web/password-auth
 
-//for anon info: https://firebase.google.com/docs/auth/web/anonymous-auth
+// for anon info: https://firebase.google.com/docs/auth/web/anonymous-auth

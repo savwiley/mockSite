@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import { CreateMessage, MessagePic, MessageCenter } from "../styled.js";
+import React, { useState } from 'react';
+import { CreateMessage, MessagePic, MessageCenter } from '../styled';
 
 const AddMessage = (props) => {
-  const { image, firebase, pickedImage, didAccept } = props;
+  const {
+    image, firebase, pickedImage, didAccept,
+  } = props;
   const [message, setMessage] = useState();
 
   const user = firebase.auth().currentUser;
-  const displayName = user.displayName;
+  const { displayName } = user;
   const profilePic = user.photoURL;
 
   const imgURL = `/posts/${displayName}/${image[0].name}`;
@@ -21,44 +23,44 @@ const AddMessage = (props) => {
         pickedImage(null);
       })
       .catch((err) => {
-        alert("Something went wrong!");
+        alert('Something went wrong!');
         console.log(err);
       });
   };
 
   const createPost = () => {
     let imgPostURL;
-    //save the imgURL, displayName, profilePic, message, time posted
-    //should make .doc() the displayName
+    // save the imgURL, displayName, profilePic, message, time posted
+    // should make .doc() the displayName
 
-    //need to create "download" url's of the images
-    //check at the bottom for docs
+    // need to create "download" url's of the images
+    // check at the bottom for docs
     imgRef
       .getDownloadURL()
       .then((url) => {
         imgPostURL = url;
       })
       .catch((err) => {
-        alert("Something went wrong!");
+        alert('Something went wrong!');
         console.log(err);
       });
 
-      firebase
-        .firestore()
-        .collection("posts")
-        .doc()
-        .set({
-          postPic: `${imgPostURL}`,
-          postOwner: `${displayName}`,
-          ownerPic: `${profilePic}`,
-          postMessage: `${message}`,
-          date: firebase.firestore.Timestamp.now(),
-        })
+    firebase
+      .firestore()
+      .collection('posts')
+      .doc()
+      .set({
+        postPic: `${imgPostURL}`,
+        postOwner: `${displayName}`,
+        ownerPic: `${profilePic}`,
+        postMessage: `${message}`,
+        date: firebase.firestore.Timestamp.now(),
+      })
       .then(() => {
         window.location.reload();
       })
       .catch((err) => {
-        alert("Something went wrong!");
+        alert('Something went wrong!');
         console.log(err);
       });
   };
@@ -74,7 +76,7 @@ const AddMessage = (props) => {
           onChange={(e) => {
             setMessage(e.target.value);
           }}
-        ></textarea>
+        />
 
         <input
           type="button"

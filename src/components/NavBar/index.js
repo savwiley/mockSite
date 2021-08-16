@@ -1,25 +1,27 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { auth } from "../firebase.js";
-import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled.js";
-import DropDown from "./dropdown.js";
-import NewPost from "./newPost.js";
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   RiHome2Fill,
   RiHome2Line,
-  //RiAddBoxFill,
+  // RiAddBoxFill,
   RiAddBoxLine,
   RiUser3Line,
-} from "react-icons/ri";
+} from 'react-icons/ri';
 import {
-  //IoPaperPlane,
+  // IoPaperPlane,
   IoPaperPlaneOutline,
-  //IoCompass,
+  // IoCompass,
   IoCompassOutline,
-  //IoHeart,
+  // IoHeart,
   IoHeartOutline,
-  //IoBookmarkOutline,
-} from "react-icons/io5";
+  // IoBookmarkOutline,
+} from 'react-icons/io5';
+import { auth } from '../firebase';
+import {
+  NavBarStyle, NavBarIcons, UserPic, UserButton,
+} from './styled';
+import DropDown from './dropdown';
+import NewPost from './newPost';
 
 const NavBar = (props) => {
   const { page } = props;
@@ -28,16 +30,16 @@ const NavBar = (props) => {
   const dash = useRef(false);
   const userPic = useRef(false);
 
-  //user profile variables
+  // user profile variables
   const user = auth.currentUser;
-  const photoURL = user.photoURL;
+  const { photoURL } = user;
 
-  //finds the page
-  if (page === "dashboard") {
+  // finds the page
+  if (page === 'dashboard') {
     dash.current = true;
   }
 
-  //finds the user pic
+  // finds the user pic
   if (photoURL !== null) {
     userPic.current = true;
   }
@@ -69,7 +71,7 @@ const NavBar = (props) => {
             }}
           >
             {userPic.current ? (
-              <UserPic src={photoURL} title="It's You!"></UserPic>
+              <UserPic src={photoURL} title="It's You!" />
             ) : (
               <RiUser3Line title="It's You!" />
             )}

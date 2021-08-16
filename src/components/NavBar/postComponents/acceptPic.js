@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import AddMessage from "./addMessage.js";
-import { AcceptPic, PreviewPic } from "../styled.js";
+import React, { useState } from 'react';
+import AddMessage from './addMessage';
+import { AcceptPic, PreviewPic } from '../styled';
 
-//shows & saves the image to firestore
+// shows & saves the image to firestore
 const PreviewImage = (props) => {
-  const { image, pickedImage, didAccept, firebase } = props;
+  const {
+    image, pickedImage, didAccept, firebase,
+  } = props;
 
   const user = firebase.auth().currentUser;
-  const displayName = user.displayName;
+  const { displayName } = user;
 
   const storePic = () => {
     const file = image[0];
@@ -44,7 +46,7 @@ const PreviewImage = (props) => {
   );
 };
 
-//switches between the preview & message edit screens
+// switches between the preview & message edit screens
 const AcceptFile = (props) => {
   const { image, pickedImage, firebase } = props;
   const [accept, setAccept] = useState(false);

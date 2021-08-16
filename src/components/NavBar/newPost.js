@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import firebase from "../firebase.js";
-import ChooseFile from "./postComponents/choosePic.js";
-import AcceptFile from "./postComponents/acceptPic.js";
-import { PostModal, PostTop, CloseButton } from "./styled.js";
-import { RiCloseLine } from "react-icons/ri";
+import React, { useState } from 'react';
+import { RiCloseLine } from 'react-icons/ri';
+import firebase from '../firebase';
+import ChooseFile from './postComponents/choosePic';
+import AcceptFile from './postComponents/acceptPic';
+import { PostModal, PostTop, CloseButton } from './styled';
 
 const NewPost = (props) => {
   const { setShown } = props;

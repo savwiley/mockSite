@@ -1,8 +1,10 @@
-import React, { useRef, useState } from "react";
-import firebase, { auth } from "../firebase.js";
-import { SettingsStyle, SettingsTop, SettingsPic, Form } from "./styled.js";
-import NavBar from "../NavBar";
-import { RiUser3Line } from "react-icons/ri";
+import React, { useRef, useState } from 'react';
+import { RiUser3Line } from 'react-icons/ri';
+import firebase, { auth } from '../firebase';
+import {
+  SettingsStyle, SettingsTop, SettingsPic, Form,
+} from './styled';
+import NavBar from '../NavBar';
 
 const Settings = () => {
   const [userName, setUserName] = useState();
@@ -12,14 +14,14 @@ const Settings = () => {
   const nameBoo = useRef(false);
   const photoBoo = useRef(false);
 
-  //user profile variables
+  // user profile variables
   const user = auth.currentUser;
-  const displayName = user.displayName;
-  const email = user.email;
-  const photoURL = user.photoURL;
-  //const anonBoo = user.isAnonymous;
+  const { displayName } = user;
+  const { email } = user;
+  const { photoURL } = user;
+  // const anonBoo = user.isAnonymous;
 
-  //changes booleans
+  // changes booleans
   if (displayName !== null) {
     nameBoo.current = true;
   }
@@ -28,7 +30,7 @@ const Settings = () => {
   }
 
   const saveChanges = () => {
-    //user name
+    // user name
     if (userName) {
       user
         .updateProfile({
@@ -38,11 +40,12 @@ const Settings = () => {
           alert(`Name changed to ${userName}!`);
         })
         .catch((err) => {
-          alert(err);
+          alert('Something went wrong!');
+          console.log(err);
         });
     }
 
-    //profile image
+    // profile image
     if (image) {
       const file = image.files[0];
       const imgURL = `/profile/${file.name}`;
@@ -56,15 +59,16 @@ const Settings = () => {
             photoURL: url,
           })
           .then(() => {
-            alert("Profile Pic Uploaded!");
+            alert('Profile Pic Uploaded!');
           })
           .catch((err) => {
-            alert(err);
+            alert('Something went wrong!');
+            console.log(err);
           });
       });
     }
 
-    //email
+    // email
     if (newEmail) {
       user
         .updateProfile({
@@ -74,19 +78,21 @@ const Settings = () => {
           alert(`Email changed to ${newEmail}!`);
         })
         .catch((err) => {
-          alert(err);
+          alert('Something went wrong!');
+          console.log(err);
         });
     }
 
-    //password
+    // password
     if (password) {
       user
         .updatePassword(password)
         .then(() => {
-          alert(`Password changed!`);
+          alert('Password changed!');
         })
         .catch((err) => {
-          alert(err);
+          alert('Something went wrong!');
+          console.log(err);
         });
     }
   };
@@ -99,7 +105,7 @@ const Settings = () => {
         <SettingsTop>
           <SettingsPic>
             {photoBoo.current ? (
-              <img src={photoURL} alt="It's You!"></img>
+              <img src={photoURL} alt="It's You!" />
             ) : (
               <RiUser3Line />
             )}
@@ -115,7 +121,7 @@ const Settings = () => {
               onChange={(e) => {
                 setUserName(e.target.value);
               }}
-            ></input>
+            />
           </div>
           <div>
             <label>Display Image</label>
@@ -134,7 +140,7 @@ const Settings = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-            ></input>
+            />
           </div>
           <div>
             <label>Password</label>
@@ -143,7 +149,7 @@ const Settings = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-            ></input>
+            />
           </div>
           <div>
             <input
@@ -163,6 +169,6 @@ const Settings = () => {
 
 export default Settings;
 
-/**TODO
+/** TODO
  * - remember to rebuild/rehost
  */

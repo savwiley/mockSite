@@ -1,7 +1,8 @@
-import { SwitchScreen } from "./styled.js";
-import { auth } from "../firebase.js";
+import React from 'react';
+import { SwitchScreen } from './styled';
+import { auth } from '../firebase';
 
-//sign in screen
+// sign in screen
 export const SignIn = (props) => {
   const { setShown, creds } = props;
 
@@ -9,7 +10,7 @@ export const SignIn = (props) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        //const user = userCredential.user;
+        // const user = userCredential.user;
       })
       .catch((error) => {
         console.log(error.code);
@@ -37,7 +38,7 @@ export const SignIn = (props) => {
   );
 };
 
-//sign up screen
+// sign up screen
 export const SignUp = (props) => {
   const { setShown, creds } = props;
 
@@ -45,7 +46,7 @@ export const SignUp = (props) => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        //const user = userCredential.user;
+        // const user = userCredential.user;
       })
       .catch((error) => {
         console.log(error.code);

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PostColumn = styled.div`
   margin: 80px auto 0;
