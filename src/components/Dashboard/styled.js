@@ -34,11 +34,18 @@ export const PostImage = styled.div`
   width: 100%;
   max-height: 750px;
   overflow: hidden;
+  border: 1px solid var(--border);
+  border-right: none;
+  border-left: none;
+  background: var(--background);
+  text-align: center;
   img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 750px;
   }
 `;
+
+//figure out if we should zoom in on the images or not
 
 export const PostInteract = styled.div`
   font-size: 15px;
