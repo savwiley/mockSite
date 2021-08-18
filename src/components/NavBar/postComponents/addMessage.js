@@ -39,6 +39,8 @@ const AddMessage = (props) => {
         console.log(err);
       });
 
+      //TEST POSTING AGAIN
+
     firebase
       .firestore()
       .collection("posts")
@@ -93,8 +95,14 @@ const AddMessage = (props) => {
 };
 
 AddMessage.propTypes = {
-  image: PropTypes.array,
-  firebase: PropTypes.func,
+  image: PropTypes.PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  firebase: PropTypes.PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func
+  ]),
   pickedImage: PropTypes.func,
   didAccept: PropTypes.func,
 }
