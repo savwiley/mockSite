@@ -1,7 +1,8 @@
 # Notagram - Instagram Clone; WIP
 
-<div align="center">![Preview](https://raw.githubusercontent.com/savwiley/mockSite/master/src/images/preview.png)
+<div align="center">
 
+![Preview](/src/images/preview.png "Preview")
 Preview image taken on 08/18/21
 **This is not a social media competitor.**</div>
 
