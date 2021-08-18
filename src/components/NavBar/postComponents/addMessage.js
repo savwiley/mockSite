@@ -28,35 +28,30 @@ const AddMessage = (props) => {
   };
 
   const createPost = () => {
-    let imgPostURL;
     imgRef
       .getDownloadURL()
       .then((url) => {
-        imgPostURL = url;
+        firebase
+          .firestore()
+          .collection("posts")
+          .doc()
+          .set({
+            postPic: `${url}`,
+            postOwner: `${displayName}`,
+            ownerPic: `${profilePic}`,
+            postMessage: `${message}`,
+            date: firebase.firestore.Timestamp.now(),
+          })
+          .then(() => {
+            window.location.reload();
+          })
+          .catch((err) => {
+            alert("Post wasn't saved!");
+            console.log(err);
+          });
       })
       .catch((err) => {
-        alert("Something went wrong!");
-        console.log(err);
-      });
-
-      //TEST POSTING AGAIN
-
-    firebase
-      .firestore()
-      .collection("posts")
-      .doc()
-      .set({
-        postPic: `${imgPostURL}`,
-        postOwner: `${displayName}`,
-        ownerPic: `${profilePic}`,
-        postMessage: `${message}`,
-        date: firebase.firestore.Timestamp.now(),
-      })
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        alert("Something went wrong!");
+        alert("Something went wrong! Wait a few seconds and try again.");
         console.log(err);
       });
   };
@@ -78,7 +73,7 @@ const AddMessage = (props) => {
           type="button"
           value="Post!"
           onClick={() => {
-            createPost();
+            setTimeout(createPost, 10000);
           }}
         />
         <input
