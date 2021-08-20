@@ -8,21 +8,22 @@ const PostBoard = (props) => {
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
     const day = postDate.toLocaleDateString();
-    const now = firebase.firestore.Timestamp.now().toDate();
-    if (day === now.toLocaleDateString()) {
-      return `Today at ${postDate
-        .toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })}`;
+    const now = firebase.firestore.Timestamp.now()
+      .toDate()
+      .toLocaleDateString();
+    if (day === now) {
+      return `Today at ${postDate.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      })}`;
     } else {
-      return `${now.toLocaleDateString([], {
+      return `${postDate.toLocaleDateString([], {
         year: "numeric",
         month: "long",
         day: "numeric",
-      })}`
+      })}`;
     }
-  }
+  };
 
   return (
     <PostColumn>
@@ -49,10 +50,7 @@ const PostBoard = (props) => {
 
 PostBoard.propTypes = {
   posts: PropTypes.array,
-  firebase: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func
-  ]),
+  firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 export default PostBoard;
