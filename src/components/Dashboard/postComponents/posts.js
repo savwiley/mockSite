@@ -24,8 +24,6 @@ const PostBoard = (props) => {
     }
   }
 
-  console.log("running");
-
   return (
     <PostColumn>
       {posts.map((e) => (

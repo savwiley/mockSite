@@ -24,7 +24,6 @@ const Dashboard = () => {
       });
       setMakePosts(postsArr);
       setReady(true);
-      console.log("ready");
     }
   }, [posts]);
 
