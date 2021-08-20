@@ -3,7 +3,26 @@ import PropTypes from "prop-types";
 import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled";
 
 const PostBoard = (props) => {
-  const { posts } = props;
+  const { posts, firebase } = props;
+
+  const readDate = (postDate) => {
+    //postDate is e.date.toDate()
+    const day = postDate.toLocaleDateString();
+    const now = firebase.firestore.Timestamp.now().toDate();
+    if (day === now.toLocaleDateString()) {
+      return `Today at ${postDate
+        .toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}`;
+    } else {
+      return `${now.toLocaleDateString([], {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}`
+    }
+  }
 
   console.log("running");
 
@@ -22,7 +41,7 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <div className="message">{e.postMessage}</div>
-            <div className="date">{e.data}</div>
+            <div className="date">{`${readDate(e.date.toDate())}`}</div>
           </PostInteract>
         </PostBlock>
       ))}
@@ -32,7 +51,11 @@ const PostBoard = (props) => {
 
 PostBoard.propTypes = {
   posts: PropTypes.array,
-}
+  firebase: PropTypes.PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func
+  ]),
+};
 
 export default PostBoard;
 
