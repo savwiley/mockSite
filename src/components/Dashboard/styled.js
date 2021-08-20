@@ -18,14 +18,17 @@ export const PostBlock = styled.div`
   flex-wrap: wrap;
   background: #fff;
   header {
+    display: flex;
+    align-items: center;
     width: 100%;
     padding: 10px;
     text-align: left;
     font-weight: bold;
     img {
       border-radius: 50px;
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
     }
   }
 `;
@@ -37,11 +40,11 @@ export const PostImage = styled.div`
   border: 1px solid var(--border);
   border-right: none;
   border-left: none;
-  background: var(--background);
+  background: #333;
   text-align: center;
   img {
     max-width: 100%;
-    max-height: 750px;
+    max-height: 100%;
   }
 `;
 
@@ -53,8 +56,12 @@ export const PostInteract = styled.div`
   .date {
     width: 100%;
   }
+  .message {
+    padding: 10px;
+  }
   .date {
     font-size: 12px;
     color: #555;
+    padding: 0 0 5px 5px;
   }
 `;
