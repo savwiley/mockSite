@@ -9,7 +9,10 @@ const Dashboard = () => {
   const [ready, setReady] = useState(false);
 
   async function callAsync() {
-    const postRef = firebase.firestore().collection("posts");
+    const postRef = firebase
+      .firestore()
+      .collection("posts")
+      .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setPosts(eachPost);
   }
@@ -31,7 +34,11 @@ const Dashboard = () => {
     <>
       <NavBar page="dashboard" />
 
-      {ready ? <PostBoard posts={makePosts} firebase={firebase} /> : "There's nothing here yet."}
+      {ready ? (
+        <PostBoard posts={makePosts} firebase={firebase} />
+      ) : (
+        "There's nothing here yet."
+      )}
     </>
   );
 };
