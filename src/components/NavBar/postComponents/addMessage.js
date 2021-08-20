@@ -73,7 +73,7 @@ const AddMessage = (props) => {
           type="button"
           value="Post!"
           onClick={() => {
-            setTimeout(createPost, 10000);
+            setTimeout(createPost, 8000);
           }}
         />
         <input
