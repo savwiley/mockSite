@@ -40,15 +40,17 @@ const Profile = () => {
     <>
       <NavBar />
       <ProfileHeader>
-        <img src={profilePic} alt="It's them!" /> 
+        <img src={profilePic} alt="It's them!" />
         {id.displayName}
       </ProfileHeader>
 
-      {readyProfile ? (
-        <ProfilePosts posts={makeProfilePosts} />
-      ) : (
-        "There's nothing here yet."
-      )}
+      <ProfilePosts>
+        {readyProfile ? (
+          <ProfilePosts posts={makeProfilePosts} />
+        ) : (
+          "There's nothing here yet."
+        )}
+      </ProfilePosts>
     </>
   );
 };
