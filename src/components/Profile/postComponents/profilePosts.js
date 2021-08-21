@@ -3,21 +3,21 @@ import PropTypes from "prop-types";
 import { PostSquare } from "../styled";
 
 const ProfilePosts = (props) => {
-  const { posts } = props;
+  const { profilePosts } = props;
 
   return (
     <>
-      {posts.map((e) => {
-        <PostSquare key={e.date}>
+      {profilePosts.map((e) => (
+        <PostSquare key={e.date} >
           <img src={e.postPic} alt="post" />
-        </PostSquare>;
-      })}
+        </PostSquare>
+      ))}
     </>
   );
 };
 
-PostBoard.propTypes = {
-  posts: PropTypes.array,
+ProfilePosts.propTypes = {
+  profilePosts: PropTypes.array,
 };
 
 export default ProfilePosts;

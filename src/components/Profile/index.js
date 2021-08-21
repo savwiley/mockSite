@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar";
-import { ProfilePosts } from "./postComponents/profilePosts";
-import { ProfileHeader } from "./styled";
+import ProfilePosts from "./postComponents/profilePosts";
+import { ProfileHeader, PostSection } from "./styled";
 import firebase from "../firebase";
 
 const Profile = () => {
@@ -16,10 +16,11 @@ const Profile = () => {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("postOwner", "==", id.displayName)
+      .where("postOwner", "==", `${id.displayName}`)
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setProfilePosts(eachPost);
+    console.log(profilePosts);
   }
 
   useEffect(() => {
@@ -41,16 +42,16 @@ const Profile = () => {
       <NavBar />
       <ProfileHeader>
         <img src={profilePic} alt="It's them!" />
-        {id.displayName}
+        <span>{id.displayName}</span>
       </ProfileHeader>
 
-      <ProfilePosts>
+      <PostSection>
         {readyProfile ? (
-          <ProfilePosts posts={makeProfilePosts} />
+          <ProfilePosts profilePosts={makeProfilePosts} />
         ) : (
           "There's nothing here yet."
         )}
-      </ProfilePosts>
+      </PostSection>
     </>
   );
 };
