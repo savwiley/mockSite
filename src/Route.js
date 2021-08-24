@@ -29,7 +29,7 @@ const Routes = () => {
         <Route exact path="/dashboard" render={() => <Dashboard />} />
         <Route exact path="/settings" render={() => <Settings />} />
         <Route exact path="/:displayName" render={() => <Profile />} />
-        <Route exact path="/:displayName/:image" render={() => <PostPage />} />
+        <Route exact path="/:displayName/:date" render={() => <PostPage />} />
       </Switch>
     </BrowserRouter>
   );
