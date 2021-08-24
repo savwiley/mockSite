@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled";
 
@@ -35,7 +36,9 @@ const PostBoard = (props) => {
           </header>
 
           <PostImage>
-            <img src={e.postPic} alt="post" />
+            <Link to={`/${e.postOwner}/${e.date.seconds}`}>
+              <img src={e.postPic} alt="post" />
+            </Link>
           </PostImage>
 
           <PostInteract>
