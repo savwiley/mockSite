@@ -20,7 +20,6 @@ const Profile = () => {
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setProfilePosts(eachPost);
-    console.log(profilePosts);
   }
 
   useEffect(() => {
