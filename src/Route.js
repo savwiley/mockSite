@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Settings from "./components/Settings";
 import Profile from "./components/Profile";
+import PostPage from "./components/Post";
 
 const Routes = () => {
   const [signed, setSigned] = useState(false);
@@ -28,6 +29,7 @@ const Routes = () => {
         <Route exact path="/dashboard" render={() => <Dashboard />} />
         <Route exact path="/settings" render={() => <Settings />} />
         <Route exact path="/:displayName" render={() => <Profile />} />
+        <Route exact path="/:displayName/:image" render={() => <PostPage />} />
       </Switch>
     </BrowserRouter>
   );
