@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import firebase from "../firebase";
 
 const PostPage = () => {
-  const [ allPostInfo, setAllPostInfo ] = useState();
-  const [ makePostInfo, setMakePostInfo ] = useState();
-  const [ readyPost, setReadyPost ] = useState(false);
+  const [allPostInfo, setAllPostInfo] = useState();
+  const [makePostInfo, setMakePostInfo] = useState();
+  const [readyPost, setReadyPost] = useState(false);
   const id = useParams();
   const date = useParams();
 
@@ -28,17 +28,33 @@ const PostPage = () => {
           console.log(e.data());
           postsArr.push(e.data());
         }
-      })
+      });
       setMakePostInfo(postsArr);
       setReadyPost(true);
     }
   }, [allPostInfo]);
 
-  return(
-    <>
-      {readyPost && console.log(makePostInfo)}
-    </>
-  )
+  const readDate = (postDate) => {
+    //postDate is e.date.toDate()
+    const day = postDate.toLocaleDateString();
+    const now = firebase.firestore.Timestamp.now()
+      .toDate()
+      .toLocaleDateString();
+    if (day === now) {
+      return `Today at ${postDate.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      })}`;
+    } else {
+      return `${postDate.toLocaleDateString([], {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}`;
+    }
+  };
+
+  return <>{readyPost && console.log(makePostInfo)}</>;
 };
 
 export default PostPage;
