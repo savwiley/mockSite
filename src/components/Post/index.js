@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useParams } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import firebase from "../firebase";
 
 const PostPage = () => {
   const [ allPostInfo, setAllPostInfo ] = useState();
   const [ makePostInfo, setMakePostInfo ] = useState();
   const [ readyPost, setReadyPost ] = useState(false);
-  const { displayName, image } = useParams();
+  const id = useParams();
+  const date = useParams();
 
   async function callAsync() {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("postOwner", "==", `${displayName.displayName}`);
+      .where("postOwner", "==", `${id.displayName}`);
     const eachPost = await postRef.get();
     setAllPostInfo(eachPost);
   }
@@ -21,9 +23,12 @@ const PostPage = () => {
       callAsync();
     } else {
       const postsArr = [];
-      postsArr.push(allPostInfo.filter(e => {
-        e.data().postPic === image.postPic;
-      }));
+      allPostInfo.forEach((e) => {
+        if (e.data().date.seconds === Number(date.date)) {
+          console.log(e.data());
+          postsArr.push(e.data());
+        }
+      })
       setMakePostInfo(postsArr);
       setReadyPost(true);
     }
@@ -31,6 +36,7 @@ const PostPage = () => {
 
   return(
     <>
+      {readyPost && console.log(makePostInfo)}
     </>
   )
 };
