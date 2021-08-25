@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { PostBlock, PostImage, PostContent, PostHeader, PostMessages } from "../styled";
+import {
+  PostBlock,
+  PostImage,
+  PostContent,
+  PostHeader,
+  PostMessages,
+} from "../styled";
 
 const PostModal = (props) => {
   const postInfo = props;
@@ -29,9 +35,8 @@ const PostModal = (props) => {
   };
   */
 
-  return(
+  return (
     <PostBlock>
-
       <PostImage>
         <img src={post.postPic} alt={post.postMessage} />
       </PostImage>
@@ -39,22 +44,17 @@ const PostModal = (props) => {
       <PostContent>
         <PostHeader>
           <img src={post.ownerPic} alt="It's them!" />
-          <span>
-            {post.postOwner}
-          </span>
+          <span>{post.postOwner}</span>
         </PostHeader>
-        <PostMessages>
-          {post.postMessage}
-        </PostMessages>
+        <PostMessages>{post.postMessage}</PostMessages>
         {/*comment interaction goes here*/}
       </PostContent>
-
     </PostBlock>
-  )
-}
+  );
+};
 
 PostModal.propTypes = {
   postInfo: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-}
+};
 
 export default PostModal;
