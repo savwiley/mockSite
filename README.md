@@ -23,10 +23,11 @@ To test my skills as a front-end developer, I began to create a working clone of
   * Upload an image directly from their device
   * Create a custom message
   * Post image/message to the site for all to view
+* User profiles displaying posts they've created
+* Individual pages for each post
 
 ## Upcoming Features
 
-* User profiles displaying posts they created
 * Interaction with posts
   * Users can add messages to any post
   * Users can 'like' posts
