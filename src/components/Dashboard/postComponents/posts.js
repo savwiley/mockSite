@@ -30,11 +30,13 @@ const PostBoard = (props) => {
         likes: e.likes - 1,
         //if there are no likes, then what?
         //i should probably create them with likes: 0;
-        
+
         //remove name from userLikes
       });
     }
   }
+
+  //maybe you just can't take your likes back
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
