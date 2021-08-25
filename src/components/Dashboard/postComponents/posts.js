@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { IoHeartOutline, IoHeart } from "react-icons/io5";
 import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled";
 
 const PostBoard = (props) => {
   const { posts, firebase } = props;
+  //click needs to stay if user already liked it
+  const [likeClick, setLikeClick] = useState(false);
+
+  const user = auth.currentUser;
+  const { displayName } = user;
+
+  async function callAsync(e, didLike) {
+    const postRef = firebase
+      .firestore()
+      .collection("posts")
+      .doc()
+      .where("date", "===", `${e.date}`);
+    if (didLike === "like") {
+      await postRef.update({
+        likes: e.likes + 1,
+        //if there are no likes, then what?
+        //i should probably create them with likes: 0;
+        userLikes: displayName,
+      });
+    } else {
+      await postRef.update({
+        likes: e.likes - 1,
+        //if there are no likes, then what?
+        //i should probably create them with likes: 0;
+        
+        //remove name from userLikes
+      });
+    }
+  }
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
@@ -42,6 +72,23 @@ const PostBoard = (props) => {
           </PostImage>
 
           <PostInteract>
+            <Interaction>
+              {likeClick ? (
+                <IoHeart
+                  onClick={(e) => {
+                    callAsync(e, "notLike");
+                    setLikeClick(false);
+                  }}
+                />
+              ) : (
+                <IoHeartOutline
+                  onClick={(e) => {
+                    callAsync(e, "like");
+                    setLikeClick(true);
+                  }}
+                />
+              )}
+            </Interaction>
             <div className="message">{e.postMessage}</div>
             <div className="date">{`${readDate(e.date.toDate())}`}</div>
           </PostInteract>
