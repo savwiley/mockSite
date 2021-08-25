@@ -46,7 +46,9 @@ const NavBar = (props) => {
   return (
     <NavBarStyle>
       <div className="inner">
-        <h1>Notagram</h1>
+        <Link to="/">
+          <h1>Notagram</h1>
+        </Link>
 
         <input type="text" placeholder="Search" />
 
