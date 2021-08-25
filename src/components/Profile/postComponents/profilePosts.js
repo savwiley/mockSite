@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { PostSquare } from "../styled";
 
@@ -8,9 +9,11 @@ const ProfilePosts = (props) => {
   return (
     <>
       {profilePosts.map((e) => (
-        <PostSquare key={e.date} >
-          <img src={e.postPic} alt="post" />
-        </PostSquare>
+        <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date}>
+          <PostSquare>
+            <img src={e.postPic} alt="post" />
+          </PostSquare>
+        </Link>
       ))}
     </>
   );
