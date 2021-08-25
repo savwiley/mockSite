@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import NavBar from "../NavBar";
+import PostModal from "./postComponents/postModal";
 import firebase from "../firebase";
 
 const PostPage = () => {
@@ -25,7 +27,6 @@ const PostPage = () => {
       const postsArr = [];
       allPostInfo.forEach((e) => {
         if (e.data().date.seconds === Number(date.date)) {
-          console.log(e.data());
           postsArr.push(e.data());
         }
       });
@@ -34,27 +35,13 @@ const PostPage = () => {
     }
   }, [allPostInfo]);
 
-  const readDate = (postDate) => {
-    //postDate is e.date.toDate()
-    const day = postDate.toLocaleDateString();
-    const now = firebase.firestore.Timestamp.now()
-      .toDate()
-      .toLocaleDateString();
-    if (day === now) {
-      return `Today at ${postDate.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })}`;
-    } else {
-      return `${postDate.toLocaleDateString([], {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })}`;
-    }
-  };
+  return (
+    <>
+      <NavBar />
 
-  return <>{readyPost && console.log(makePostInfo)}</>;
+      {readyPost && <PostModal postInfo={makePostInfo} />}
+    </>
+  );
 };
 
 export default PostPage;
