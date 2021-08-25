@@ -32,7 +32,6 @@ export const PostSection = styled.div`
 export const PostSquare = styled.div`
   width: 300px;
   height: 300px;
-  cursor: pointer;
   overflow: hidden;
   margin: 5px;
   img {
