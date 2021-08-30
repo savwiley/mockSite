@@ -24,6 +24,8 @@ export const NavBarStyle = styled.div`
     display: block;
     font-size: 25px;
     width: 28%;
+    text-decoration: none;
+    cursor: pointer;
   }
   input {
     height: 2ch;
