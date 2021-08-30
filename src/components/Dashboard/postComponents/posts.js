@@ -18,25 +18,26 @@ const PostBoard = (props) => {
       .collection("posts")
       .doc()
       .where("date", "===", `${e.date}`);
-    if (didLike === "like") {
-      await postRef.update({
-        likes: e.likes + 1,
-        //if there are no likes, then what?
-        //i should probably create them with likes: 0;
-        userLikes: displayName,
-      });
+    if (e.likes) {
+      if (didLike === "like") {
+        await postRef.update({
+          likes: e.likes + 1,
+          userLikes: [...e.userLikes, displayName],
+        });
+      } else {
+        await postRef.update({
+          likes: e.likes - 1,
+          //remove name from userLikes
+        });
+      }
     } else {
+      const name = e.userLikes.indexOf(displayName);
       await postRef.update({
-        likes: e.likes - 1,
-        //if there are no likes, then what?
-        //i should probably create them with likes: 0;
-
-        //remove name from userLikes
+        likes: 1,
+        userLikes: e.userLikes.splice(name, 1),
       });
     }
   }
-
-  //maybe you just can't take your likes back
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
@@ -106,11 +107,3 @@ PostBoard.propTypes = {
 };
 
 export default PostBoard;
-
-// FIX DATE
-/**
- * profilePic displayName
- * image
- * message
- * date
- */
