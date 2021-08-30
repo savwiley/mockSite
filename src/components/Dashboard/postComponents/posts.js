@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import { PostColumn, PostBlock, PostImage, PostInteract } from "../styled";
+import { PostColumn, PostBlock, PostImage, PostInteract, Interaction } from "../styled";
 
 const PostBoard = (props) => {
   const { posts, firebase } = props;
   //click needs to stay if user already liked it
   const [likeClick, setLikeClick] = useState(false);
 
-  const user = auth.currentUser;
+  const user = firebase.auth().currentUser;
   const { displayName } = user;
 
   async function callAsync(e, didLike) {
@@ -25,13 +25,13 @@ const PostBoard = (props) => {
           userLikes: [...e.userLikes, displayName],
         });
       } else {
+        const name = e.userLikes.indexOf(displayName);
         await postRef.update({
           likes: e.likes - 1,
           userLikes: e.userLikes.splice(name, 1),
         });
       }
     } else {
-      const name = e.userLikes.indexOf(displayName);
       await postRef.update({
         likes: 1,
         userLikes: [displayName],
