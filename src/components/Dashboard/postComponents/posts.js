@@ -17,7 +17,7 @@ const PostBoard = (props) => {
       .firestore()
       .collection("posts")
       .doc()
-      .where("date", "===", `${e.date}`);
+      .where("postPic", "===", `${e.postPic}`);
     if (e.likes) {
       if (didLike === "like") {
         await postRef.update({
