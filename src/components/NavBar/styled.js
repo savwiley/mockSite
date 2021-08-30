@@ -20,11 +20,13 @@ export const NavBarStyle = styled.div`
     max-width: 975px;
     margin: auto;
   }
+  a {
+    text-decoration: none;
+  }
   h1 {
     display: block;
     font-size: 25px;
     width: 28%;
-    text-decoration: none;
     cursor: pointer;
   }
   input {
