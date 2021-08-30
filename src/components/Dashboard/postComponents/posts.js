@@ -38,6 +38,9 @@ const PostBoard = (props) => {
     }
   }
 
+  // Unhandled Rejection (TypeError): postRef.update is not a function
+  // https://stackoverflow.com/questions/65686026/update-not-a-function-firebase-firestore
+
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
     const day = postDate.toLocaleDateString();
