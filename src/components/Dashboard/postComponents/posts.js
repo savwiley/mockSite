@@ -27,14 +27,14 @@ const PostBoard = (props) => {
       } else {
         await postRef.update({
           likes: e.likes - 1,
-          //remove name from userLikes
+          userLikes: e.userLikes.splice(name, 1),
         });
       }
     } else {
       const name = e.userLikes.indexOf(displayName);
       await postRef.update({
         likes: 1,
-        userLikes: e.userLikes.splice(name, 1),
+        userLikes: [displayName],
       });
     }
   }
