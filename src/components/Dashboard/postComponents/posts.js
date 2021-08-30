@@ -16,7 +16,6 @@ const PostBoard = (props) => {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .doc()
       .where("postPic", "===", `${e.postPic}`);
     if (e.likes) {
       if (didLike === "like") {
