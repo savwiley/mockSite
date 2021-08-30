@@ -65,3 +65,13 @@ export const PostInteract = styled.div`
     padding: 0 0 5px 5px;
   }
 `;
+
+export const Interaction = styled.div`
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  svg {
+    cursor: pointer;
+  }
+`;
