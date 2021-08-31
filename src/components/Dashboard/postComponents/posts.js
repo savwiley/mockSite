@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
@@ -20,17 +20,18 @@ const PostBoard = (props) => {
       .get()
       .then(queries => {
         queries.forEach(doc => {
-          if (doc.likes) {
+          if (doc.data().likes) {
             if (didLike === "like") {
               doc.ref.update({
-                likes: doc.likes + 1,
-                userLikes: [...doc.userLikes, displayName],
+                likes: doc.data().likes + 1,
+                userLikes: [...doc.data().userLikes, displayName],
               });
-            } else {
-              const name = doc.userLikes.indexOf(displayName);
+            } else if (didLike === "notLike") {
+              const name = doc.data().userLikes.indexOf(`${displayName}`);
+              console.log(name);
               doc.ref.update({
-                likes: doc.likes - 1,
-                userLikes: doc.userLikes.splice(name, 1),
+                likes: doc.data().likes - 1,
+                userLikes: doc.data().userLikes.splice(name, 1),
               });
             }
           } else {
@@ -81,15 +82,15 @@ const PostBoard = (props) => {
           <PostInteract>
             <Interaction>
               {e.userLikes.indexOf(displayName) ? (
-                <IoHeart
-                  onClick={() => {
-                    callAsync(`${e.postPic}`, "notLike");
-                  }}
-                />
-              ) : (
                 <IoHeartOutline
                   onClick={() => {
                     callAsync(`${e.postPic}`, "like");
+                  }}
+                />
+              ) : (
+                <IoHeart
+                  onClick={() => {
+                    callAsync(`${e.postPic}`, "notLike");
                   }}
                 />
               )}
