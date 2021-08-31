@@ -16,27 +16,35 @@ const PostBoard = (props) => {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("postPic", "===", `${e.postPic}`);
-    if (e.likes) {
-      if (didLike === "like") {
-        await postRef.update({
-          likes: e.likes + 1,
-          userLikes: [...e.userLikes, displayName],
-        });
-      } else {
-        const name = e.userLikes.indexOf(displayName);
-        await postRef.update({
-          likes: e.likes - 1,
-          userLikes: e.userLikes.splice(name, 1),
-        });
-      }
-    } else {
-      await postRef.update({
-        likes: 1,
-        userLikes: [displayName],
+      .where("postPic", "===", `${e.postPic}`)
+      .then(postRef => {
+        postRef.forEach(doc => {
+          if (e.likes) {
+            if (didLike === "like") {
+              doc.update({
+                likes: e.likes + 1,
+                userLikes: [...e.userLikes, displayName],
+              });
+            } else {
+              const name = e.userLikes.indexOf(displayName);
+              doc.update({
+                likes: e.likes - 1,
+                userLikes: e.userLikes.splice(name, 1),
+              });
+            }
+          } else {
+            doc.update({
+              likes: 1,
+              userLikes: [displayName],
+            });
+          }
+        })
       });
-    }
+    
   }
+
+  // Unhandled Rejection (TypeError): postRef.update is not a function
+  // https://stackoverflow.com/questions/65686026/update-not-a-function-firebase-firestore
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
