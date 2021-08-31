@@ -13,34 +13,38 @@ const PostBoard = (props) => {
   const { displayName } = user;
 
   async function callAsync(e, didLike) {
-    const postRef = firebase
+    console.log(e);
+    firebase
       .firestore()
       .collection("posts")
-      .where("postPic", "===", `${e.postPic}`)
-      .then(postRef => {
-        postRef.forEach(doc => {
+      .where("postPic", "==", `${e.postPic}`)
+      .get()
+      .then(queries => {
+        queries.forEach(doc => {
           if (e.likes) {
             if (didLike === "like") {
-              doc.update({
+              console.log("add like");
+              doc.ref.update({
                 likes: e.likes + 1,
                 userLikes: [...e.userLikes, displayName],
               });
             } else {
+              console.log("remove like");
               const name = e.userLikes.indexOf(displayName);
-              doc.update({
+              doc.ref.update({
                 likes: e.likes - 1,
                 userLikes: e.userLikes.splice(name, 1),
               });
             }
           } else {
-            doc.update({
+            console.log("create like");
+            doc.ref.update({
               likes: 1,
               userLikes: [displayName],
             });
           }
         })
       });
-    
   }
 
   // Unhandled Rejection (TypeError): postRef.update is not a function
