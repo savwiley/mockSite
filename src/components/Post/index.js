@@ -39,7 +39,7 @@ const PostPage = () => {
     <>
       <NavBar />
 
-      {readyPost && <PostModal postInfo={makePostInfo} />}
+      {readyPost && <PostModal postInfo={makePostInfo} firebase={firebase} />}
     </>
   );
 };
