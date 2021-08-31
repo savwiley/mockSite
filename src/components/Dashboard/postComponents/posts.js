@@ -88,10 +88,7 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <Interaction>
-              {e.userLikes.includes(displayName)
-                ? setLikeClick(true)
-                : setLikeClick(false)}
-              {likeClick ? (
+              {(e.userLikes.includes(displayName) || likeClick) ? (
                 <IoHeart
                   onClick={() => {
                     callAsync(`${e.postPic}`, "notLike");
