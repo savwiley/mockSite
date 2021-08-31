@@ -12,28 +12,27 @@ const PostBoard = (props) => {
   const user = firebase.auth().currentUser;
   const { displayName } = user;
 
-  async function callAsync(e, didLike) {
-    console.log(e);
+  async function callAsync(pic, didLike) {
     firebase
       .firestore()
       .collection("posts")
-      .where("postPic", "==", `${e.postPic}`)
+      .where(pic, "==", pic)
       .get()
       .then(queries => {
         queries.forEach(doc => {
-          if (e.likes) {
+          if (doc.likes) {
             if (didLike === "like") {
               console.log("add like");
               doc.ref.update({
-                likes: e.likes + 1,
-                userLikes: [...e.userLikes, displayName],
+                likes: doc.likes + 1,
+                userLikes: [...doc.userLikes, displayName],
               });
             } else {
               console.log("remove like");
-              const name = e.userLikes.indexOf(displayName);
+              const name = doc.userLikes.indexOf(displayName);
               doc.ref.update({
-                likes: e.likes - 1,
-                userLikes: e.userLikes.splice(name, 1),
+                likes: doc.likes - 1,
+                userLikes: doc.userLikes.splice(name, 1),
               });
             }
           } else {
@@ -89,8 +88,8 @@ const PostBoard = (props) => {
             <Interaction>
               {likeClick ? (
                 <IoHeart
-                  onClick={(e) => {
-                    callAsync(e, "notLike");
+                  onClick={() => {
+                    callAsync(`${e.postPic}`, "notLike");
                     setLikeClick(false);
                   }}
                 />
