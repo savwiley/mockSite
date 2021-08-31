@@ -7,14 +7,12 @@ import { PostColumn, PostBlock, PostImage, PostInteract, Interaction } from "../
 const PostBoard = (props) => {
   const { posts, firebase } = props;
   //click needs to stay if user already liked it
-  const [likeClick, setLikeClick] = useState(false);
+  //const [likeClick, setLikeClick] = useState(false);
 
   const user = firebase.auth().currentUser;
   const { displayName } = user;
 
   async function callAsync(pic, didLike) {
-    console.log(pic);
-    console.log(didLike);
     firebase
       .firestore()
       .collection("posts")
@@ -24,13 +22,11 @@ const PostBoard = (props) => {
         queries.forEach(doc => {
           if (doc.likes) {
             if (didLike === "like") {
-              console.log("add like");
               doc.ref.update({
                 likes: doc.likes + 1,
                 userLikes: [...doc.userLikes, displayName],
               });
             } else {
-              console.log("remove like");
               const name = doc.userLikes.indexOf(displayName);
               doc.ref.update({
                 likes: doc.likes - 1,
@@ -38,7 +34,6 @@ const PostBoard = (props) => {
               });
             }
           } else {
-            console.log("create like");
             doc.ref.update({
               likes: 1,
               userLikes: [displayName],
@@ -85,18 +80,16 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <Interaction>
-              {likeClick ? (
+              {e.userLikes.indexOf(displayName) ? (
                 <IoHeart
                   onClick={() => {
                     callAsync(`${e.postPic}`, "notLike");
-                    setLikeClick(false);
                   }}
                 />
               ) : (
                 <IoHeartOutline
                   onClick={() => {
                     callAsync(`${e.postPic}`, "like");
-                    setLikeClick(true);
                   }}
                 />
               )}
