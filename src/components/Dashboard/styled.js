@@ -73,5 +73,8 @@ export const Interaction = styled.div`
   flex-direction: row;
   svg {
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    fill: #f07586;
   }
 `;
