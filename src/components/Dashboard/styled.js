@@ -75,6 +75,9 @@ export const Interaction = styled.div`
     cursor: pointer;
     width: 30px;
     height: 30px;
-    fill: #f07586;
+  }
+  .heart{
+    fill: #ed6175;
+    margin-right: 10px;
   }
 `;

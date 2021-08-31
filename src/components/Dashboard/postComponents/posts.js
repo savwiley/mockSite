@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { IoHeartOutline, IoHeart } from "react-icons/io5";
+import { IoHeartOutline, IoHeart, IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import {
   PostColumn,
   PostBlock,
@@ -12,7 +12,6 @@ import {
 
 const PostBoard = (props) => {
   const { posts, firebase } = props;
-  //click needs to stay if user already liked it
   const [likeClick, setLikeClick] = useState(false);
 
   const user = firebase.auth().currentUser;
@@ -88,12 +87,13 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <Interaction>
-              {(e.userLikes.includes(displayName) || likeClick) ? (
+              {e.userLikes.includes(displayName) || likeClick ? (
                 <IoHeart
                   onClick={() => {
                     callAsync(`${e.postPic}`, "notLike");
                     setLikeClick(false);
                   }}
+                  className="heart"
                 />
               ) : (
                 <IoHeartOutline
@@ -101,8 +101,12 @@ const PostBoard = (props) => {
                     callAsync(`${e.postPic}`, "like");
                     setLikeClick(true);
                   }}
+                  className="heart"
                 />
               )}
+              <Link to={`/${e.postOwner}/${e.date.seconds}`}>
+                <IoChatbubbleEllipsesOutline />
+              </Link>
             </Interaction>
             <div className="message">{e.postMessage}</div>
             <div className="date">{`${readDate(e.date.toDate())}`}</div>
