@@ -13,10 +13,12 @@ const PostBoard = (props) => {
   const { displayName } = user;
 
   async function callAsync(pic, didLike) {
+    console.log(pic);
+    console.log(didLike);
     firebase
       .firestore()
       .collection("posts")
-      .where(pic, "==", pic)
+      .where("postPic", "==", `${pic}`)
       .get()
       .then(queries => {
         queries.forEach(doc => {
@@ -45,9 +47,6 @@ const PostBoard = (props) => {
         })
       });
   }
-
-  // Unhandled Rejection (TypeError): postRef.update is not a function
-  // https://stackoverflow.com/questions/65686026/update-not-a-function-firebase-firestore
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
@@ -95,8 +94,8 @@ const PostBoard = (props) => {
                 />
               ) : (
                 <IoHeartOutline
-                  onClick={(e) => {
-                    callAsync(e, "like");
+                  onClick={() => {
+                    callAsync(`${e.postPic}`, "like");
                     setLikeClick(true);
                   }}
                 />
