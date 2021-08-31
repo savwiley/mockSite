@@ -76,7 +76,7 @@ export const Interaction = styled.div`
     width: 30px;
     height: 30px;
   }
-  .heart{
+  .heart {
     fill: #ed6175;
     margin-right: 10px;
   }

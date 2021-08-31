@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { IoHeartOutline, IoHeart, IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import {
+  IoHeartOutline,
+  IoHeart,
+  IoChatbubbleEllipsesOutline,
+} from "react-icons/io5";
 import {
   PostColumn,
   PostBlock,
