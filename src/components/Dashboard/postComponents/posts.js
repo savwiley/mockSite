@@ -28,10 +28,11 @@ const PostBoard = (props) => {
               });
             } else if (didLike === "notLike") {
               const name = doc.data().userLikes.indexOf(`${displayName}`);
-              console.log(name);
+              const array = doc.data().userLikes;
+              array.splice(name, 1);
               doc.ref.update({
                 likes: doc.data().likes - 1,
-                userLikes: doc.data().userLikes.splice(name, 1),
+                userLikes: array,
               });
             }
           } else {
