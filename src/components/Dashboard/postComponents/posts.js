@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import { PostColumn, PostBlock, PostImage, PostInteract, Interaction } from "../styled";
+import {
+  PostColumn,
+  PostBlock,
+  PostImage,
+  PostInteract,
+  Interaction,
+} from "../styled";
 
 const PostBoard = (props) => {
   const { posts, firebase } = props;
   //click needs to stay if user already liked it
-  //const [likeClick, setLikeClick] = useState(false);
+  const [likeClick, setLikeClick] = useState(false);
 
   const user = firebase.auth().currentUser;
   const { displayName } = user;
@@ -18,8 +24,8 @@ const PostBoard = (props) => {
       .collection("posts")
       .where("postPic", "==", `${pic}`)
       .get()
-      .then(queries => {
-        queries.forEach(doc => {
+      .then((queries) => {
+        queries.forEach((doc) => {
           if (doc.data().likes) {
             if (didLike === "like") {
               doc.ref.update({
@@ -41,7 +47,7 @@ const PostBoard = (props) => {
               userLikes: [displayName],
             });
           }
-        })
+        });
       });
   }
 
@@ -82,16 +88,21 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <Interaction>
-              {e.userLikes.indexOf(displayName) ? (
-                <IoHeartOutline
-                  onClick={() => {
-                    callAsync(`${e.postPic}`, "like");
-                  }}
-                />
-              ) : (
+              {e.userLikes.includes(displayName)
+                ? setLikeClick(true)
+                : setLikeClick(false)}
+              {likeClick ? (
                 <IoHeart
                   onClick={() => {
                     callAsync(`${e.postPic}`, "notLike");
+                    setLikeClick(false);
+                  }}
+                />
+              ) : (
+                <IoHeartOutline
+                  onClick={() => {
+                    callAsync(`${e.postPic}`, "like");
+                    setLikeClick(true);
                   }}
                 />
               )}
