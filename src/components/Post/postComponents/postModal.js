@@ -9,14 +9,14 @@ import {
 } from "../styled";
 
 const PostModal = (props) => {
-  const postInfo = props;
+  const postInfo /*firebase*/ = props;
   //const [likeClick, setLikeClick] = useState(false);
   const post = postInfo.postInfo[0];
 
-  const user = firebase.auth().currentUser;
-  const { displayName } = user;
+  //const user = firebase.auth().currentUser;
+  //const { displayName } = user;
 
-  async function callAsync(pic, didLike) {
+  /*async function callAsync(pic, didLike) {
     firebase
       .firestore()
       .collection("posts")
@@ -47,7 +47,7 @@ const PostModal = (props) => {
           }
         });
       });
-  }
+  }*/
 
   /*
   const readDate = (postDate) => {
@@ -86,10 +86,10 @@ const PostModal = (props) => {
         {/*comment interaction goes here*/}
         {/*
             <Interaction>
-              {e.userLikes.includes(displayName) || likeClick ? (
+              {post.userLikes.includes(displayName) || likeClick ? (
                 <IoHeart
                   onClick={() => {
-                    callAsync(`${e.postPic}`, "notLike");
+                    callAsync(`${post.postPic}`, "notLike");
                     setLikeClick(false);
                   }}
                   className="heart"
@@ -97,15 +97,13 @@ const PostModal = (props) => {
               ) : (
                 <IoHeartOutline
                   onClick={() => {
-                    callAsync(`${e.postPic}`, "like");
+                    callAsync(`${post.postPic}`, "like");
                     setLikeClick(true);
                   }}
                   className="heart"
                 />
               )}
-              <Link to={`/${e.postOwner}/${e.date.seconds}`}>
-                <IoChatbubbleEllipsesOutline />
-              </Link>
+              <IoChatbubbleEllipsesOutline />
             </Interaction>*/}
       </PostContent>
     </PostBlock>
@@ -114,6 +112,7 @@ const PostModal = (props) => {
 
 PostModal.propTypes = {
   postInfo: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 export default PostModal;
