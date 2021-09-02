@@ -24,7 +24,7 @@ const LikeDropDown = (props) => {
 };
 
 LikeDropDown.propTypes = {
-  likedPosts: PropTypes.array,
+  likedPosts: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default LikeDropDown;
