@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
@@ -27,7 +27,8 @@ const NavBar = (props) => {
   const { page } = props;
   const [drop, setDrop] = useState(false);
   const [likeDrop, setLikeDrop] = useState(false);
-  const [likedPosts, setLikedPosts] = useState([]);
+  const [likedPosts, setLikedPosts] = useState();
+  const [makeLikedPosts, setMakeLikedPosts] = useState();
   const [post, setPost] = useState(false);
   const dash = useRef(false);
   const userPic = useRef(false);
@@ -40,12 +41,25 @@ const NavBar = (props) => {
     const postRef = firebase
         .firestore()
         .collection("posts")
-        .where("userLikes", "array-contains", displayName)
+        .where("userLikes", "array-contains", `${displayName}`)
         .orderBy("date", "desc");
       const eachPost = await postRef.get();
       setLikedPosts(eachPost);
-      setLikeDrop(true);
   }
+
+  useEffect(() => {
+    if (!likedPosts) {
+      callAsync();
+    } else {
+      const postsArr = [];
+      likedPosts.forEach((e) => {
+        postsArr.push(e.data());
+      });
+      setMakeLikedPosts(postsArr);
+      setLikeDrop(true)
+    }
+  }, [likedPosts]);
+
 
   // finds the page
   if (page === "dashboard") {
@@ -88,11 +102,7 @@ const NavBar = (props) => {
           {/* Likes Dropdown Icon */}
           <IoHeartOutline
             onClick={() => {
-              if (likeDrop) {
-                setLikeDrop(false);
-              } else {
-                callAsync();
-              }
+              likeDrop && setLikeDrop(false);
             }}
           />
 
@@ -110,7 +120,7 @@ const NavBar = (props) => {
           </UserButton>
 
           {/* Dropdowns & Modals */}
-          {likeDrop && <LikeDropDown likedPosts={likedPosts} />}
+          {likeDrop && <LikeDropDown likedPosts={makeLikedPosts} />}
           {drop && <DropDown />}
           {post && <NewPost setShown={setPost} />}
         </NavBarIcons>
