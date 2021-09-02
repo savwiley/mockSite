@@ -37,21 +37,14 @@ const NavBar = (props) => {
   const { photoURL, displayName } = user;
 
   async function callAsync() {
-    firebase
-      .firestore()
-      .collection("posts")
-      .orderBy("date", "desc")
-      .get()
-      .then((docs) => {
-        docs.forEach((doc) => {
-          if (doc.data().userLikes.includes(displayName)) {
-            const array = [...likedPosts, doc.data()];
-            setLikedPosts(array);
-            console.log(array);
-          }
-        });
-        setLikeDrop(true);
-      });
+    const postRef = firebase
+        .firestore()
+        .collection("posts")
+        .where("userLikes", "array-contains", displayName)
+        .orderBy("date", "desc");
+      const eachPost = await postRef.get();
+      setLikedPosts(eachPost);
+      setLikeDrop(true);
   }
 
   // finds the page
