@@ -103,7 +103,7 @@ export const LikeDropStyle = styled.div`
   font-size: 14px;
 `;
 
-export const EachLike = styled`
+export const EachLike = styled.div`
   display: flex;
   flex-direction: row;
   margin: 8px 0;
@@ -117,7 +117,7 @@ export const EachLike = styled`
   }
 `;
 
-export const PreviewPic = styled.div`
+export const PreviewLikePic = styled.div`
   float: right;
   max-height: 100%;
   img {
