@@ -19,19 +19,37 @@ import {
 } from "react-icons/io5";
 import { auth } from "../firebase";
 import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled";
+import LikeDropDown from "./likesDropdown";
 import DropDown from "./dropdown";
 import NewPost from "./newPost";
 
 const NavBar = (props) => {
   const { page } = props;
   const [drop, setDrop] = useState(false);
+  const [likeDrop, setLikeDrop] = useState(false);
+  const [likedPosts, setLikedPosts] = useState([]);
   const [post, setPost] = useState(false);
   const dash = useRef(false);
   const userPic = useRef(false);
 
   // user profile variables
   const user = auth.currentUser;
-  const { photoURL } = user;
+  const { photoURL, displayName } = user;
+
+  async function callAsync() {
+    firebase
+      .firestore()
+      .collection("posts")
+      .orderBy("date", "desc")
+      .get()
+      .then((docs) => {
+        docs.forEach((doc) => {
+          if (doc.data().userLikes.includes(displayName)) {
+            setLikedPosts([...likedPosts, doc.data()]);
+          }
+        });
+      });
+  }
 
   // finds the page
   if (page === "dashboard") {
@@ -46,26 +64,44 @@ const NavBar = (props) => {
   return (
     <NavBarStyle>
       <div className="inner">
+        {/* Header */}
         <Link to="/">
           <h1>Notagram</h1>
         </Link>
 
+        {/* Search */}
         <input type="text" placeholder="Search" />
 
+        {/* Icons */}
         <NavBarIcons>
+          {/* Home Icon to Dashboard */}
           <Link to="/dashboard" title="Dashboard">
             {dash.current ? <RiHome2Fill /> : <RiHome2Line />}
           </Link>
+          {/* DM Icon [NOT IMPLEMENTED] */}
           <IoPaperPlaneOutline />
+          {/* Make a Post Icon */}
           <RiAddBoxLine
             onClick={() => {
               setPost(true);
             }}
             title="Make A Post!"
           />
+          {/* Explore Icon [NOT IMPLEMENTED] */}
           <IoCompassOutline />
-          <IoHeartOutline />
+          {/* Likes Dropdown Icon */}
+          <IoHeartOutline
+            onClick={() => {
+              if (likeDrop) {
+                setLikeDrop(false);
+              } else {
+                callAsync();
+                setLikeDrop(true);
+              }
+            }}
+          />
 
+          {/* User Icon */}
           <UserButton
             onClick={() => {
               drop ? setDrop(false) : setDrop(true);
@@ -78,6 +114,8 @@ const NavBar = (props) => {
             )}
           </UserButton>
 
+          {/* Dropdowns & Modals */}
+          {likeDrop && <LikeDropDown likedPosts={likedPosts} />}
           {drop && <DropDown />}
           {post && <NewPost setShown={setPost} />}
         </NavBarIcons>
@@ -88,6 +126,6 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   page: PropTypes.string,
-}
+};
 
 export default NavBar;
