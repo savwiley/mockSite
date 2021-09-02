@@ -41,6 +41,6 @@ const NewPost = (props) => {
 
 NewPost.propTypes = {
   setShown: PropTypes.func,
-}
+};
 
 export default NewPost;

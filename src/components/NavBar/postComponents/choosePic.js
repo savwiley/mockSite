@@ -19,6 +19,6 @@ const ChooseFile = ({ pickedImage }) => (
 
 ChooseFile.propTypes = {
   pickedImage: PropTypes.func,
-}
+};
 
 export default ChooseFile;

@@ -90,17 +90,11 @@ const AddMessage = (props) => {
 };
 
 AddMessage.propTypes = {
-  image: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]),
-  firebase: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func
-  ]),
+  image: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   pickedImage: PropTypes.func,
   didAccept: PropTypes.func,
-}
+};
 
 export default AddMessage;
 

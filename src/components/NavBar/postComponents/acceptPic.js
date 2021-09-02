@@ -46,17 +46,11 @@ const PreviewImage = (props) => {
 };
 
 PreviewImage.propTypes = {
-  image: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]),
+  image: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   pickedImage: PropTypes.func,
   didAccept: PropTypes.func,
-  firebase: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func
-  ])
-}
+  firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
 
 // switches between the preview & message edit screens
 const AcceptFile = (props) => {
@@ -85,15 +79,9 @@ const AcceptFile = (props) => {
 };
 
 AcceptFile.propTypes = {
-  image: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]),
+  image: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   pickedImage: PropTypes.func,
-  firebase: PropTypes.PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.func
-  ])
-}
+  firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
 
 export default AcceptFile;
