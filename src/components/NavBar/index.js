@@ -45,9 +45,12 @@ const NavBar = (props) => {
       .then((docs) => {
         docs.forEach((doc) => {
           if (doc.data().userLikes.includes(displayName)) {
-            setLikedPosts([...likedPosts, doc.data()]);
+            const array = [...likedPosts, doc.data()];
+            setLikedPosts(array);
+            console.log(array);
           }
         });
+        setLikeDrop(true);
       });
   }
 
@@ -96,7 +99,6 @@ const NavBar = (props) => {
                 setLikeDrop(false);
               } else {
                 callAsync();
-                setLikeDrop(true);
               }
             }}
           />
