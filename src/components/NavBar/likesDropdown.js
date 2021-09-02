@@ -10,11 +10,13 @@ const LikeDropDown = (props) => {
       <b>Liked Posts</b>
       {likedPosts.forEach(e => {
         <EachLike>
-          {/*
-            userPic >
-            you liked {userName}'s post >
-            preview of post
-          */}
+          <img src={e.ownerPic} />
+          <span>
+            You liked <b>{e.postOwner}</b>'s post!
+          </span>
+          <PreviewPic>
+            <img src={e.postPic} />
+          </PreviewPic>
         </EachLike>
       })}
     </LikeDropStyle>

@@ -103,6 +103,28 @@ export const LikeDropStyle = styled.div`
   font-size: 14px;
 `;
 
+export const EachLike = styled`
+  display: flex;
+  flex-direction: row;
+  margin: 8px 0;
+  width: 100%;
+  height: fit-content;
+  img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    margin-right: 8px;
+  }
+`;
+
+export const PreviewPic = styled.div`
+  float: right;
+  max-height: 100%;
+  img {
+    max-height: 100%;
+  }
+`;
+
 export const PostModal = styled.div`
   z-index: 2;
   background: rgba(0, 0, 0, 0.65);
