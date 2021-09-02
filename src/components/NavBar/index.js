@@ -17,7 +17,7 @@ import {
   IoHeartOutline,
   // IoBookmarkOutline,
 } from "react-icons/io5";
-import { auth } from "../firebase";
+import firebase, { auth } from "../firebase";
 import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled";
 import LikeDropDown from "./likesDropdown";
 import DropDown from "./dropdown";
