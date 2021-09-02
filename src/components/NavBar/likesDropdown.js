@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { LikeDropStyle, EachLike } from "./styled";
+import { LikeDropStyle, EachLike, PreviewLikePic } from "./styled";
 
 const LikeDropDown = (props) => {
   const likedPosts = props;
@@ -9,14 +9,14 @@ const LikeDropDown = (props) => {
     <LikeDropStyle>
       <b>Liked Posts</b>
       {likedPosts.forEach(e => {
-        <EachLike>
+        <EachLike key={e.date}>
           <img src={e.ownerPic} />
           <span>
-            You liked <b>{e.postOwner}</b>'s post!
+            You liked <b>{e.postOwner}</b>&apos;s post!
           </span>
-          <PreviewPic>
+          <PreviewLikePic>
             <img src={e.postPic} />
-          </PreviewPic>
+          </PreviewLikePic>
         </EachLike>
       })}
     </LikeDropStyle>
