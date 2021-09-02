@@ -86,12 +86,12 @@ export const DropDownStyle = styled.div`
   }
 `;
 
-export const LikeDropDown = styled.div`
+export const LikeDropStyle = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
   position: absolute;
   top: 54px;
+  left: 45%;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
@@ -100,6 +100,7 @@ export const LikeDropDown = styled.div`
   overflow-y: auto;
   width: 500px;
   padding: 12px;
+  font-size: 14px;
 `;
 
 export const PostModal = styled.div`
