@@ -86,6 +86,22 @@ export const DropDownStyle = styled.div`
   }
 `;
 
+export const LikeDropDown = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 54px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px var(--border);
+  max-height: 362px;
+  min-height: 100px;
+  overflow-y: auto;
+  width: 500px;
+  padding: 12px;
+`;
+
 export const PostModal = styled.div`
   z-index: 2;
   background: rgba(0, 0, 0, 0.65);
