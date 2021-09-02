@@ -55,8 +55,8 @@ const NavBar = (props) => {
       likedPosts.forEach((e) => {
         postsArr.push(e.data());
       });
+      //console.log(postsArr);
       setMakeLikedPosts(postsArr);
-      setLikeDrop(true)
     }
   }, [likedPosts]);
 
@@ -102,7 +102,7 @@ const NavBar = (props) => {
           {/* Likes Dropdown Icon */}
           <IoHeartOutline
             onClick={() => {
-              likeDrop && setLikeDrop(false);
+              likeDrop ? setLikeDrop(false) : setLikeDrop(true);
             }}
           />
 
