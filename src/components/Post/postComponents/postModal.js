@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {
   IoHeartOutline,
   IoHeart,
-  IoChatbubbleEllipsesOutline,
+  //IoPaperPlaneOutline,
 } from "react-icons/io5";
 import {
   PostBlock,
@@ -98,6 +98,7 @@ const PostModal = (props) => {
                 setLikeClick(false);
               }}
               className="heart"
+              title="Unlike Post"
             />
           ) : (
             <IoHeartOutline
@@ -106,10 +107,15 @@ const PostModal = (props) => {
                 setLikeClick(true);
               }}
               className="heart"
+              title="Like Post"
             />
           )}
-          <IoChatbubbleEllipsesOutline />
+          {/*<IoPaperPlaneOutline title="Post Comment" />*/}
         </Interaction>
+        <CommentSpace>
+          <textarea placeholder="Add a comment..."></textarea>
+        </CommentSpace>
+        <PostButton />
       </PostContent>
     </PostBlock>
   );
