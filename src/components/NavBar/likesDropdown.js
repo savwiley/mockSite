@@ -6,11 +6,10 @@ import { LikeDropStyle, EachLike, PreviewLikePic } from "./styled";
 const LikeDropDown = (props) => {
   const { likedPosts } = props;
 
-
   return (
     <LikeDropStyle>
       <b>Liked Posts</b>
-      {likedPosts.map(e => (
+      {likedPosts.map((e) => (
         <EachLike key={e.date}>
           <Link to={`/${displayName}`} title="Profile">
             <img src={e.ownerPic} />
@@ -30,7 +29,10 @@ const LikeDropDown = (props) => {
 };
 
 LikeDropDown.propTypes = {
-  likedPosts: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  likedPosts: PropTypes.PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array,
+  ]),
 };
 
 export default LikeDropDown;

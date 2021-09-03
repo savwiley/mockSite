@@ -59,7 +59,6 @@ const NavBar = (props) => {
     }
   }, [likedPosts]);
 
-
   // finds the page
   if (page === "dashboard") {
     dash.current = true;
