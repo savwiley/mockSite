@@ -104,9 +104,14 @@ export const CommentSpace = styled.div`
 export const Statistics = styled.div`
   display: flex;
   flex-direction: column;
-  color: var(--border);
-  padding: 10px;
+  color: rgb(142,142,142);
+  padding: 0 10px 10px;
+  line-height: 25px;
+  font-size: 11px;
+  text-transform: uppercase;
   b {
-    color: #000;
+    color: rgb(38, 38, 38);
+    font-size: 14px;
+    text-transform: initial;
   }
 `;
