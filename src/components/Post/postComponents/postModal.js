@@ -1,22 +1,29 @@
-import React, { /*useState*/ } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import {
+  IoHeartOutline,
+  IoHeart,
+  IoChatbubbleEllipsesOutline,
+} from "react-icons/io5";
 import {
   PostBlock,
   PostImage,
   PostContent,
   PostHeader,
   PostMessages,
+  Interaction,
 } from "../styled";
 
 const PostModal = (props) => {
-  const postInfo /*firebase*/ = props;
-  //const [likeClick, setLikeClick] = useState(false);
-  const post = postInfo.postInfo[0];
+  const { postInfo, firebase } = props;
+  const [likeClick, setLikeClick] = useState(false);
+  console.log(postInfo);
+  const post = postInfo[0];
 
-  //const user = firebase.auth().currentUser;
-  //const { displayName } = user;
+  const user = firebase.auth().currentUser;
+  const { displayName } = user;
 
-  /*async function callAsync(pic, didLike) {
+  async function callAsync(pic, didLike) {
     firebase
       .firestore()
       .collection("posts")
@@ -47,7 +54,7 @@ const PostModal = (props) => {
           }
         });
       });
-  }*/
+  }
 
   /*
   const readDate = (postDate) => {
@@ -83,28 +90,26 @@ const PostModal = (props) => {
           <span>{post.postOwner}</span>
         </PostHeader>
         <PostMessages>{post.postMessage}</PostMessages>
-        {/*comment interaction goes here*/}
-        {/*
-            <Interaction>
-              {post.userLikes.includes(displayName) || likeClick ? (
-                <IoHeart
-                  onClick={() => {
-                    callAsync(`${post.postPic}`, "notLike");
-                    setLikeClick(false);
-                  }}
-                  className="heart"
-                />
-              ) : (
-                <IoHeartOutline
-                  onClick={() => {
-                    callAsync(`${post.postPic}`, "like");
-                    setLikeClick(true);
-                  }}
-                  className="heart"
-                />
-              )}
-              <IoChatbubbleEllipsesOutline />
-            </Interaction>*/}
+        <Interaction>
+          {post.userLikes.includes(displayName) || likeClick ? (
+            <IoHeart
+              onClick={() => {
+                callAsync(`${post.postPic}`, "notLike");
+                setLikeClick(false);
+              }}
+              className="heart"
+            />
+          ) : (
+            <IoHeartOutline
+              onClick={() => {
+                callAsync(`${post.postPic}`, "like");
+                setLikeClick(true);
+              }}
+              className="heart"
+            />
+          )}
+          <IoChatbubbleEllipsesOutline />
+        </Interaction>
       </PostContent>
     </PostBlock>
   );
