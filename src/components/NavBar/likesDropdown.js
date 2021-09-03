@@ -11,7 +11,7 @@ const LikeDropDown = (props) => {
       <b>Liked Posts</b>
       {likedPosts.map((e) => (
         <EachLike key={e.date}>
-          <Link to={`/${displayName}`} title="Profile">
+          <Link to={`/${e.postOwner}`} title="Profile">
             <img src={e.ownerPic} />
           </Link>
           <span>
