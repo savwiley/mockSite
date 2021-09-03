@@ -13,6 +13,7 @@ import {
   PostMessages,
   Interaction,
   CommentSpace,
+  Statistics,
 } from "../styled";
 
 const PostModal = (props) => {
@@ -56,7 +57,6 @@ const PostModal = (props) => {
       });
   }
 
-  /*
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
     const day = postDate.toLocaleDateString();
@@ -76,7 +76,6 @@ const PostModal = (props) => {
       })}`;
     }
   };
-  */
 
   return (
     <PostBlock>
@@ -110,8 +109,14 @@ const PostModal = (props) => {
               title="Like Post"
             />
           )}
-          {/*<IoPaperPlaneOutline title="Post Comment" />*/}
         </Interaction>
+        <Statistics>
+          <b>{(post.likes.length === 1) ? 
+            `${post.likes.length} like` :
+            `${post.likes.length} likes`
+          }</b>
+          {`${readDate(e.date.toDate())}`}
+        </Statistics>
         <CommentSpace>
           <textarea placeholder="Add a comment..."></textarea>
           <button
