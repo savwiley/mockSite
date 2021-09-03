@@ -111,11 +111,13 @@ const PostModal = (props) => {
           )}
         </Interaction>
         <Statistics>
-          <b>{(post.likes.length === 1) ? 
-            `${post.likes.length} like` :
-            `${post.likes.length} likes`
+          <b>{(post.likes === undefined) ? 
+            `0 likes` :
+            (post.likes === 1) ? 
+            `${post.likes} like` :
+            `${post.likes} likes`
           }</b>
-          {`${readDate(e.date.toDate())}`}
+          {`${readDate(post.date.toDate())}`}
         </Statistics>
         <CommentSpace>
           <textarea placeholder="Add a comment..."></textarea>
