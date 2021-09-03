@@ -91,29 +91,31 @@ export const LikeDropStyle = styled.div`
   flex-direction: column;
   position: absolute;
   top: 54px;
-  left: 45%;
+  left: 60%;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
   max-height: 362px;
   min-height: 100px;
   overflow-y: auto;
-  width: 500px;
+  min-width: 300px;
   padding: 12px;
   font-size: 14px;
+  cursor: default;
 `;
 
 export const EachLike = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   margin: 8px 0;
   width: 100%;
   height: fit-content;
   img {
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     border-radius: 50px;
-    margin-right: 8px;
   }
 `;
 
@@ -122,6 +124,7 @@ export const PreviewLikePic = styled.div`
   max-height: 100%;
   img {
     max-height: 100%;
+    border-radius: 0;
   }
 `;
 
