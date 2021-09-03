@@ -100,3 +100,13 @@ export const CommentSpace = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Statistics = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: var(--border);
+  padding: 10px;
+  b {
+    color: #000;
+  }
+`;
