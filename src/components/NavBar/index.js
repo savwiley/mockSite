@@ -39,12 +39,12 @@ const NavBar = (props) => {
 
   async function callAsync() {
     const postRef = firebase
-        .firestore()
-        .collection("posts")
-        .where("userLikes", "array-contains", `${displayName}`)
-        .orderBy("date", "desc");
-      const eachPost = await postRef.get();
-      setLikedPosts(eachPost);
+      .firestore()
+      .collection("posts")
+      .where("userLikes", "array-contains", `${displayName}`)
+      .orderBy("date", "desc");
+    const eachPost = await postRef.get();
+    setLikedPosts(eachPost);
   }
 
   useEffect(() => {
@@ -55,7 +55,6 @@ const NavBar = (props) => {
       likedPosts.forEach((e) => {
         postsArr.push(e.data());
       });
-      //console.log(postsArr);
       setMakeLikedPosts(postsArr);
     }
   }, [likedPosts]);
