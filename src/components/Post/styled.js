@@ -4,23 +4,25 @@ export const PostBlock = styled.div`
   margin: 80px auto 0;
   width: 100%;
   max-width: 975px;
+  height: 80vh;
+  max-height: fit-content;
   display: flex;
   flex-direction: row;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 3px;
+  overflow: hidden;
 `;
 
 export const PostImage = styled.div`
   width: 70%;
-  height: 80vh;
-  max-height: 975px;
+  height: 100%;
   background: #333;
   overflow: hidden;
   text-align: center;
+  align-content: center;
   img {
     max-width: 100%;
-    max-height: 100%;
   }
 `;
 
@@ -50,4 +52,24 @@ export const PostHeader = styled.div`
 
 export const PostMessages = styled.div`
   padding: 15px;
+  height: 59vh;
+  max-height: 915px;
+  overflow-y: auto;
+`;
+
+export const Interaction = styled.div`
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid var(--border);
+  svg {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .heart {
+    fill: #ed6175;
+    margin-right: 10px;
+  }
 `;
