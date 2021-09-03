@@ -18,7 +18,6 @@ import {
 const PostModal = (props) => {
   const { postInfo, firebase } = props;
   const [likeClick, setLikeClick] = useState(false);
-  console.log(postInfo);
   const post = postInfo[0];
 
   const user = firebase.auth().currentUser;
@@ -116,11 +115,10 @@ const PostModal = (props) => {
         <CommentSpace>
           <textarea placeholder="Add a comment..."></textarea>
           <button
-            value="Post"
             onClick={() => {
               //do stuff
             }}
-          ></button>
+          >Post</button>
         </CommentSpace>
       </PostContent>
     </PostBlock>
