@@ -12,6 +12,7 @@ import {
   PostHeader,
   PostMessages,
   Interaction,
+  CommentSpace,
 } from "../styled";
 
 const PostModal = (props) => {
@@ -114,8 +115,13 @@ const PostModal = (props) => {
         </Interaction>
         <CommentSpace>
           <textarea placeholder="Add a comment..."></textarea>
+          <button
+            value="Post"
+            onClick={() => {
+              //do stuff
+            }}
+          ></button>
         </CommentSpace>
-        <PostButton />
       </PostContent>
     </PostBlock>
   );
