@@ -73,3 +73,16 @@ export const Interaction = styled.div`
     margin-right: 10px;
   }
 `;
+
+export const CommentSpace = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50px;
+  textarea {
+    width: 100%;
+  }
+  button {
+    width: 20%;
+  }
+`;
