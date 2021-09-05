@@ -5,6 +5,7 @@ import {
   IoHeart,
   //IoPaperPlaneOutline,
 } from "react-icons/io5";
+import Comments from "./comments";
 import {
   PostBlock,
   PostImage,
@@ -12,7 +13,6 @@ import {
   PostHeader,
   PostMessages,
   Interaction,
-  CommentSpace,
   Statistics,
 } from "../styled";
 
@@ -88,7 +88,10 @@ const PostModal = (props) => {
           <img src={post.ownerPic} alt="It's them!" />
           <span>{post.postOwner}</span>
         </PostHeader>
-        <PostMessages>{post.postMessage}</PostMessages>
+        <PostMessages>
+          {post.postMessage}
+          {/*user comments go here*/}
+        </PostMessages>
         <Interaction>
           {post.userLikes.includes(displayName) || likeClick ? (
             <IoHeart
@@ -119,14 +122,7 @@ const PostModal = (props) => {
           }</b>
           {`${readDate(post.date.toDate())}`}
         </Statistics>
-        <CommentSpace>
-          <textarea placeholder="Add a comment..."></textarea>
-          <button
-            onClick={() => {
-              //do stuff
-            }}
-          >Post</button>
-        </CommentSpace>
+        <Comments firebase={firebase} id={post.date.seconds} />
       </PostContent>
     </PostBlock>
   );
