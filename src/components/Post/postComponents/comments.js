@@ -1,37 +1,52 @@
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { CommentSpace } from "../styled";
 
 const Comments = (props) => {
   const { firebase, id } = props;
+  const message = useRef();
 
   const postComment = () => {
     firebase
       .firestore
       .collection("posts")
-      .where(`${date.seconds}`, "==", `${id}`)
+      .where(`${id}`, "==", `date.seconds`)
       .get()
       .then((query) => {
         query.ref.update({
-          //add new map or update current map with comments
+          comments: {
+            //add new map or update current map with comments
+            // https://firebase.google.com/docs/firestore/solutions/index-map-field
+            // https://firebase.google.com/docs/reference/rules/rules.Map
+          }
         })
       })
   }
 
   return(
     <CommentSpace>
-      <textarea placeholder="Add a comment..."></textarea>
-      <button
-        onClick={() => {
-          postComment();
-          //and refresh page
-        }}
-      >Post</button>
+      <form>
+        <textarea 
+          placeholder="Add a comment..."
+          onChange={(e) => {
+            //e = message.current;
+            //console.log(message.current);
+            console.log(e);
+            //useRef update isn't working, problems grabbing textarea value
+          }}
+        ></textarea>
+        <button
+          onClick={() => {
+            postComment(/*userName*/);
+            //and refresh page
+          }}
+        >Post</button>
+      </form>
     </CommentSpace>
   )
-}
+};
 
-PostModal.propTypes = {
+Comments.propTypes = {
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   id: PropTypes.number,
 };
