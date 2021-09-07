@@ -6,40 +6,44 @@ const Comments = (props) => {
   const { firebase, id } = props;
   const message = useRef();
 
+  const user = firebase.auth().currentUser;
+  const { displayName } = user;
+
   const postComment = () => {
     firebase
-      .firestore
+      .firestore()
       .collection("posts")
-      .where(`${id}`, "==", `date.seconds`)
+      .where("date", "==", `${Date(id)}`)
       .get()
       .then((query) => {
+        console.log(query.data());
         query.ref.update({
           comments: {
-            //add new map or update current map with comments
-            // https://firebase.google.com/docs/firestore/solutions/index-map-field
-            // https://firebase.google.com/docs/reference/rules/rules.Map
+            user: displayName,
+            content: message.current,
           }
         })
       })
   }
+  //add new map or update current map with comments
+  // https://firebase.google.com/docs/firestore/solutions/index-map-field
+  // https://firebase.google.com/docs/reference/rules/rules.Map
 
 
   return(
     <CommentSpace>
-      <form>
-        <textarea 
-          placeholder="Add a comment..."
-          onChange={(e) => {
-            message.current = e.target.value;
-          }}
-        ></textarea>
-        <button
-          onClick={() => {
-            postComment(/*userName*/);
-            //and refresh page
-          }}
-        >Post</button>
-      </form>
+      <textarea 
+        placeholder="Add a comment..."
+        onChange={(e) => {
+          message.current = e.target.value;
+        }}
+      ></textarea>
+      <button
+        onClick={() => {
+          postComment();
+          //and refresh page after authentication bug is fixed
+        }}
+      >Post</button>
     </CommentSpace>
   )
 };
