@@ -23,16 +23,14 @@ const Comments = (props) => {
       })
   }
 
+
   return(
     <CommentSpace>
       <form>
         <textarea 
           placeholder="Add a comment..."
           onChange={(e) => {
-            //e = message.current;
-            //console.log(message.current);
-            console.log(e);
-            //useRef update isn't working, problems grabbing textarea value
+            message.current = e.target.value;
           }}
         ></textarea>
         <button
