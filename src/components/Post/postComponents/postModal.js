@@ -14,6 +14,8 @@ import {
   PostMessages,
   Interaction,
   Statistics,
+  Names,
+  Messages,
 } from "../styled";
 
 const PostModal = (props) => {
@@ -89,8 +91,18 @@ const PostModal = (props) => {
           <span>{post.postOwner}</span>
         </PostHeader>
         <PostMessages>
-          {post.postMessage}
-          {/*user comments go here*/}
+          <b>{post.postOwner}:</b> {post.postMessage}
+          <Names>
+            {post.commenter.forEach(e => (
+              <b>{e}:</b>
+            ))}
+          </Names>
+          <Messages>
+            {post.comment.forEach(e => {
+              <span>{e}</span>
+              {console.log(e)}
+            })}
+          </Messages>
         </PostMessages>
         <Interaction>
           {post.userLikes.includes(displayName) || likeClick ? (
@@ -120,7 +132,6 @@ const PostModal = (props) => {
             `${post.likes} like` :
             `${post.likes} likes`
           }</b>
-          {console.log(post.date)}
           {`${readDate(post.date.toDate())}`}
         </Statistics>
         <Comments firebase={firebase} id={post.date} />
