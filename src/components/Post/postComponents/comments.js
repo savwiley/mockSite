@@ -8,7 +8,6 @@ const Comments = (props) => {
 
   const user = firebase.auth().currentUser;
   const { displayName } = user;
-  console.log(id);
 
   const postComment = () => {
     firebase
@@ -45,6 +44,8 @@ const Comments = (props) => {
       <button
         onClick={() => {
           postComment();
+          const elem = document.querySelector("textarea");
+          elem.value = "";
           //and refresh page after authentication bug is fixed
         }}
       >Post</button>
