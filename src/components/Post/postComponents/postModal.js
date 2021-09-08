@@ -120,9 +120,10 @@ const PostModal = (props) => {
             `${post.likes} like` :
             `${post.likes} likes`
           }</b>
+          {console.log(post.date)}
           {`${readDate(post.date.toDate())}`}
         </Statistics>
-        <Comments firebase={firebase} id={post.date.seconds} />
+        <Comments firebase={firebase} id={post.date} />
       </PostContent>
     </PostBlock>
   );
