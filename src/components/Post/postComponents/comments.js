@@ -18,18 +18,20 @@ const Comments = (props) => {
       .get()
       .then((query) => {
         query.forEach((doc) => {
-          doc.ref.update({
-            comments: {
-              user: displayName,
-              content: message.current,
-            }
-          })
+          if (doc.data().comment) {
+            doc.ref.update({
+              commenter: [...doc.data().commenter, displayName],
+              comment: [...doc.data().comment, message.current],
+            })
+          } else {
+            doc.ref.update({
+              commenter: [displayName],
+              comment: [message.current],
+            })
+          }
         })
       })
   }
-  //add new map or update current map with comments
-  // https://firebase.google.com/docs/firestore/solutions/index-map-field
-  // https://firebase.google.com/docs/reference/rules/rules.Map
 
 
   return(
