@@ -55,6 +55,18 @@ export const PostMessages = styled.div`
   height: 59vh;
   max-height: 915px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Names = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Messages = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Interaction = styled.div`
