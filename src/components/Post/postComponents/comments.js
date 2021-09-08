@@ -8,20 +8,22 @@ const Comments = (props) => {
 
   const user = firebase.auth().currentUser;
   const { displayName } = user;
+  console.log(id);
 
   const postComment = () => {
     firebase
       .firestore()
       .collection("posts")
-      .where("date", "==", `${Date(id)}`)
+      .where("date", "==", id)
       .get()
       .then((query) => {
-        console.log(query.data());
-        query.ref.update({
-          comments: {
-            user: displayName,
-            content: message.current,
-          }
+        query.forEach((doc) => {
+          doc.ref.update({
+            comments: {
+              user: displayName,
+              content: message.current,
+            }
+          })
         })
       })
   }
@@ -50,7 +52,7 @@ const Comments = (props) => {
 
 Comments.propTypes = {
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  id: PropTypes.number,
+  id: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 };
 
 export default Comments;
