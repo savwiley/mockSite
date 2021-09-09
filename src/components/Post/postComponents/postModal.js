@@ -14,8 +14,6 @@ import {
   PostMessages,
   Interaction,
   Statistics,
-  Names,
-  Messages,
   OwnerMessage,
 } from "../styled";
 
@@ -80,6 +78,14 @@ const PostModal = (props) => {
     }
   };
 
+  const commentLoop = (commenter, comment) => {
+    let comments = [];
+    for(let i = 0; i < commenter.length; i++) {
+      comments.push(<div><b>{commenter[i]}: </b>{comment[i]}</div>);
+    }
+    return comments;
+  }
+
   return (
     <PostBlock>
       <PostImage>
@@ -95,16 +101,7 @@ const PostModal = (props) => {
           <b>{post.postOwner}:</b> {post.postMessage}
         </OwnerMessage>
         <PostMessages>
-          <Names>
-            {post.commenter.map(e => (
-              <b key={e}>{e}: </b>
-            ))}
-          </Names>
-          <Messages>
-            {post.comment.map(e => (
-              <span key={e}>{e}</span>
-            ))}
-          </Messages>
+          {post.comment && commentLoop(post.commenter, post.comment)}
         </PostMessages>
         <Interaction>
           {post.userLikes.includes(displayName) || likeClick ? (
