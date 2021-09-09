@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   IoHeartOutline,
@@ -78,12 +79,14 @@ const PostModal = (props) => {
     }
   };
 
-  const commentLoop = (commenter, comment) => {
+  const commentLoop = (owner, commenter, comment) => {
     let comments = [];
     for (let i = 0; i < commenter.length; i++) {
       comments.push(
         <div key={comment[i]}>
-          <b>{commenter[i]}: </b>
+          <Link to={`/${owner}`}>
+            <b>{commenter[i]} </b>
+          </Link>
           {comment[i]}
         </div>
       );
@@ -100,13 +103,16 @@ const PostModal = (props) => {
       <PostContent>
         <PostHeader>
           <img src={post.ownerPic} alt="It's them!" />
-          <span>{post.postOwner}</span>
+          <Link to={`/${post.postOwner}`}>
+            <span>{post.postOwner}</span>
+          </Link>
         </PostHeader>
         <OwnerMessage>
           <b>{post.postOwner}:</b> {post.postMessage}
         </OwnerMessage>
         <PostMessages>
-          {post.comment && commentLoop(post.commenter, post.comment)}
+          {post.comment &&
+            commentLoop(post.postOwner, post.commenter, post.comment)}
         </PostMessages>
         <Interaction>
           {post.userLikes.includes(displayName) || likeClick ? (
