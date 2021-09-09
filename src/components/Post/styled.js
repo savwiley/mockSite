@@ -56,23 +56,16 @@ export const PostMessages = styled.div`
   max-height: 915px;
   overflow-y: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  div {
+    margin-bottom: 10px;
+  }
 `;
 
 export const OwnerMessage = styled. div`
   display: block;
   width: 100%;
-  padding: 10px 10px 0;
-`;
-
-export const Names = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Messages = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding: 10px;
 `;
 
 export const Interaction = styled.div`
