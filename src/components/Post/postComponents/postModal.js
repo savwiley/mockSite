@@ -16,6 +16,7 @@ import {
   Statistics,
   Names,
   Messages,
+  OwnerMessage,
 } from "../styled";
 
 const PostModal = (props) => {
@@ -90,18 +91,19 @@ const PostModal = (props) => {
           <img src={post.ownerPic} alt="It's them!" />
           <span>{post.postOwner}</span>
         </PostHeader>
-        <PostMessages>
+        <OwnerMessage>
           <b>{post.postOwner}:</b> {post.postMessage}
+        </OwnerMessage>
+        <PostMessages>
           <Names>
-            {post.commenter.forEach(e => (
-              <b>{e}:</b>
+            {post.commenter.map(e => (
+              <b key={e}>{e}: </b>
             ))}
           </Names>
           <Messages>
-            {post.comment.forEach(e => {
-              <span>{e}</span>
-              {console.log(e)}
-            })}
+            {post.comment.map(e => (
+              <span key={e}>{e}</span>
+            ))}
           </Messages>
         </PostMessages>
         <Interaction>
