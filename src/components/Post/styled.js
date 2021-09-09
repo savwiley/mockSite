@@ -42,6 +42,13 @@ export const PostHeader = styled.div`
   flex-direction: row;
   align-items: center;
   font-weight: bold;
+  a {
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   img {
     width: 30px;
     height: 30px;
@@ -59,6 +66,13 @@ export const PostMessages = styled.div`
   flex-direction: column;
   div {
     margin-bottom: 10px;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
