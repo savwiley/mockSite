@@ -62,7 +62,7 @@ export const PostMessages = styled.div`
   }
 `;
 
-export const OwnerMessage = styled. div`
+export const OwnerMessage = styled.div`
   display: block;
   width: 100%;
   padding: 10px;
@@ -93,7 +93,8 @@ export const CommentSpace = styled.div`
   border-top: 1px solid var(--softBorder);
   align-items: center;
   font-size: 14px;
-  textarea, button {
+  textarea,
+  button {
     outline: none;
     border: none;
     background: none;
@@ -115,7 +116,7 @@ export const CommentSpace = styled.div`
 export const Statistics = styled.div`
   display: flex;
   flex-direction: column;
-  color: rgb(142,142,142);
+  color: rgb(142, 142, 142);
   padding: 0 10px 10px;
   line-height: 25px;
   font-size: 11px;

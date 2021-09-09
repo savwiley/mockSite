@@ -21,21 +21,20 @@ const Comments = (props) => {
             doc.ref.update({
               commenter: [...doc.data().commenter, displayName],
               comment: [...doc.data().comment, message.current],
-            })
+            });
           } else {
             doc.ref.update({
               commenter: [displayName],
               comment: [message.current],
-            })
+            });
           }
-        })
-      })
-  }
+        });
+      });
+  };
 
-
-  return(
+  return (
     <CommentSpace>
-      <textarea 
+      <textarea
         placeholder="Add a comment..."
         onChange={(e) => {
           message.current = e.target.value;
@@ -48,9 +47,11 @@ const Comments = (props) => {
           elem.value = "";
           //and refresh page after authentication bug is fixed
         }}
-      >Post</button>
+      >
+        Post
+      </button>
     </CommentSpace>
-  )
+  );
 };
 
 Comments.propTypes = {

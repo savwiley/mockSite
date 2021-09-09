@@ -80,11 +80,16 @@ const PostModal = (props) => {
 
   const commentLoop = (commenter, comment) => {
     let comments = [];
-    for(let i = 0; i < commenter.length; i++) {
-      comments.push(<div><b>{commenter[i]}: </b>{comment[i]}</div>);
+    for (let i = 0; i < commenter.length; i++) {
+      comments.push(
+        <div>
+          <b>{commenter[i]}: </b>
+          {comment[i]}
+        </div>
+      );
     }
     return comments;
-  }
+  };
 
   return (
     <PostBlock>
@@ -125,12 +130,13 @@ const PostModal = (props) => {
           )}
         </Interaction>
         <Statistics>
-          <b>{(post.likes === undefined) ? 
-            `0 likes` :
-            (post.likes === 1) ? 
-            `${post.likes} like` :
-            `${post.likes} likes`
-          }</b>
+          <b>
+            {post.likes === undefined
+              ? `0 likes`
+              : post.likes === 1
+              ? `${post.likes} like`
+              : `${post.likes} likes`}
+          </b>
           {`${readDate(post.date.toDate())}`}
         </Statistics>
         <Comments firebase={firebase} id={post.date} />
