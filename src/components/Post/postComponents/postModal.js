@@ -82,7 +82,7 @@ const PostModal = (props) => {
     let comments = [];
     for (let i = 0; i < commenter.length; i++) {
       comments.push(
-        <div>
+        <div key={comment[i]}>
           <b>{commenter[i]}: </b>
           {comment[i]}
         </div>
