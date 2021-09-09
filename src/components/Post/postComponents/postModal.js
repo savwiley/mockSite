@@ -93,6 +93,7 @@ const PostModal = (props) => {
     }
     return comments;
   };
+  // consider adding ownerPics to comments
 
   return (
     <PostBlock>
