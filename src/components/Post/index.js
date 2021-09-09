@@ -33,7 +33,7 @@ const PostPage = () => {
       setMakePostInfo(postsArr);
       setReadyPost(true);
     }
-  }, [allPostInfo]);
+  }, [allPostInfo, date]);
 
   return (
     <>
