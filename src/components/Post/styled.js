@@ -59,6 +59,12 @@ export const PostMessages = styled.div`
   flex-direction: row;
 `;
 
+export const OwnerMessage = styled. div`
+  display: block;
+  width: 100%;
+  padding: 10px 10px 0;
+`;
+
 export const Names = styled.div`
   display: flex;
   flex-direction: column;
