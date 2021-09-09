@@ -118,7 +118,9 @@ const NavBar = (props) => {
           </UserButton>
 
           {/* Dropdowns & Modals */}
-          {likeDrop && <LikeDropDown likedPosts={makeLikedPosts} />}
+          {likeDrop && (
+            <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
+          )}
           {drop && <DropDown />}
           {post && <NewPost setShown={setPost} />}
         </NavBarIcons>
