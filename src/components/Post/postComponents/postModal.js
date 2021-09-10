@@ -85,9 +85,9 @@ const PostModal = (props) => {
       comments.push(
         <div key={comment[i]}>
           <Link to={`/${commenter[i]}`}>
-            <b>{commenter[i]} </b>
+            <b>{commenter[i]}</b>
           </Link>
-          {comment[i]}
+          <span> {comment[i]}</span>
         </div>
       );
     }
@@ -109,7 +109,10 @@ const PostModal = (props) => {
           </Link>
         </PostHeader>
         <OwnerMessage>
-          <b>{post.postOwner}:</b> {post.postMessage}
+          <Link to={`/${post.postOwner}`}>
+            <b>{post.postOwner}</b>
+          </Link>
+          <span> {post.postMessage}</span>
         </OwnerMessage>
         <PostMessages>
           {post.comment &&
