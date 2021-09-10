@@ -79,12 +79,12 @@ const PostModal = (props) => {
     }
   };
 
-  const commentLoop = (owner, commenter, comment) => {
+  const commentLoop = (commenter, comment) => {
     let comments = [];
     for (let i = 0; i < commenter.length; i++) {
       comments.push(
         <div key={comment[i]}>
-          <Link to={`/${owner}`}>
+          <Link to={`/${commenter[i]}`}>
             <b>{commenter[i]} </b>
           </Link>
           {comment[i]}
@@ -113,7 +113,7 @@ const PostModal = (props) => {
         </OwnerMessage>
         <PostMessages>
           {post.comment &&
-            commentLoop(post.postOwner, post.commenter, post.comment)}
+            commentLoop(post.commenter, post.comment)}
         </PostMessages>
         <Interaction>
           {post.userLikes.includes(displayName) || likeClick ? (
