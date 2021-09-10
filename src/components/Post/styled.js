@@ -80,6 +80,13 @@ export const OwnerMessage = styled.div`
   display: block;
   width: 100%;
   padding: 10px;
+  a {
+    color: #000;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const Interaction = styled.div`
