@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import NavBar from "../NavBar";
+import Footer from "../Footer";
 import PostModal from "./postComponents/postModal";
 import firebase from "../firebase";
 
@@ -40,6 +41,8 @@ const PostPage = () => {
       <NavBar />
 
       {readyPost && <PostModal postInfo={makePostInfo} firebase={firebase} />}
+
+      <Footer />
     </>
   );
 };

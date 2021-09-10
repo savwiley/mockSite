@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
+import NavBar from "../NavBar";
+import Footer from "../Footer";
 import { RiUser3Line } from "react-icons/ri";
 import firebase, { auth } from "../firebase";
 import { SettingsStyle, SettingsTop, SettingsPic, Form } from "./styled";
-import NavBar from "../NavBar";
 
 const Settings = () => {
   const [userName, setUserName] = useState();
@@ -161,6 +162,8 @@ const Settings = () => {
           </div>
         </Form>
       </SettingsStyle>
+
+      <Footer />
     </>
   );
 };
