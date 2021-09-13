@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { auth } from "./components/firebase.js";
 import Home from "./components/Home";
-import Loading from "./components/Loading";
+import { Loading } from "./components/Loading";
 import Dashboard from "./components/Dashboard";
 import Settings from "./components/Settings";
 import Profile from "./components/Profile";
