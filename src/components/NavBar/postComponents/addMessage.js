@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { CreateMessage, MessagePic, MessageCenter } from "../styled";
 
 const AddMessage = (props) => {
-  const { image, firebase, pickedImage, didAccept } = props;
+  const { image, firebase, pickedImage, didAccept, loading } = props;
   const [message, setMessage] = useState();
 
   const user = firebase.auth().currentUser;
@@ -44,15 +44,18 @@ const AddMessage = (props) => {
           })
           .then(() => {
             window.location.reload();
+            loading(false);
           })
           .catch((err) => {
             alert("Post wasn't saved!");
             console.log(err);
+            loading(false);
           });
       })
       .catch((err) => {
         alert("Something went wrong! Wait a few seconds and try again.");
         console.log(err);
+        loading(false);
       });
   };
 
@@ -73,6 +76,7 @@ const AddMessage = (props) => {
           type="button"
           value="Post!"
           onClick={() => {
+            loading(true);
             setTimeout(createPost, 8000);
           }}
         />
@@ -94,6 +98,7 @@ AddMessage.propTypes = {
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   pickedImage: PropTypes.func,
   didAccept: PropTypes.func,
+  loading: PropTypes.func,
 };
 
 export default AddMessage;

@@ -54,7 +54,7 @@ PreviewImage.propTypes = {
 
 // switches between the preview & message edit screens
 const AcceptFile = (props) => {
-  const { image, pickedImage, firebase } = props;
+  const { image, pickedImage, firebase, loading } = props;
   const [accept, setAccept] = useState(false);
 
   return (
@@ -65,6 +65,7 @@ const AcceptFile = (props) => {
           firebase={firebase}
           pickedImage={pickedImage}
           didAccept={setAccept}
+          loading={loading}
         />
       ) : (
         <PreviewImage
@@ -82,6 +83,7 @@ AcceptFile.propTypes = {
   image: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   pickedImage: PropTypes.func,
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  loading: PropTypes.func,
 };
 
 export default AcceptFile;
