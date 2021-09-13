@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { auth } from "./components/firebase.js";
 import Home from "./components/Home";
+import Loading from "./components/Loading";
 import Dashboard from "./components/Dashboard";
 import Settings from "./components/Settings";
 import Profile from "./components/Profile";
 import PostPage from "./components/Post";
 
 const Routes = () => {
+  const [load, setLoad] = useState(true);
   const [signed, setSigned] = useState(false);
 
   auth.onAuthStateChanged((user) => {
     if (user) {
       setSigned(true);
+      setLoad(false);
     } else {
-      setSigned(false);
+      setLoad(false);
     }
   });
 
@@ -24,7 +27,9 @@ const Routes = () => {
         <Route
           exact
           path="/"
-          render={() => (signed ? <Dashboard /> : <Home />)}
+          render={() =>
+            load ? <Loading /> : signed ? <Dashboard /> : <Home />
+          }
         />
         <Route exact path="/dashboard" render={() => <Dashboard />} />
         <Route exact path="/settings" render={() => <Settings />} />
