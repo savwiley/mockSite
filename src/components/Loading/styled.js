@@ -14,21 +14,21 @@ const colorChange = keyframes`
 
 const radialChange = keyframes`
   0% {
-    color: radial-gradient(circle, rgba(255,222,0,1) 0%, rgba(177,0,131,1) 50%, rgba(21,54,157,1) 100%);
+    color: rgba(255,222,0,0.5);
   }
   33% {
-    color: radial-gradient(circle, rgba(177,0,131,1) 0%, rgba(21,54,157,1) 50%, rgba(255,222,1) 100%);
+    color: rgba(177,0,131,0.5);
   }
   66% {
-    color: radial-gradient(circle, rgba(21,54,157,1) 0%, rgba(255,222,1) 50%, rgba(177,0,131,1) 100%);
+    color: rgba(21,54,157,0.5);
   }
   100% {
-    color: radial-gradient(circle, rgba(255,222,0,1) 0%, rgba(177,0,131,1) 50%, rgba(21,54,157,1) 100%);
+    color: rgba(255,222,0,0.5);
   }
 `;
 
 export const PageLoading = styled.div`
-  background: #fff;
+  background: transparent;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -47,6 +47,7 @@ export const PageLoading = styled.div`
 `;
 
 export const SmallLoading = styled.div`
+  background: transparent;
   position: fixed;
   top: 0;
   bottom: 0;
