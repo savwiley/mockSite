@@ -4,14 +4,17 @@ import { RiCloseLine } from "react-icons/ri";
 import firebase from "../firebase";
 import ChooseFile from "./postComponents/choosePic";
 import AcceptFile from "./postComponents/acceptPic";
+import { ModalLoading } from "../Loading";
 import { PostModal, PostTop, CloseButton } from "./styled";
 
 const NewPost = (props) => {
   const { setShown } = props;
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
     <PostModal>
+      {loading && <ModalLoading />}
       <div className="inner">
         <PostTop>
           <h2>New Post</h2>
@@ -30,6 +33,7 @@ const NewPost = (props) => {
             image={image}
             pickedImage={setImage}
             firebase={firebase}
+            loading={setLoading}
           />
         ) : (
           <ChooseFile pickedImage={setImage} />
