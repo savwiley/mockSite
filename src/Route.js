@@ -31,10 +31,28 @@ const Routes = () => {
             load ? <Loading /> : signed ? <Dashboard /> : <Home />
           }
         />
-        <Route exact path="/dashboard" render={() => <Dashboard />} />
-        <Route exact path="/settings" render={() => <Settings />} />
-        <Route exact path="/:displayName" render={() => <Profile />} />
-        <Route exact path="/:displayName/:date" render={() => <PostPage />} />
+        <Route
+          exact
+          path="/dashboard"
+          render={() =>
+            load ? <Loading /> : signed ? <Dashboard /> : <Home />
+          }
+        />
+        <Route
+          exact
+          path="/settings"
+          render={() => (load ? <Loading /> : signed ? <Settings /> : <Home />)}
+        />
+        <Route
+          exact
+          path="/:displayName"
+          render={() => (load ? <Loading /> : signed ? <Profile /> : <Home />)}
+        />
+        <Route
+          exact
+          path="/:displayName/:date"
+          render={() => (load ? <Loading /> : signed ? <PostPage /> : <Home />)}
+        />
       </Switch>
     </BrowserRouter>
   );
