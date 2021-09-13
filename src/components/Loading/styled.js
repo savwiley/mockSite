@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const colorChange = keyframes`
+  0% {
+    color: rgba(0,0,0,0.1);
+  }
+  50% {
+    color: rgba(0,0,0,0.2);
+  }
+  100% {
+    color: rgba(0,0,0,0.1);
+  }
+`;
 
 export const PageLoading = styled.div`
   background: #fff;
@@ -14,7 +26,7 @@ export const PageLoading = styled.div`
     font-size: 6rem;
     margin: auto;
     path {
-      color: rgba(0,0,0,0.1);
+      animation: ${colorChange} 2s linear infinite;
     }
   }
 `;
