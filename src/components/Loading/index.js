@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCameraRetro } from "react-icons/fa";
-import { PageLoading } from "./styled";
+import { PageLoading, SmallLoading } from "./styled";
 
 const Loading = () => {
   return (
@@ -9,6 +9,16 @@ const Loading = () => {
         <FaCameraRetro />
       </div>
     </PageLoading>
+  );
+};
+
+const ModalLoading = () => {
+  return (
+    <SmallLoading>
+      <div className="icon">
+        <FaCameraRetro />
+      </div>
+    </SmallLoading>
   );
 };
 
