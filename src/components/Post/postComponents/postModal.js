@@ -19,7 +19,7 @@ import {
 } from "../styled";
 
 const PostModal = (props) => {
-  const { postInfo, firebase } = props;
+  const { postInfo, firebase, loading } = props;
   const [likeClick, setLikeClick] = useState(false);
   const post = postInfo[0];
 
@@ -138,15 +138,11 @@ const PostModal = (props) => {
         </Interaction>
         <Statistics>
           <b>
-            {post.likes === undefined
-              ? `0 likes`
-              : post.likes === 1
-              ? `${post.likes} like`
-              : `${post.likes} likes`}
+            {post.likes === 1 ? `${post.likes} like` : `${post.likes} likes`}
           </b>
           {`${readDate(post.date.toDate())}`}
         </Statistics>
-        <Comments firebase={firebase} id={post.date} />
+        <Comments firebase={firebase} id={post.date} loading={loading} />
       </PostContent>
     </PostBlock>
   );
@@ -155,6 +151,7 @@ const PostModal = (props) => {
 PostModal.propTypes = {
   postInfo: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  loading: PropTypes.func,
 };
 
 export default PostModal;
