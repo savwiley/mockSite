@@ -47,7 +47,7 @@ export const PageLoading = styled.div`
 `;
 
 export const SmallLoading = styled.div`
-  background: transparent;
+  background: rgba(255,255,255,0.3);
   position: fixed;
   top: 0;
   bottom: 0;
