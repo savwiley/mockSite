@@ -97,9 +97,7 @@ const PostModal = (props) => {
 
   return (
     <PostBlock>
-      <PostImage>
-        <img src={post.postPic} alt={post.postMessage} />
-      </PostImage>
+      <PostImage background={post.postPic} />
 
       <PostContent>
         <PostHeader>
