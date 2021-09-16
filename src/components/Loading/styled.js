@@ -14,21 +14,21 @@ const colorChange = keyframes`
 
 const radialChange = keyframes`
   0% {
-    color: rgba(255,222,0,0.5);
+    color: rgba(255,222,0);
   }
   33% {
-    color: rgba(177,0,131,0.5);
+    color: rgba(177,0,131);
   }
   66% {
-    color: rgba(21,54,157,0.5);
+    color: rgba(21,54,157);
   }
   100% {
-    color: rgba(255,222,0,0.5);
+    color: rgba(255,222,0);
   }
 `;
 
 export const PageLoading = styled.div`
-  background: transparent;
+  background: rgba(255,255,255,0.1);
   position: fixed;
   top: 0;
   bottom: 0;
