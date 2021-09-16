@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { CommentSpace } from "../styled";
 
 const Comments = (props) => {
-  const { firebase, id } = props;
+  const { firebase, id, loading } = props;
   const message = useRef();
 
   const user = firebase.auth().currentUser;
@@ -32,6 +32,11 @@ const Comments = (props) => {
       });
   };
 
+  const reload = () => {
+    window.location.reload();
+    loading(false);
+  };
+
   return (
     <CommentSpace>
       <textarea
@@ -42,10 +47,9 @@ const Comments = (props) => {
       ></textarea>
       <button
         onClick={() => {
+          loading(true);
           postComment();
-          const elem = document.querySelector("textarea");
-          elem.value = "";
-          //and refresh page after authentication bug is fixed
+          setTimeout(reload, 8000);
         }}
       >
         Post
@@ -57,6 +61,7 @@ const Comments = (props) => {
 Comments.propTypes = {
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   id: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+  loading: PropTypes.func,
 };
 
 export default Comments;
