@@ -22,9 +22,9 @@ export const PostImage = styled.div`
   align-content: center;
   display: flex;
   justify-content: center;
-  background: center/contain no-repeat url(${props => props.background}), #333;
+  background: center/contain no-repeat url(${(props) => props.background}), #333;
   &:hover {
-    background: center/cover no-repeat url(${props => props.background});
+    background: center/cover no-repeat url(${(props) => props.background});
   }
 `;
 

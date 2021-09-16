@@ -113,8 +113,7 @@ const PostModal = (props) => {
           <span> {post.postMessage}</span>
         </OwnerMessage>
         <PostMessages>
-          {post.comment &&
-            commentLoop(post.commenter, post.comment)}
+          {post.comment && commentLoop(post.commenter, post.comment)}
         </PostMessages>
         <Interaction>
           {post.userLikes.includes(displayName) || likeClick ? (

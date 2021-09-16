@@ -28,7 +28,7 @@ const radialChange = keyframes`
 `;
 
 export const PageLoading = styled.div`
-  background: rgba(255,255,255,0.1);
+  background: #fff;
   position: fixed;
   top: 0;
   bottom: 0;

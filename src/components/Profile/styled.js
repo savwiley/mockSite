@@ -34,5 +34,5 @@ export const PostSquare = styled.div`
   height: 300px;
   overflow: hidden;
   margin: 5px;
-  background: center/cover no-repeat url(${props => props.background});
+  background: center/cover no-repeat url(${(props) => props.background});
 `;
