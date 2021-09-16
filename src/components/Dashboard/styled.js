@@ -8,7 +8,6 @@ export const PostColumn = styled.div`
 `;
 
 export const PostBlock = styled.div`
-  width: 100%;
   max-height: 934px;
   border: 1px solid var(--border);
   border-radius: 3px;
@@ -35,17 +34,12 @@ export const PostBlock = styled.div`
 
 export const PostImage = styled.div`
   width: 100%;
-  max-height: 750px;
-  overflow: hidden;
+  max-width: 613px;
+  height: 750px;
   border: 1px solid var(--border);
   border-right: none;
   border-left: none;
-  background: #333;
-  text-align: center;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
+  background: center/cover no-repeat url(${props => props.background});
 `;
 
 //figure out if we should zoom in on the images or not
