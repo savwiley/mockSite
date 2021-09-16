@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { PostSquare } from "../styled";
+import { IoHeart, IoChatbubbleEllipses } from "react-icons/io5";
+import { PostSquare, PostOverlay } from "../styled";
 
 const ProfilePosts = (props) => {
   const { profilePosts } = props;
@@ -10,7 +11,12 @@ const ProfilePosts = (props) => {
     <>
       {profilePosts.map((e) => (
         <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date}>
-          <PostSquare background={e.postPic} />
+          <PostSquare background={e.postPic}>
+            <PostOverlay>
+              <IoHeart /> {e.likes}
+              <IoChatbubbleEllipses /> {e.comment.length}
+            </PostOverlay>
+          </PostSquare>
         </Link>
       ))}
     </>
