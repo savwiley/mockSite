@@ -83,11 +83,9 @@ const PostBoard = (props) => {
             {e.postOwner}
           </header>
 
-          <PostImage>
-            <Link to={`/${e.postOwner}/${e.date.seconds}`}>
-              <img src={e.postPic} alt="post" />
-            </Link>
-          </PostImage>
+          <Link to={`/${e.postOwner}/${e.date.seconds}`}>
+            <PostImage background={e.postPic} />
+          </Link>
 
           <PostInteract>
             <Interaction>
