@@ -10,9 +10,7 @@ const ProfilePosts = (props) => {
     <>
       {profilePosts.map((e) => (
         <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date}>
-          <PostSquare>
-            <img src={e.postPic} alt="post" />
-          </PostSquare>
+          <PostSquare background={e.postPic} />
         </Link>
       ))}
     </>
