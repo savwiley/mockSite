@@ -41,6 +41,10 @@ const AddMessage = (props) => {
             ownerPic: `${profilePic}`,
             postMessage: `${message}`,
             date: firebase.firestore.Timestamp.now(),
+            userLikes: [],
+            likes: 0,
+            commenter: [],
+            comment: [],
           })
           .then(() => {
             window.location.reload();
