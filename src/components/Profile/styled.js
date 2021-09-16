@@ -34,7 +34,5 @@ export const PostSquare = styled.div`
   height: 300px;
   overflow: hidden;
   margin: 5px;
-  img {
-    max-width: 100%;
-  }
+  background: center/cover no-repeat url(${props => props.background});
 `;
