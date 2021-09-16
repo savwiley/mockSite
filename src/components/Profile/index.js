@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import ProfilePosts from "./postComponents/profilePosts";
+import { Loading } from "../Loading";
 import { ProfileHeader, PostSection } from "./styled";
 import firebase from "../firebase";
 
@@ -49,7 +50,7 @@ const Profile = () => {
         {readyProfile ? (
           <ProfilePosts profilePosts={makeProfilePosts} />
         ) : (
-          "There's nothing here yet."
+          <Loading />
         )}
       </PostSection>
       <Footer />

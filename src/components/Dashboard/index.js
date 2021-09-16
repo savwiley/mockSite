@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
+import { ModalLoading } from "../Loading";
 import PostBoard from "./postComponents/posts";
 import firebase from "../firebase";
 
@@ -38,7 +39,7 @@ const Dashboard = () => {
       {ready ? (
         <PostBoard posts={makePosts} firebase={firebase} />
       ) : (
-        "There's nothing here yet."
+        <ModalLoading />
       )}
 
       <Footer />
