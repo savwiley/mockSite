@@ -17,15 +17,14 @@ export const PostBlock = styled.div`
 export const PostImage = styled.div`
   width: 70%;
   height: 100%;
-  background: #333;
   overflow: hidden;
   text-align: center;
   align-content: center;
   display: flex;
   justify-content: center;
-  img {
-    width: 100%;
-    height: 100%;
+  background: center/contain no-repeat url(${props => props.background}), #333;
+  &:hover {
+    background: center/cover no-repeat url(${props => props.background});
   }
 `;
 
