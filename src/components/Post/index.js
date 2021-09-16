@@ -10,6 +10,7 @@ const PostPage = () => {
   const [allPostInfo, setAllPostInfo] = useState();
   const [makePostInfo, setMakePostInfo] = useState();
   const [readyPost, setReadyPost] = useState(false);
+  const [loading, setLoading] = useState(false);
   const id = useParams();
   const date = useParams();
 
@@ -40,9 +41,14 @@ const PostPage = () => {
   return (
     <>
       <NavBar />
+      {loading && <ModalLoading />}
 
       {readyPost ? (
-        <PostModal postInfo={makePostInfo} firebase={firebase} />
+        <PostModal
+          postInfo={makePostInfo}
+          firebase={firebase}
+          loading={setLoading}
+        />
       ) : (
         <ModalLoading />
       )}
