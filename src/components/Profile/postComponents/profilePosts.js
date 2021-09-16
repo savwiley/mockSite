@@ -13,8 +13,8 @@ const ProfilePosts = (props) => {
         <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date}>
           <PostSquare background={e.postPic}>
             <PostOverlay>
-              <IoHeart /> {e.likes}
-              <IoChatbubbleEllipses /> {e.comment.length}
+              <div><IoHeart /> {e.likes}</div>
+              <div><IoChatbubbleEllipses /> {e.comment.length}</div>
             </PostOverlay>
           </PostSquare>
         </Link>
