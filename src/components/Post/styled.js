@@ -52,7 +52,7 @@ export const PostHeader = styled.div`
     }
   }
   div {
-    background: center/cover no-repeat url(${(props) => props.background})
+    background: center/cover no-repeat url(${(props) => props.background});
     width: 30px;
     height: 30px;
     border-radius: 50px;

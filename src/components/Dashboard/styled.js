@@ -24,7 +24,7 @@ export const PostBlock = styled.div`
     text-align: left;
     font-weight: bold;
     div {
-      background: center/cover no-repeat url(${(props) => props.background})
+      background: center/cover no-repeat url(${(props) => props.background});
       border-radius: 50px;
       width: 30px;
       height: 30px;
