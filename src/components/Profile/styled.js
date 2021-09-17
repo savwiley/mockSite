@@ -13,7 +13,8 @@ export const ProfileHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  img {
+  div {
+    background: center/cover no-repeat url(${(props) => props.background});
     width: 100px;
     height: 100px;
     border-radius: 50%;

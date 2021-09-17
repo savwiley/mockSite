@@ -59,7 +59,8 @@ export const UserButton = styled.button`
   cursor: pointer;
 `;
 
-export const UserPic = styled.img`
+export const UserPic = styled.div`
+  background: center/cover no-repeat url(${(props) => props.background});
   width: 25px;
   height: 25px;
   border-radius: 50px;
