@@ -77,9 +77,9 @@ const PostBoard = (props) => {
   return (
     <PostColumn>
       {posts.map((e) => (
-        <PostBlock key={e.date}>
+        <PostBlock key={e.date} background={e.ownerPic}>
           <header>
-            <img src={e.ownerPic} alt="profile" />
+            <div />
             {e.postOwner}
           </header>
 

@@ -100,8 +100,8 @@ const PostModal = (props) => {
       <PostImage background={post.postPic} />
 
       <PostContent>
-        <PostHeader>
-          <img src={post.ownerPic} alt="It's them!" />
+        <PostHeader background={post.ownerPic}>
+          <div />
           <Link to={`/${post.postOwner}`}>
             <span>{post.postOwner}</span>
           </Link>
