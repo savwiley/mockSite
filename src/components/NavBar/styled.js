@@ -113,7 +113,8 @@ export const EachLike = styled.div`
   margin: 8px 0;
   width: 100%;
   height: fit-content;
-  img {
+  div {
+    background: center/cover no-repeat url(${(props) => props.userPic});
     width: 40px;
     height: 40px;
     border-radius: 50px;
@@ -123,7 +124,8 @@ export const EachLike = styled.div`
 export const PreviewLikePic = styled.div`
   float: right;
   max-height: 100%;
-  img {
+  div {
+    background: center/cover no-repeat url(${(props) => props.imagePic});
     max-height: 100%;
     border-radius: 0;
   }
