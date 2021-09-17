@@ -39,7 +39,7 @@ export const PostImage = styled.div`
   border: 1px solid var(--border);
   border-right: none;
   border-left: none;
-  background: center/cover no-repeat url(${(props) => props.background});
+  background: center/cover no-repeat url(${(props) => props.background}), #333;
 `;
 
 //figure out if we should zoom in on the images or not
