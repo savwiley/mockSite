@@ -41,8 +41,8 @@ const Profile = () => {
   return (
     <>
       <NavBar />
-      <ProfileHeader>
-        <img src={profilePic} alt="It's them!" />
+      <ProfileHeader background={profilePic}>
+        <div />
         <span>{id.displayName}</span>
       </ProfileHeader>
 

@@ -111,7 +111,7 @@ const NavBar = (props) => {
             }}
           >
             {userPic.current ? (
-              <UserPic src={photoURL} title="It's You!" />
+              <UserPic background={photoURL} />
             ) : (
               <RiUser3Line title="It's You!" />
             )}
