@@ -10,7 +10,7 @@ const LikeDropDown = (props) => {
     <LikeDropStyle>
       <b>Liked Posts</b>
       {likedPosts.map((e) => (
-        <EachLike key={e.date}>
+        <EachLike key={e.date} userPic={e.ownerPic}>
           <Link
             to={`/${e.postOwner}`}
             title="Profile"
@@ -18,12 +18,12 @@ const LikeDropDown = (props) => {
               likeDrop(false);
             }}
           >
-            <img src={e.ownerPic} />
+            <div />
           </Link>
           <span>
             You liked <b>{e.postOwner}</b>&apos;s post!
           </span>
-          <PreviewLikePic>
+          <PreviewLikePic imagePic={e.postPic}>
             <Link
               to={`/${e.postOwner}/${e.date.seconds}`}
               title="Post"
@@ -31,7 +31,7 @@ const LikeDropDown = (props) => {
                 likeDrop(false);
               }}
             >
-              <img src={e.postPic} />
+              <div />
             </Link>
           </PreviewLikePic>
         </EachLike>
