@@ -51,7 +51,8 @@ export const PostHeader = styled.div`
       text-decoration: underline;
     }
   }
-  img {
+  div {
+    background: center/cover no-repeat url(${(props) => props.background})
     width: 30px;
     height: 30px;
     border-radius: 50px;
