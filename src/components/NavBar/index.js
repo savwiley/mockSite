@@ -19,6 +19,7 @@ import {
 } from "react-icons/io5";
 import firebase, { auth } from "../firebase";
 import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled";
+import SearchDrop from "./searchDropdown";
 import LikeDropDown from "./likesDropdown";
 import DropDown from "./dropdown";
 import NewPost from "./newPost";
@@ -27,6 +28,7 @@ const NavBar = (props) => {
   const { page } = props;
   const [drop, setDrop] = useState(false);
   const [likeDrop, setLikeDrop] = useState(false);
+  const [search, setSearch] = useState(false);
   const [likedPosts, setLikedPosts] = useState();
   const [makeLikedPosts, setMakeLikedPosts] = useState();
   const [post, setPost] = useState(false);
@@ -78,7 +80,14 @@ const NavBar = (props) => {
         </Link>
 
         {/* Search */}
-        <input type="text" placeholder="Search" />
+        <input type="text" placeholder="Search"
+          onFocus={() => {
+            setSearch(true);
+          }}
+          onChange={() => {
+            //change search params
+          }}
+        />
 
         {/* Icons */}
         <NavBarIcons>
@@ -118,6 +127,7 @@ const NavBar = (props) => {
           </UserButton>
 
           {/* Dropdowns & Modals */}
+          {search && <SearchDrop />}
           {likeDrop && (
             <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
           )}
