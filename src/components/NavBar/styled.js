@@ -92,6 +92,10 @@ export const SearchDropStyle = styled.div`
   flex-direction: column;
   width: 375px;
   height: 450px;
+  position: absolute;
+  top: 54px;
+  left: 40%;
+  right: 40%;
   font-size: 14px;
   background: #fff;
   border-radius: 8px;
