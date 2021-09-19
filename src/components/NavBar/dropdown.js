@@ -21,18 +21,22 @@ const DropDown = () => {
 
   return (
     <DropDownStyle>
-      <Link to={`/${displayName}`} title="Profile"
+      <Link
+        to={`/${displayName}`}
+        title="Profile"
         onMouseDown={(e) => {
           e.preventDefault();
         }}
       >
         <RiUser3Line /> Profile
       </Link>
-      <Link to="/settings" title="Settings"
+      <Link
+        to="/settings"
+        title="Settings"
         onMouseDown={(e) => {
           e.preventDefault();
         }}
-        >
+      >
         <RiSettings3Fill /> Settings
       </Link>
       <Link
