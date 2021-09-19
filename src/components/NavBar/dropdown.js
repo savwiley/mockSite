@@ -21,18 +21,27 @@ const DropDown = () => {
 
   return (
     <DropDownStyle>
-      <Link to={`/${displayName}`} title="Profile">
+      <Link to={`/${displayName}`} title="Profile"
+        onMouseDown={(e) => {
+          e.preventDefault();
+        }}
+      >
         <RiUser3Line /> Profile
       </Link>
-      <Link to="/settings" title="Settings">
+      <Link to="/settings" title="Settings"
+        onMouseDown={(e) => {
+          e.preventDefault();
+        }}
+        >
         <RiSettings3Fill /> Settings
       </Link>
       <Link
-        onClick={() => {
-          signOut();
-        }}
         to="/"
         title="Log Out"
+        onMouseDown={(e) => {
+          e.preventDefault();
+          signOut();
+        }}
       >
         Log Out
       </Link>

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { LikeDropStyle, EachLike, PreviewLikePic } from "./styled";
 
 const LikeDropDown = (props) => {
-  const { likedPosts, likeDrop } = props;
+  const { likedPosts } = props;
 
   return (
     <LikeDropStyle>
@@ -14,8 +14,8 @@ const LikeDropDown = (props) => {
           <Link
             to={`/${e.postOwner}`}
             title="Profile"
-            onClick={() => {
-              likeDrop(false);
+            onMouseDown={(e) => {
+              e.preventDefault();
             }}
           >
             <div />
@@ -27,8 +27,8 @@ const LikeDropDown = (props) => {
             <Link
               to={`/${e.postOwner}/${e.date.seconds}`}
               title="Post"
-              onClick={() => {
-                likeDrop(false);
+              onMouseDown={(e) => {
+                e.preventDefault();
               }}
             >
               <div />
@@ -45,7 +45,6 @@ LikeDropDown.propTypes = {
     PropTypes.object,
     PropTypes.array,
   ]),
-  likeDrop: PropTypes.func,
 };
 
 export default LikeDropDown;
