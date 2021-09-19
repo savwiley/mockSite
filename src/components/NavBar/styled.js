@@ -87,6 +87,31 @@ export const DropDownStyle = styled.div`
   }
 `;
 
+export const SearchDropStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  height: 450px;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px var(--border);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 12px;
+`;
+
+export const SearchHead = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  span {
+    color: var(--blue);
+  }
+`;
+
 export const LikeDropStyle = styled.div`
   display: flex;
   flex-direction: column;
