@@ -50,6 +50,13 @@ export const NavBarIcons = styled.div`
   svg {
     cursor: pointer;
   }
+  button {
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    padding: 0;
+    outline: none;
+  }
 `;
 
 export const UserButton = styled.button`
