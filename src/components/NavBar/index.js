@@ -80,9 +80,14 @@ const NavBar = (props) => {
         </Link>
 
         {/* Search */}
-        <input type="text" placeholder="Search"
+        <input
+          type="text"
+          placeholder="Search"
           onFocus={() => {
             setSearch(true);
+          }}
+          onBlur={() => {
+            setSearch(false);
           }}
           onChange={() => {
             //change search params
