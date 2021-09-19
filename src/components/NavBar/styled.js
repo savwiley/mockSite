@@ -94,15 +94,14 @@ export const SearchDropStyle = styled.div`
   height: 450px;
   position: absolute;
   top: 54px;
-  left: 40%;
-  right: 40%;
+  left: 30%;
   font-size: 14px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 12px;
+  padding: 14px 16px;
 `;
 
 export const SearchHead = styled.div`
@@ -111,8 +110,13 @@ export const SearchHead = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  h4 {
+    font-size: 18px;
+  }
   span {
     color: var(--blue);
+    font-weight: bold;
+    cursor: pointer;
   }
 `;
 
