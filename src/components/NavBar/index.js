@@ -112,16 +112,24 @@ const NavBar = (props) => {
           {/* Explore Icon [NOT IMPLEMENTED] */}
           <IoCompassOutline />
           {/* Likes Dropdown Icon */}
-          <IoHeartOutline
-            onClick={() => {
-              likeDrop ? setLikeDrop(false) : setLikeDrop(true);
+          <button
+            onFocus={() => {
+              setLikeDrop(true);
             }}
-          />
+            onBlur={() => {
+              setLikeDrop(false);
+            }}
+          >
+            <IoHeartOutline />
+          </button>
 
           {/* User Icon */}
           <UserButton
-            onClick={() => {
-              drop ? setDrop(false) : setDrop(true);
+            onFocus={() => {
+              setDrop(true);
+            }}
+            onBlur={() => {
+              setDrop(false);
             }}
           >
             {userPic.current ? (
