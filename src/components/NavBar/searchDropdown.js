@@ -1,7 +1,9 @@
 import React from "react";
 import { SearchDropStyle, SearchHead } from "./styled";
 
-const SearchDrop = () => {
+const SearchDrop = (props) => {
+  const {criteria} = props;
+
   return (
     <SearchDropStyle>
       <SearchHead>
