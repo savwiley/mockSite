@@ -29,6 +29,7 @@ const NavBar = (props) => {
   const [drop, setDrop] = useState(false);
   const [likeDrop, setLikeDrop] = useState(false);
   const [search, setSearch] = useState(false);
+  const [searchCriteria, setSearchCriteria] = useState();
   const [likedPosts, setLikedPosts] = useState();
   const [makeLikedPosts, setMakeLikedPosts] = useState();
   const [post, setPost] = useState(false);
@@ -89,8 +90,8 @@ const NavBar = (props) => {
           onBlur={() => {
             setSearch(false);
           }}
-          onChange={() => {
-            //change search params
+          onChange={(e) => {
+            setSearchCriteria(e.target.value);
           }}
         />
 
@@ -140,7 +141,7 @@ const NavBar = (props) => {
           </UserButton>
 
           {/* Dropdowns & Modals */}
-          {search && <SearchDrop />}
+          {search && <SearchDrop criteria={searchCriteria} />}
           {likeDrop && (
             <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
           )}
