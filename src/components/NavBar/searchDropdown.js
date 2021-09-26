@@ -51,6 +51,8 @@ const SearchDrop = (props) => {
       </SearchHead>
 
       <SearchResults>
+        {makeUsers &&
+          makeUsers.map((e) => <div key={e}>{e}</div>)}
         {makePosts &&
           makePosts.map((e) => <div key={e.date}>{e.postMessage}</div>)}
       </SearchResults>
