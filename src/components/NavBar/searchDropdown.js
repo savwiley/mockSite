@@ -23,14 +23,15 @@ const SearchDrop = (props) => {
     } else {
       const postsArr = [];
       const userArr = [];
+      let searching;
+      criteria && (searching = criteria.toLowerCase());
       posts.forEach((e) => {
-        e.data().postMessage.includes(criteria) && postsArr.push(e.data());
-        e.data().postOwner.includes(criteria) &&
-          userArr.push(e.data().postOwner);
+        const dataMessage = e.data().postMessage.toLowerCase();
+        const dataOwner = e.data().postOwner.toLowerCase();
+        dataMessage.includes(searching) && postsArr.push(e.data());
+        dataOwner.includes(searching) && userArr.push(e.data().postOwner);
       });
-      const uniqueUsers = userArr.filter((value, index, array) => {
-        array.indexOf(value) === index;
-      });
+      const uniqueUsers = [...new Set(userArr)];
       setMakePosts(postsArr);
       setMakeUsers(uniqueUsers);
     }
@@ -51,8 +52,7 @@ const SearchDrop = (props) => {
       </SearchHead>
 
       <SearchResults>
-        {makeUsers &&
-          makeUsers.map((e) => <div key={e}>{e}</div>)}
+        {makeUsers && makeUsers.map((e) => <div key={e}>{e}</div>)}
         {makePosts &&
           makePosts.map((e) => <div key={e.date}>{e.postMessage}</div>)}
       </SearchResults>
