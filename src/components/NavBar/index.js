@@ -84,14 +84,17 @@ const NavBar = (props) => {
         <input
           type="text"
           placeholder="Search"
-          onFocus={() => {
+          onFocus={(e) => {
             setSearch(true);
+            e.target.value = "";
           }}
           onBlur={() => {
             setSearch(false);
+            setSearchCriteria();
           }}
           onChange={(e) => {
             setSearchCriteria(e.target.value);
+            e.target.value === "" && setSearchCriteria();
           }}
         />
 
@@ -141,7 +144,7 @@ const NavBar = (props) => {
           </UserButton>
 
           {/* Dropdowns & Modals */}
-          {search && <SearchDrop criteria={searchCriteria} firebase={firebase} />}
+          {search && <SearchDrop criteria={searchCriteria} firebase={firebase} clear={setSearchCriteria} />}
           {likeDrop && (
             <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
           )}
