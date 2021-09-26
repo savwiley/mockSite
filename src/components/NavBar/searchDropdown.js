@@ -7,12 +7,11 @@ const SearchDrop = (props) => {
   const [oldValue, setOldValue] = useState("");
   const [posts, setPosts] = useState();
   const [makePosts, setMakePosts] = useState();
+  const [makeUsers, setMakeUsers] = useState();
 
   async function callAsync() {
-    const postRef = firebase
-      .firestore()
-      .collection("posts");
-      //.orderBy("date", "desc");
+    const postRef = firebase.firestore().collection("posts");
+    //.orderBy("date", "desc");
     const eachPost = await postRef.get();
     setPosts(eachPost);
     setOldValue(criteria);
@@ -23,12 +22,17 @@ const SearchDrop = (props) => {
       callAsync();
     } else {
       const postsArr = [];
+      const userArr = [];
       posts.forEach((e) => {
-        if (e.data().postMessage.includes(criteria)) {
-          postsArr.push(e.data());
-        }
+        e.data().postMessage.includes(criteria) && postsArr.push(e.data());
+        e.data().postOwner.includes(criteria) &&
+          userArr.push(e.data().postOwner);
+      });
+      const uniqueUsers = userArr.filter((value, index, array) => {
+        array.indexOf(value) === index;
       });
       setMakePosts(postsArr);
+      setMakeUsers(uniqueUsers);
     }
   }, [criteria, oldValue, posts]);
 
@@ -36,18 +40,19 @@ const SearchDrop = (props) => {
     <SearchDropStyle>
       <SearchHead>
         <h4>Recent</h4>
-        <span onMouseDown={(e) => {
-          e.preventDefault();
-          clear();
-        }}>Clear All</span>
+        <span
+          onMouseDown={(e) => {
+            e.preventDefault();
+            clear();
+          }}
+        >
+          Clear All
+        </span>
       </SearchHead>
 
       <SearchResults>
-        {makePosts && makePosts.map(e => (
-          <div key={e.date}>
-            {e.postMessage}
-          </div>
-        ))}
+        {makePosts &&
+          makePosts.map((e) => <div key={e.date}>{e.postMessage}</div>)}
       </SearchResults>
     </SearchDropStyle>
   );
@@ -62,8 +67,8 @@ SearchDrop.propTypes = {
 };
 
 /**i want this to search for user display names
- * 
+ *
  * https://stackoverflow.com/questions/47778294/firebase-check-if-user-exists-by-display-name
- * 
+ *
  * also search by post messages
-*/
+ */
