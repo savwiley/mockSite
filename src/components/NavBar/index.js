@@ -144,7 +144,13 @@ const NavBar = (props) => {
           </UserButton>
 
           {/* Dropdowns & Modals */}
-          {search && <SearchDrop criteria={searchCriteria} firebase={firebase} clear={setSearchCriteria} />}
+          {search && (
+            <SearchDrop
+              criteria={searchCriteria}
+              firebase={firebase}
+              clear={setSearchCriteria}
+            />
+          )}
           {likeDrop && (
             <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
           )}
