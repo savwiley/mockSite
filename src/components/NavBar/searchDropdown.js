@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { SearchDropStyle, SearchHead, SearchResults } from "./styled";
 
 const SearchDrop = (props) => {
-  const { criteria, firebase } = props; //value from search input field
+  const { criteria, firebase, clear } = props; //value from search input field
   const [oldValue, setOldValue] = useState("");
   const [posts, setPosts] = useState();
   const [makePosts, setMakePosts] = useState();
@@ -11,35 +11,35 @@ const SearchDrop = (props) => {
   async function callAsync() {
     const postRef = firebase
       .firestore()
-      .collection("posts")
-      .where("postMessage", "contains", `${criteria}`);
+      .collection("posts");
       //.orderBy("date", "desc");
     const eachPost = await postRef.get();
     setPosts(eachPost);
+    setOldValue(criteria);
   }
 
-  /**You can't search through firebase by regular means. Recommended to try elasticsearch. */
-  //https://www.elastic.co/elasticsearch/
-  //https://firebase.googleblog.com/2014/01/queries-part-2-advanced-searches-with.html
-
   useEffect(() => {
-    if (criteria !== oldValue) {
+    if (criteria != oldValue) {
       callAsync();
     } else {
       const postsArr = [];
       posts.forEach((e) => {
-        postsArr.push(e.data());
+        if (e.data().postMessage.includes(criteria)) {
+          postsArr.push(e.data());
+        }
       });
       setMakePosts(postsArr);
-      setOldValue(criteria);
     }
-  }, [posts, criteria, oldValue]);
+  }, [criteria, oldValue, posts]);
 
   return (
     <SearchDropStyle>
       <SearchHead>
         <h4>Recent</h4>
-        <span>Clear All</span>
+        <span onMouseDown={(e) => {
+          e.preventDefault();
+          clear();
+        }}>Clear All</span>
       </SearchHead>
 
       <SearchResults>
@@ -57,6 +57,7 @@ export default SearchDrop;
 
 SearchDrop.propTypes = {
   criteria: PropTypes.string,
+  clear: PropTypes.func,
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
