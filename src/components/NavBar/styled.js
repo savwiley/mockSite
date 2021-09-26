@@ -127,6 +127,11 @@ export const SearchHead = styled.div`
   }
 `;
 
+export const SearchResults = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const LikeDropStyle = styled.div`
   display: flex;
   flex-direction: column;
