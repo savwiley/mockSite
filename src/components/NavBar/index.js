@@ -30,6 +30,7 @@ const NavBar = (props) => {
   const [likeDrop, setLikeDrop] = useState(false);
   const [search, setSearch] = useState(false);
   const [searchCriteria, setSearchCriteria] = useState();
+  const [searchValue, setSearchValue] = useState();
   const [likedPosts, setLikedPosts] = useState();
   const [makeLikedPosts, setMakeLikedPosts] = useState();
   const [post, setPost] = useState(false);
@@ -84,6 +85,7 @@ const NavBar = (props) => {
         <input
           type="text"
           placeholder="Search"
+          value={searchValue}
           onFocus={(e) => {
             setSearch(true);
             e.target.value = "";
@@ -93,6 +95,7 @@ const NavBar = (props) => {
             setSearchCriteria();
           }}
           onChange={(e) => {
+            setSearchValue(e.target.value);
             setSearchCriteria(e.target.value);
             e.target.value === "" && setSearchCriteria();
           }}
@@ -149,6 +152,7 @@ const NavBar = (props) => {
               criteria={searchCriteria}
               firebase={firebase}
               clear={setSearchCriteria}
+              inputValue={setSearchValue}
             />
           )}
           {likeDrop && (
