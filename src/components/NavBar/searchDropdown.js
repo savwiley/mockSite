@@ -29,8 +29,11 @@ const SearchDrop = (props) => {
         const dataMessage = e.data().postMessage.toLowerCase();
         const dataOwner = e.data().postOwner.toLowerCase();
         dataMessage.includes(searching) && postsArr.push(e.data());
-        dataOwner.includes(searching) && userArr.push(e.data().postOwner);
+        dataOwner.includes(searching) && userArr.push([e.data().postOwner, e.data().ownerPic]);
       });
+      userArr.forEach((e) => {
+        //remove duplicates when it comes to usernames
+      })
       setMakePosts(postsArr);
       setMakeUsers([...new Set(userArr)]);
     }
@@ -43,7 +46,7 @@ const SearchDrop = (props) => {
         <span
           onMouseDown={(e) => {
             e.preventDefault();
-            clear();
+            clear("");
             inputValue("");
           }}
         >
@@ -52,7 +55,7 @@ const SearchDrop = (props) => {
       </SearchHead>
 
       <SearchResults>
-        {makeUsers && makeUsers.map((e) => <div key={e}>{e}</div>)}
+        {makeUsers && makeUsers.map((e) => <div key={e[0]}>{e[0]}</div>)}
         {makePosts &&
           makePosts.map((e) => <div key={e.date}>{e.postMessage}</div>)}
       </SearchResults>
