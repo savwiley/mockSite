@@ -30,7 +30,7 @@ const NavBar = (props) => {
   const [likeDrop, setLikeDrop] = useState(false);
   const [search, setSearch] = useState(false);
   const [searchCriteria, setSearchCriteria] = useState();
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState("");
   const [likedPosts, setLikedPosts] = useState();
   const [makeLikedPosts, setMakeLikedPosts] = useState();
   const [post, setPost] = useState(false);
