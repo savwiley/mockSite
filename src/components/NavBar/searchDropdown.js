@@ -33,6 +33,7 @@ const SearchDrop = (props) => {
       });
       userArr.forEach((e) => {
         //remove duplicates when it comes to usernames
+        //[...new Set(e[0])] but will that just return an array of the first elem?
       })
       setMakePosts(postsArr);
       setMakeUsers([...new Set(userArr)]);
