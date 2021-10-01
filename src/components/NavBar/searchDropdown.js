@@ -33,6 +33,7 @@ const SearchDrop = (props) => {
         dataOwner.includes(searching) && userArr.push([e.data().postOwner, e.data().ownerPic]);
       });
       userArr.forEach((e) => {
+        //const name = e[0];
         makeUserArr.includes(e) ? null : makeUserArr.push(e);
         //remove duplicates when it comes to usernames
       })
