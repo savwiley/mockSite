@@ -23,6 +23,7 @@ const SearchDrop = (props) => {
     } else {
       const postsArr = [];
       const userArr = [];
+      const makeUserArr = [];
       let searching;
       criteria && (searching = criteria.toLowerCase());
       posts.forEach((e) => {
@@ -32,11 +33,12 @@ const SearchDrop = (props) => {
         dataOwner.includes(searching) && userArr.push([e.data().postOwner, e.data().ownerPic]);
       });
       userArr.forEach((e) => {
+        makeUserArr.includes(e) ? null : makeUserArr.push(e);
         //remove duplicates when it comes to usernames
-        //[...new Set(e[0])] but will that just return an array of the first elem?
       })
+      console.log(makeUserArr);
       setMakePosts(postsArr);
-      setMakeUsers([...new Set(userArr)]);
+      setMakeUsers(makeUserArr);
     }
   }, [criteria, oldValue, posts]);
 
