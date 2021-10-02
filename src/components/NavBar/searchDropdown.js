@@ -23,23 +23,24 @@ const SearchDrop = (props) => {
     } else {
       const postsArr = [];
       const userArr = [];
-      const makeUserArr = [];
       let searching;
       criteria && (searching = criteria.toLowerCase());
       posts.forEach((e) => {
         const dataMessage = e.data().postMessage.toLowerCase();
         const dataOwner = e.data().postOwner.toLowerCase();
         dataMessage.includes(searching) && postsArr.push(e.data());
-        dataOwner.includes(searching) && userArr.push([e.data().postOwner, e.data().ownerPic]);
+        if (dataOwner.includes(searching) && userArr.length > 0) {
+          userArr.map((a) => {
+            if (!a.includes(e.data().postOwner)) {
+              userArr.push([e.data().postOwner, e.data().ownerPic]);
+            }
+          });
+        } else if (dataOwner.includes(searching)) {
+          userArr.push([e.data().postOwner, e.data().ownerPic]);
+        }
       });
-      userArr.forEach((e) => {
-        //const name = e[0];
-        makeUserArr.includes(e) ? null : makeUserArr.push(e);
-        //remove duplicates when it comes to usernames
-      })
-      console.log(makeUserArr);
       setMakePosts(postsArr);
-      setMakeUsers(makeUserArr);
+      setMakeUsers(userArr);
     }
   }, [criteria, oldValue, posts]);
 
