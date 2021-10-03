@@ -106,8 +106,7 @@ export const SearchDropStyle = styled.div`
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   padding: 14px 16px;
 `;
 
@@ -117,6 +116,7 @@ export const SearchHead = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
   h4 {
     font-size: 18px;
   }
@@ -130,6 +130,26 @@ export const SearchHead = styled.div`
 export const SearchResults = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+`;
+
+export const SearchItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: bold;
+  padding: 5px;
+  .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background: center/cover no-repeat url(${(props) => props.image});
+    margin-right: 10px;
+  }
+  &:hover {
+    background: var(--background);
+  }
 `;
 
 export const LikeDropStyle = styled.div`
