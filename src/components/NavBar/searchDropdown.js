@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { SearchDropStyle, SearchHead, SearchResults } from "./styled";
+import { SearchDropStyle, SearchHead, SearchResults, SearchItem } from "./styled";
 
 const SearchDrop = (props) => {
   const { criteria, firebase, clear, inputValue } = props;
@@ -60,9 +61,38 @@ const SearchDrop = (props) => {
       </SearchHead>
 
       <SearchResults>
-        {makeUsers && makeUsers.map((e) => <div key={e[0]}>{e[0]}</div>)}
+        {makeUsers &&
+          makeUsers.map((e) => (
+            <Link
+              to={`/${e[0]}`}
+              title="Profile"
+              key={e[0]}
+              onMouseDown={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <SearchItem image={e[1]}>
+                <div className="icon" />
+                {e[0]}
+              </SearchItem>
+            </Link>
+          ))}
         {makePosts &&
-          makePosts.map((e) => <div key={e.date}>{e.postMessage}</div>)}
+          makePosts.map((e) => 
+          <Link
+            to={`/${e.postOwner}/${e.date.seconds}`}
+            title="Post"
+            key={e.date}
+            onMouseDown={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <SearchItem image={e.postPic}>
+              <div className="icon" />
+              {e.postMessage}
+            </SearchItem>
+          </Link>
+        )}
       </SearchResults>
     </SearchDropStyle>
   );
