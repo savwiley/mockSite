@@ -86,12 +86,12 @@ const NavBar = (props) => {
           type="text"
           placeholder="Search"
           value={searchValue}
-          onFocus={(e) => {
+          onFocus={() => {
             setSearch(true);
-            e.target.value = "";
           }}
           onBlur={() => {
             setSearch(false);
+            setSearchValue("");
             setSearchCriteria();
           }}
           onChange={(e) => {
