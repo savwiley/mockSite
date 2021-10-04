@@ -37,6 +37,8 @@ const NavBar = (props) => {
   const dash = useRef(false);
   const userPic = useRef(false);
 
+  // pull up random post when using Explore
+
   // user profile variables
   const user = auth.currentUser;
   const { photoURL, displayName } = user;
@@ -126,6 +128,7 @@ const NavBar = (props) => {
             onBlur={() => {
               setLikeDrop(false);
             }}
+            title="Your Liked Posts"
           >
             <IoHeartOutline />
           </button>
@@ -138,6 +141,7 @@ const NavBar = (props) => {
             onBlur={() => {
               setDrop(false);
             }}
+            title="Account"
           >
             {userPic.current ? (
               <UserPic background={photoURL} />
