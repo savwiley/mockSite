@@ -80,7 +80,9 @@ const PostBoard = (props) => {
         <PostBlock key={e.date} background={e.ownerPic}>
           <header>
             <div />
-            {e.postOwner}
+            <Link to={`/${e.postOwner}`}>
+              {e.postOwner}
+            </Link>
           </header>
 
           <Link to={`/${e.postOwner}/${e.date.seconds}`}>
