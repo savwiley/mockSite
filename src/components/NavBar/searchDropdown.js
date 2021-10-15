@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { RiUser3Line } from "react-icons/ri";
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { SearchDropStyle, SearchHead, SearchResults, SearchItem } from "./styled";
 
 const SearchDrop = (props) => {
@@ -73,7 +74,7 @@ const SearchDrop = (props) => {
               }}
             >
               <SearchItem image={e[1]}>
-                <div className="icon" />
+                <RiUser3Line className="icon" />
                 {e[0]}
               </SearchItem>
             </Link>
@@ -89,7 +90,7 @@ const SearchDrop = (props) => {
               }}
             >
               <SearchItem image={e.postPic}>
-                <div className="icon" />
+                <IoChatbubbleEllipsesOutline className="icon" />
                 {e.postMessage}
               </SearchItem>
             </Link>
