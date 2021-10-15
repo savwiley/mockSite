@@ -141,11 +141,17 @@ export const SearchItem = styled.div`
   font-weight: bold;
   padding: 5px;
   .icon {
-    width: 50px;
-    height: 50px;
+    fill: transparent;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
     border-radius: 50px;
     background: center/cover no-repeat url(${(props) => props.image});
     margin-right: 10px;
+    &:hover {
+      fill: var(--background);
+      background: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), center/cover no-repeat url(${(props) => props.image});
+    }
   }
   &:hover {
     background: var(--background);
