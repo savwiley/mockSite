@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { RiUser3Line } from "react-icons/ri";
 import { SearchDropStyle, SearchHead, SearchResults, SearchItem } from "./styled";
 
 const SearchDrop = (props) => {
@@ -79,20 +80,20 @@ const SearchDrop = (props) => {
           ))}
         {makePosts &&
           makePosts.map((e) => 
-          <Link
-            to={`/${e.postOwner}/${e.date.seconds}`}
-            title="Post"
-            key={e.date}
-            onMouseDown={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <SearchItem image={e.postPic}>
-              <div className="icon" />
-              {e.postMessage}
-            </SearchItem>
-          </Link>
-        )}
+            <Link
+              to={`/${e.postOwner}/${e.date.seconds}`}
+              title="Post"
+              key={e.date}
+              onMouseDown={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <SearchItem image={e.postPic}>
+                <div className="icon" />
+                {e.postMessage}
+              </SearchItem>
+            </Link>
+          )}
       </SearchResults>
     </SearchDropStyle>
   );
