@@ -3,12 +3,15 @@ import firebase from "../firebase";
 
 const UserModal = () => {
   const [posts, setPosts] = useState();
+  //user being hovered over? useState();
+  //could be added through props after this component is added as a "hover effect"
 
   async function callAsync() {
     const postRef = firebase
       .firestore()
       .collection("posts")
       .orderBy("date", "desc");
+      //just need most recent three
     const eachPost = await postRef.get();
     setPosts(eachPost);
   };
@@ -19,7 +22,7 @@ const UserModal = () => {
     } else {
       //save posts that contain same owner with icon
     }
-  });
+  }, [posts]);
 
   return (
     <>
