@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
 
-const UserModal = () => {
+const UserModal = (props) => {
   const [posts, setPosts] = useState();
-  //user being hovered over? useState();
-  //could be added through props after this component is added as a "hover effect"
+  const { user } = props;
+  //user added as a "hover effect"
 
   async function callAsync() {
     const postRef = firebase
       .firestore()
       .collection("posts")
+      .where("postOwner", "==", `${user}`)
       .orderBy("date", "desc");
-      //just need most recent three
     const eachPost = await postRef.get();
     setPosts(eachPost);
   };
@@ -20,7 +20,14 @@ const UserModal = () => {
     if (!posts) {
       callAsync();
     } else {
-      //save posts that contain same owner with icon
+      let recent = [];
+      posts.forEach(e => {
+        //most recent three
+      })
+      for (let i = 0; i < 3; i++) {
+        //use loop??
+      }
+      //OR should I just put them all in there and display posts[0-2]?
     }
   }, [posts]);
 
