@@ -3,6 +3,7 @@ import firebase from "../firebase";
 
 const UserModal = (props) => {
   const [posts, setPosts] = useState();
+  const [makePosts, setMakePosts] = useState();
   const { user } = props;
   //user added as a "hover effect"
 
@@ -22,12 +23,15 @@ const UserModal = (props) => {
     } else {
       let recent = [];
       posts.forEach(e => {
-        //most recent three
-      })
+        recent.push(e.data());
+      });
+      setMakePosts(recent);
+      /*
       for (let i = 0; i < 3; i++) {
         //use loop??
       }
       //OR should I just put them all in there and display posts[0-2]?
+      */
     }
   }, [posts]);
 
