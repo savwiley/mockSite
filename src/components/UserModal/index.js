@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
-import { Modal } from "./styled.js";
+import { Modal, ProfileInfo } from "./styled.js";
 
 const UserModal = (props) => {
   const [posts, setPosts] = useState();
   const [makePosts, setMakePosts] = useState();
+  const [profilePic, setProfilePic] = useState();
+  const [ready, setReady] = useState(false);
   const { user } = props;
   //user added as a "hover effect"
 
@@ -25,14 +27,20 @@ const UserModal = (props) => {
       let recent = [];
       posts.forEach(e => {
         recent.push(e.data());
+        !profilePic && setProfilePic(e.data().ownerPic)
       });
       setMakePosts(recent);
+      setReady(true);
       //OR should I just put them all in there and display posts[0-2]?
     }
   }, [posts]);
 
   return (
     <Modal>
+      <ProfileInfo profilePic={profilePic}>
+        <div />
+        <span>{user}</span>
+      </ProfileInfo>
     </Modal>
   )
 };
