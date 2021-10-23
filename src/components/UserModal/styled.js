@@ -26,3 +26,8 @@ export const ProfileInfo = styled.div`
     font-weight: bold;
   }
 `;
+
+export const PostImages = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
