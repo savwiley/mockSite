@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../firebase";
-import { Modal, ProfileInfo } from "./styled.js";
+import UserModalPosts from "./postComponents/postImages.js"
+import { Modal, ProfileInfo, PostImages } from "./styled.js";
 
 const UserModal = (props) => {
   const [posts, setPosts] = useState();
@@ -41,6 +42,10 @@ const UserModal = (props) => {
         <div />
         <span>{user}</span>
       </ProfileInfo>
+
+      <PostImages>
+        {ready && <UserModalPosts posts={makePosts} />}
+      </PostImages>
     </Modal>
   )
 };
