@@ -31,3 +31,9 @@ export const PostImages = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+export const PostHolder = styled.div`
+  width: 20px;
+  height: 20px;
+  background: url(${props => props.background});
+`;
