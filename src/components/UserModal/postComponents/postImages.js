@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { PostHolder } from "../styled.js";
 
 const UserModalPosts = (props) => {
@@ -7,9 +8,9 @@ const UserModalPosts = (props) => {
   return(
     <>
       {posts.map(e => (
-        <PostHolder key={e.date} background={e.postPic}>
-
-        </PostHolder>
+        <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date} >
+          <PostHolder background={e.postPic} />
+        </Link>
       ))}
     </>
   )
