@@ -17,3 +17,5 @@ const UserModalPosts = (props) => {
 };
 
 export default UserModalPosts;
+
+//only post 3 times
