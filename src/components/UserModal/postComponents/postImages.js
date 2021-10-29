@@ -18,6 +18,4 @@ const UserModalPosts = (props) => {
 
 export default UserModalPosts;
 
-//only post 3 times
-
-//use a loop to only display this module 3 times????
+//prop should only contain 3 posts
