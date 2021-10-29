@@ -27,12 +27,13 @@ const UserModal = (props) => {
     } else {
       let recent = [];
       posts.forEach(e => {
-        recent.push(e.data());
+        if (recent.length < 3) {
+          recent.push(e.data());
+        }
         !profilePic && setProfilePic(e.data().ownerPic)
       });
       setMakePosts(recent);
       setReady(true);
-      //OR should I just put them all in there and display posts[0-2]?
     }
   }, [posts]);
 
