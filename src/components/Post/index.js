@@ -4,6 +4,7 @@ import NavBar from "../NavBar";
 import Footer from "../Footer";
 import { ModalLoading } from "../Loading";
 import PostModal from "./postComponents/postModal";
+import UserModal from "../UserModal";
 import firebase from "../firebase";
 
 const PostPage = () => {
@@ -45,6 +46,7 @@ const PostPage = () => {
 
       {readyPost ? (
         <PostModal
+          userModal={UserModal}
           postInfo={makePostInfo}
           firebase={firebase}
           loading={setLoading}
