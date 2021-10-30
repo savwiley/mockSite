@@ -19,7 +19,7 @@ import {
 } from "../styled";
 
 const PostModal = (props) => {
-  const { postInfo, firebase, loading } = props;
+  const { userModal, postInfo, firebase, loading } = props;
   const [likeClick, setLikeClick] = useState(false);
   const post = postInfo[0];
 
