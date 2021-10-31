@@ -101,7 +101,7 @@ const PostModal = (props) => {
 
       <PostContent>
         <PostHeader background={post.ownerPic}>
-          <div />
+          <div /> {/*userModal goes here*/}
           <Link to={`/${post.postOwner}`}>
             <span>{post.postOwner}</span>
           </Link>
