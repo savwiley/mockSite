@@ -101,7 +101,11 @@ const PostModal = (props) => {
 
       <PostContent>
         <PostHeader background={post.ownerPic}>
-          <div /> {/*userModal goes here*/}
+          <div
+            onHover={() => {
+              userModal(true);
+            }}
+          /> {/**has to be set back to false when hover stops */}
           <Link to={`/${post.postOwner}`}>
             <span>{post.postOwner}</span>
           </Link>
