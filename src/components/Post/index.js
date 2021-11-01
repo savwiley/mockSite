@@ -12,6 +12,7 @@ const PostPage = () => {
   const [makePostInfo, setMakePostInfo] = useState();
   const [readyPost, setReadyPost] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [userModal, setUserModal] = useState(false);
   const id = useParams();
   const date = useParams();
 
@@ -43,10 +44,11 @@ const PostPage = () => {
     <>
       <NavBar />
       {loading && <ModalLoading />}
+      {userModal && <UserModal />}
 
       {readyPost ? (
         <PostModal
-          userModal={UserModal}
+          userModal={setUserModal}
           postInfo={makePostInfo}
           firebase={firebase}
           loading={setLoading}
