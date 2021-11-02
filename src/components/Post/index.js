@@ -44,7 +44,7 @@ const PostPage = () => {
     <>
       <NavBar />
       {loading && <ModalLoading />}
-      {userModal && <UserModal />}
+      {userModal && <UserModal user={id.displayName} />}
 
       {readyPost ? (
         <PostModal
