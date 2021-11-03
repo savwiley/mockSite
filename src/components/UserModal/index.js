@@ -52,9 +52,3 @@ const UserModal = (props) => {
 };
 
 export default UserModal;
-
-//a pop-up that appears when icons are hovered over
-
-//either attach it directly to icons or track the mouse
-
-//contains icon, name, 3 most recent user posts

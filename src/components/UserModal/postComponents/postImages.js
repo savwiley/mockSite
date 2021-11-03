@@ -17,5 +17,3 @@ const UserModalPosts = (props) => {
 };
 
 export default UserModalPosts;
-
-//prop should only contain 3 posts
