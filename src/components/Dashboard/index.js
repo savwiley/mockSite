@@ -3,12 +3,15 @@ import NavBar from "../NavBar";
 import Footer from "../Footer";
 import { ModalLoading } from "../Loading";
 import PostBoard from "./postComponents/posts";
+import UserModal from "../UserModal";
 import firebase from "../firebase";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState();
   const [makePosts, setMakePosts] = useState();
   const [ready, setReady] = useState(false);
+  const [userRead, setUserReady] = useState(false);
+  //i need to grab display names somehow
 
   async function callAsync() {
     const postRef = firebase
