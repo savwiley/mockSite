@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import firebase from "../firebase";
-import UserModalPosts from "./postComponents/postImages.js"
+import UserModalPosts from "./postComponents/postImages.js";
 import { Modal, ProfileInfo, PostImages } from "./styled.js";
 
 const UserModal = (props) => {
@@ -20,18 +20,18 @@ const UserModal = (props) => {
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setPosts(eachPost);
-  };
+  }
 
   useEffect(() => {
     if (!posts) {
       callAsync();
     } else {
       let recent = [];
-      posts.forEach(e => {
+      posts.forEach((e) => {
         if (recent.length < 3) {
           recent.push(e.data());
         }
-        !profilePic && setProfilePic(e.data().ownerPic)
+        !profilePic && setProfilePic(e.data().ownerPic);
       });
       setMakePosts(recent);
       setReady(true);
@@ -45,11 +45,9 @@ const UserModal = (props) => {
         <span>{user}</span>
       </ProfileInfo>
 
-      <PostImages>
-        {ready && <UserModalPosts posts={makePosts} />}
-      </PostImages>
+      <PostImages>{ready && <UserModalPosts posts={makePosts} />}</PostImages>
     </Modal>
-  )
+  );
 };
 
 UserModal.propTypes = {

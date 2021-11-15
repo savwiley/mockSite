@@ -23,7 +23,7 @@ export const ProfileInfo = styled.div`
   border-bottom: 1px solid var(--border);
   padding: 10px 5px;
   div {
-    background: center/cover no-repeat url(${props => props.profilePic});
+    background: center/cover no-repeat url(${(props) => props.profilePic});
     width: 50px;
     height: 50px;
     border-radius: 50px;
@@ -43,5 +43,5 @@ export const PostImages = styled.div`
 export const PostHolder = styled.div`
   width: 70px;
   height: 70px;
-  background: center/cover no-repeat url(${props => props.background});
+  background: center/cover no-repeat url(${(props) => props.background});
 `;

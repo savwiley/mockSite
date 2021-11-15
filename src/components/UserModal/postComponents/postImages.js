@@ -6,15 +6,15 @@ import { PostHolder } from "../styled.js";
 const UserModalPosts = (props) => {
   const { posts } = props;
 
-  return(
+  return (
     <>
-      {posts.map(e => (
-        <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date} >
+      {posts.map((e) => (
+        <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date}>
           <PostHolder background={e.postPic} />
         </Link>
       ))}
     </>
-  )
+  );
 };
 
 UserModalPosts.propTypes = {
