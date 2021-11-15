@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import firebase from "../firebase";
 import UserModalPosts from "./postComponents/postImages.js"
 import { Modal, ProfileInfo, PostImages } from "./styled.js";
@@ -49,6 +50,10 @@ const UserModal = (props) => {
       </PostImages>
     </Modal>
   )
+};
+
+UserModal.propTypes = {
+  user: PropTypes.string,
 };
 
 export default UserModal;
