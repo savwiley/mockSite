@@ -102,10 +102,14 @@ const PostModal = (props) => {
       <PostContent>
         <PostHeader background={post.ownerPic}>
           <div
-            onHover={() => {
+            onMouseOver={() => {
               userModal(true);
             }}
-          /> {/**has to be set back to false when hover stops */}
+            onBlur={() => {
+              userModal(false);
+            }}
+          />
+          {/**onBlur doesn't make userModal go away */}
           <Link to={`/${post.postOwner}`}>
             <span>{post.postOwner}</span>
           </Link>
@@ -155,6 +159,7 @@ const PostModal = (props) => {
 PostModal.propTypes = {
   postInfo: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   firebase: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  userModal: PropTypes.PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   loading: PropTypes.func,
 };
 
