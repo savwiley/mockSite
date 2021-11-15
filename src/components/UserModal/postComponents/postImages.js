@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { PostHolder } from "../styled.js";
 
@@ -14,6 +15,10 @@ const UserModalPosts = (props) => {
       ))}
     </>
   )
+};
+
+UserModalPosts.propTypes = {
+  posts: PropTypes.array,
 };
 
 export default UserModalPosts;
