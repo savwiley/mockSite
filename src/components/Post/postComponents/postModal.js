@@ -101,15 +101,15 @@ const PostModal = (props) => {
 
       <PostContent>
         <PostHeader background={post.ownerPic}>
-          <div
-            onMouseOver={() => {
+          <div tabIndex="-1"
+            onMouseOver={(e) => {
+              e.target.focus();
               userModal(true);
             }}
             onBlur={() => {
               userModal(false);
             }}
           />
-          {/**onBlur doesn't make userModal go away */}
           <Link to={`/${post.postOwner}`}>
             <span>{post.postOwner}</span>
           </Link>
