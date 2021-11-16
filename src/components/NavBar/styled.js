@@ -149,7 +149,7 @@ export const SearchItem = styled.div`
     background: center/cover no-repeat url(${(props) => props.image});
     margin-right: 10px;
     &:hover {
-      fill: var(--background);
+      fill: rgba(250, 250, 250, 0.8);
       background: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), center/cover no-repeat url(${(props) => props.image});
     }
   }
