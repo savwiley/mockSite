@@ -47,9 +47,7 @@ const UserModal = (props) => {
       <ProfileInfo profilePic={profilePic}>
         <div />
         <span>
-          <Link to={`/${user}`}>
-            {user}
-          </Link>
+          <Link to={`/${user}`}>{user}</Link>
         </span>
       </ProfileInfo>
 
