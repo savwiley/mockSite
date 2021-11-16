@@ -13,6 +13,7 @@ export const ProfileHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: default;
   div {
     background: center/cover no-repeat url(${(props) => props.background});
     width: 100px;
