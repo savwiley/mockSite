@@ -6,14 +6,24 @@ export const Modal = styled.div`
   position: absolute;
   left: 65%;
   top: 20%;
-  width: 200px;
+  width: 250px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
   overflow: hidden;
   z-index: 2;
 `;
-//see if you can track the mouse for positioning
+
+export const Stats = styled.div`
+  font-size: 14px;
+  color: #afafaf;
+  text-align: center;
+  padding: 5px 0;
+  cursor: default;
+  b {
+    display: block;
+  }
+`;
 
 export const ProfileInfo = styled.div`
   display: flex;
@@ -31,6 +41,7 @@ export const ProfileInfo = styled.div`
   }
   span {
     font-weight: bold;
+    cursor: default;
   }
 `;
 
@@ -41,7 +52,7 @@ export const PostImages = styled.div`
 `;
 
 export const PostHolder = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 85px;
+  height: 90px;
   background: center/cover no-repeat url(${(props) => props.background});
 `;
