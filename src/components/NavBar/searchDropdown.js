@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { RiUser3Line, RiChat3Line } from "react-icons/ri";
-//import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { SearchDropStyle, SearchHead, SearchResults, SearchItem } from "./styled";
 
 const SearchDrop = (props) => {
