@@ -10,9 +10,9 @@ import {
 } from "react-icons/ri";
 import {
   // IoPaperPlane,
-  IoPaperPlaneOutline,
+  // IoPaperPlaneOutline,
   // IoCompass,
-  IoCompassOutline,
+  // IoCompassOutline,
   // IoHeart,
   IoHeartOutline,
   // IoBookmarkOutline,
