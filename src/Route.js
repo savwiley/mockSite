@@ -45,12 +45,12 @@ const Routes = () => {
         />
         <Route
           exact
-          path="/:displayName"
+          path="/:userID"
           render={() => (load ? <Loading /> : signed ? <Profile /> : <Home />)}
         />
         <Route
           exact
-          path="/:displayName/:date"
+          path="/:userID/:date"
           render={() => (load ? <Loading /> : signed ? <PostPage /> : <Home />)}
         />
       </Switch>
