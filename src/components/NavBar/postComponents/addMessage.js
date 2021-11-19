@@ -9,6 +9,7 @@ const AddMessage = (props) => {
   const user = firebase.auth().currentUser;
   const { displayName } = user;
   const profilePic = user.photoURL;
+  const userID = Date.parse(user.metadata.creationTime);
 
   const imgURL = `/posts/${displayName}/${image[0].name}`;
   const storageRef = firebase.storage().ref();
@@ -37,9 +38,10 @@ const AddMessage = (props) => {
           .doc()
           .set({
             postPic: `${url}`,
-            postOwner: `${displayName}`,
-            ownerPic: `${profilePic}`,
+            postOwner: `${displayName}`, //display names can change!!!
+            ownerPic: `${profilePic}`, //so can this!!
             postMessage: `${message}`,
+            userID: `${userID}`,
             date: firebase.firestore.Timestamp.now(),
             userLikes: [],
             likes: 0,
