@@ -10,7 +10,7 @@ const ProfilePosts = (props) => {
   return (
     <>
       {profilePosts.map((e) => (
-        <Link to={`/${e.postOwner}/${e.date.seconds}`} key={e.date}>
+        <Link to={`/${e.userID}/${e.date.seconds}`} key={e.date}>
           <PostSquare background={e.postPic}>
             <PostOverlay>
               <div><IoHeart /> {e.likes}</div>

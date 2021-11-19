@@ -20,7 +20,7 @@ const PostPage = () => {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("postOwner", "==", `${id.displayName}`);
+      .where("userID", "==", `${id.userID}`);
     const eachPost = await postRef.get();
     setAllPostInfo(eachPost);
   }
@@ -44,7 +44,7 @@ const PostPage = () => {
     <>
       <NavBar />
       {loading && <ModalLoading />}
-      {userModal && <UserModal user={id.displayName} />}
+      {userModal && <UserModal user={id.userID} />}
 
       {readyPost ? (
         <PostModal

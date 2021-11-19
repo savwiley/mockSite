@@ -80,12 +80,12 @@ const PostBoard = (props) => {
         <PostBlock key={e.date} background={e.ownerPic}>
           <header>
             <div />
-            <Link to={`/${e.postOwner}`}>
+            <Link to={`/${e.userID}`}>
               {e.postOwner}
             </Link>
           </header>
 
-          <Link to={`/${e.postOwner}/${e.date.seconds}`}>
+          <Link to={`/${e.userID}/${e.date.seconds}`}>
             <PostImage background={e.postPic} />
           </Link>
 
@@ -108,7 +108,7 @@ const PostBoard = (props) => {
                   className="heart"
                 />
               )}
-              <Link to={`/${e.postOwner}/${e.date.seconds}`}>
+              <Link to={`/${e.userID}/${e.date.seconds}`}>
                 <IoChatbubbleEllipsesOutline />
               </Link>
             </Interaction>

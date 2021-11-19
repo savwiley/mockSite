@@ -6,7 +6,7 @@ import { DropDownStyle } from "./styled";
 
 const DropDown = () => {
   const user = auth.currentUser;
-  const { displayName } = user;
+  const userID = Date.parse(user.metadata.creationTime);
 
   const signOut = () => {
     auth
@@ -22,12 +22,14 @@ const DropDown = () => {
   return (
     <DropDownStyle>
       <Link
-        to={`/${displayName}`}
+        to={`/${userID}`}
         title="Profile"
         onMouseDown={(e) => {
           e.preventDefault();
         }}
       >
+      {/**if you have no posts, the profile page won't work*/}
+      {/**this is the only way to view it if there are no posts*/}
         <RiUser3Line /> Profile
       </Link>
       <Link

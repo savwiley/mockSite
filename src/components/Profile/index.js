@@ -11,6 +11,7 @@ const Profile = () => {
   const [profilePosts, setProfilePosts] = useState();
   const [makeProfilePosts, setMakeProfilePosts] = useState();
   const [profilePic, setProfilePic] = useState();
+  const [profileName, setProfileName] = useState();
   const [readyProfile, setReadyProfile] = useState(false);
   const id = useParams();
 
@@ -18,7 +19,7 @@ const Profile = () => {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("postOwner", "==", `${id.displayName}`)
+      .where("userID", "==", `${id.userID}`)
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setProfilePosts(eachPost);
@@ -32,6 +33,7 @@ const Profile = () => {
       profilePosts.forEach((e) => {
         postsArr.push(e.data());
         !profilePic && setProfilePic(e.data().ownerPic);
+        !profileName && setProfileName(e.data().postOwner);
       });
       setMakeProfilePosts(postsArr);
       setReadyProfile(true);
@@ -43,7 +45,7 @@ const Profile = () => {
       <NavBar />
       <ProfileHeader background={profilePic}>
         <div />
-        <span>{id.displayName}</span>
+        <span>{profileName}</span>
       </ProfileHeader>
 
       <PostSection>
