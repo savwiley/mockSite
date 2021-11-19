@@ -23,6 +23,7 @@ import SearchDrop from "./searchDropdown";
 import LikeDropDown from "./likesDropdown";
 import DropDown from "./dropdown";
 import NewPost from "./newPost";
+// commented out icons are to be implemented in future versions
 
 const NavBar = (props) => {
   const { page } = props;
@@ -36,8 +37,6 @@ const NavBar = (props) => {
   const [post, setPost] = useState(false);
   const dash = useRef(false);
   const userPic = useRef(false);
-
-  // pull up random post when using Explore
 
   // user profile variables
   const user = auth.currentUser;
@@ -109,8 +108,8 @@ const NavBar = (props) => {
           <Link to="/dashboard" title="Dashboard">
             {dash.current ? <RiHome2Fill /> : <RiHome2Line />}
           </Link>
-          {/* DM Icon [NOT IMPLEMENTED] */}
-          <IoPaperPlaneOutline />
+          {/* DM Icon [NOT IMPLEMENTED]
+          <IoPaperPlaneOutline /> */}
           {/* Make a Post Icon */}
           <RiAddBoxLine
             onClick={() => {
@@ -118,8 +117,8 @@ const NavBar = (props) => {
             }}
             title="Make A Post!"
           />
-          {/* Explore Icon [NOT IMPLEMENTED] */}
-          <IoCompassOutline />
+          {/* Explore Icon [NOT IMPLEMENTED]
+          <IoCompassOutline /> */}
           {/* Likes Dropdown Icon */}
           <button
             onFocus={() => {

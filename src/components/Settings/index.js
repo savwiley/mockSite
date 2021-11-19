@@ -58,7 +58,7 @@ const Settings = () => {
             photoURL: url,
           })
           .then(() => {
-            alert("Profile Pic Uploaded!");
+            alert("Image uploaded!");
           })
           .catch((err) => {
             alert("Something went wrong!");
