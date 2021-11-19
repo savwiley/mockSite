@@ -96,6 +96,20 @@ const Settings = () => {
     }
   };
 
+  const deleteAccount = () => {
+    user
+      .delete()
+      .then(() => {
+        alert("Account deleted.");
+        window.location.reload();
+        //will send to home screen via Route.js
+      })
+      .catch((err) => {
+        alert("Something went wrong!");
+        console.log(err);
+      })
+  }
+
   return (
     <>
       <NavBar />
@@ -158,7 +172,16 @@ const Settings = () => {
                 saveChanges();
               }}
             />
-            <input type="button" value="Delete Account" id="delBtn" />
+            <input 
+              type="button" 
+              value="Delete Account" 
+              id="delBtn"
+              onClick={() => {
+                if (confirm("Are you sure you want to delete your Notagram account?")) {
+                  deleteAccount();
+                }
+              }}
+            />
           </div>
         </Form>
       </SettingsStyle>
