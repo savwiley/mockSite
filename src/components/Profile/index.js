@@ -5,7 +5,7 @@ import Footer from "../Footer";
 import ProfilePosts from "./postComponents/profilePosts";
 import { Loading } from "../Loading";
 import { ProfileHeader, PostSection } from "./styled";
-import firebase from "../firebase";
+import firebase, { auth } from "../firebase";
 
 const Profile = () => {
   const [profilePosts, setProfilePosts] = useState();

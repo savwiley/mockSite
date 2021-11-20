@@ -9,7 +9,7 @@ const AddMessage = (props) => {
   const user = firebase.auth().currentUser;
   const { displayName } = user;
   const profilePic = user.photoURL;
-  const userID = Date.parse(user.metadata.creationTime);
+  const userID = user.uid;
 
   const imgURL = `/posts/${displayName}/${image[0].name}`;
   const storageRef = firebase.storage().ref();

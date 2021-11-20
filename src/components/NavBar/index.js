@@ -47,6 +47,7 @@ const NavBar = (props) => {
       .firestore()
       .collection("posts")
       .where("userLikes", "array-contains", `${displayName}`)
+      //FIX LIKES
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setLikedPosts(eachPost);
