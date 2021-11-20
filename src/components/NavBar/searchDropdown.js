@@ -25,6 +25,7 @@ const SearchDrop = (props) => {
     } else {
       const postsArr = [];
       const userArr = [];
+      const userIDs = [];
       let searching;
       criteria && (searching = criteria.toLowerCase());
       posts.forEach((e) => {
@@ -32,15 +33,17 @@ const SearchDrop = (props) => {
         const dataOwner = e.data().postOwner.toLowerCase();
         dataMessage.includes(searching) && postsArr.push(e.data());
         if (dataOwner.includes(searching) && userArr.length > 0) {
-          userArr.map((a) => {
-            if (!a.includes(e.data().postOwner)) {
-              userArr.push([e.data().postOwner, e.data().ownerPic]);
+          userIDs.map((a) => {
+            if (!a.includes(e.data().userID)) {
+              userArr.push([e.data().postOwner, e.data().ownerPic, e.data().userID]);
+              userIDs.push(e.data().userID);
             }
           });
         } else if (dataOwner.includes(searching)) {
-          userArr.push([e.data().postOwner, e.data().ownerPic]);
+          userArr.push([e.data().postOwner, e.data().ownerPic, e.data().userID]);
         }
       });
+      console.log(userArr);
       setMakePosts(postsArr);
       setMakeUsers(userArr);
     }
@@ -65,9 +68,9 @@ const SearchDrop = (props) => {
         {makeUsers &&
           makeUsers.map((e) => (
             <Link
-              to={`/${e[0]}`}
+              to={`/${e[2]}`}
               title="Profile"
-              key={e[0]}
+              key={e[2]}
               onMouseDown={(e) => {
                 e.preventDefault();
               }}
@@ -81,7 +84,7 @@ const SearchDrop = (props) => {
         {makePosts &&
           makePosts.map((e) => 
             <Link
-              to={`/${e.postOwner}/${e.date.seconds}`}
+              to={`/${e.userID}/${e.date.seconds}`}
               title="Post"
               key={e.date}
               onMouseDown={(e) => {
