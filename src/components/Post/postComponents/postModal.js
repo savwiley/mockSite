@@ -16,6 +16,7 @@ import {
   Interaction,
   Statistics,
   OwnerMessage,
+  DeleteButton,
 } from "../styled";
 
 const PostModal = (props) => {
@@ -58,6 +59,21 @@ const PostModal = (props) => {
       });
   }
 
+  const deletePost = () => {
+    firebase
+      .firestore()
+      .collection("posts")
+      .where(`date`, "==", `${post.date}`)
+      .delete()
+      .then(() => {
+        alert("Post deleted!");
+        window.location.reload();
+      }).catch((err) => {
+        alert("Something went wrong!");
+        console.log(err);
+      })
+  }
+
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
     const day = postDate.toLocaleDateString();
@@ -97,6 +113,18 @@ const PostModal = (props) => {
   return (
     <PostBlock>
       <PostImage background={post.postPic} />
+
+      {post.userID === user.uid &&
+        <DeleteButton
+          onClick={() => {
+            if (confirm("Are you sure you want to delete this post?")) {
+              deletePost();
+            }
+          }}
+        >
+          Delete
+        </DeleteButton>
+      }
 
       <PostContent>
         <PostHeader background={post.ownerPic}>

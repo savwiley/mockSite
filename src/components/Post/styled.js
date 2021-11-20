@@ -153,3 +153,19 @@ export const Statistics = styled.div`
     text-transform: initial;
   }
 `;
+
+export const DeleteButton = styled.div`
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: red;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    background: #a10000;
+  }
+`;
