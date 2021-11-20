@@ -137,12 +137,12 @@ const PostModal = (props) => {
               userModal(false);
             }}
           />
-          <Link to={`/${post.postOwner}`}>
+          <Link to={`/${post.userID}`}>
             <span>{post.postOwner}</span>
           </Link>
         </PostHeader>
         <OwnerMessage>
-          <Link to={`/${post.postOwner}`}>
+          <Link to={`/${post.userID}`}>
             <b>{post.postOwner}</b>
           </Link>
           <span> {post.postMessage}</span>
