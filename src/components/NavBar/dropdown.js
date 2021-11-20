@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiUser3Line, RiSettings3Fill } from "react-icons/ri";
 import { auth } from "../firebase";
 import { DropDownStyle } from "./styled";
 
 const DropDown = () => {
+  const [ profilePosts, setProfilePosts ] = useState(null);
+  const [ readyLink, setReadyLink ] = useState(false);
   const user = auth.currentUser;
-  const userID = Date.parse(user.metadata.creationTime);
+
+  async function callAsync() {
+    const postRef = firebase
+      .firestore()
+      .collection("posts")
+      .where("userID", "==", `${user.uid}`);
+    const eachPost = await postRef.get();
+    if (eachPost.length > 0) {
+      setProfilePosts(true);
+    } else {
+      setProfilePosts(false);
+    }
+  }
+
+  useEffect(() => {
+    if (profilePosts === null) {
+      callAsync();
+    } else {
+      profilePosts && setReadyLink(true);
+    }
+  }, [profilePosts]);
 
   const signOut = () => {
     auth
@@ -21,17 +43,19 @@ const DropDown = () => {
 
   return (
     <DropDownStyle>
-      <Link
-        to={`/${userID}`}
-        title="Profile"
-        onMouseDown={(e) => {
-          e.preventDefault();
-        }}
-      >
+      {readyLink &&
+        <Link
+          to={`/${user.uid}`}
+          title="Profile"
+          onMouseDown={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <RiUser3Line /> Profile
+        </Link>
+      }
       {/**if you have no posts, the profile page won't work*/}
       {/**this is the only way to view it if there are no posts*/}
-        <RiUser3Line /> Profile
-      </Link>
       <Link
         to="/settings"
         title="Settings"
