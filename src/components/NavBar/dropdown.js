@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiUser3Line, RiSettings3Fill } from "react-icons/ri";
-import { auth } from "../firebase";
+import firebase, { auth } from "../firebase";
 import { DropDownStyle } from "./styled";
 
 const DropDown = () => {
