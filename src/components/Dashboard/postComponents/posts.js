@@ -19,7 +19,6 @@ const PostBoard = (props) => {
   const [likeClick, setLikeClick] = useState(false);
 
   const user = firebase.auth().currentUser;
-  const { displayName } = user;
 
   async function callAsync(pic, didLike) {
     firebase
@@ -33,10 +32,10 @@ const PostBoard = (props) => {
             if (didLike === "like") {
               doc.ref.update({
                 likes: doc.data().likes + 1,
-                userLikes: [...doc.data().userLikes, displayName],
+                userLikes: [...doc.data().userLikes, user.uid],
               });
             } else if (didLike === "notLike") {
-              const name = doc.data().userLikes.indexOf(`${displayName}`);
+              const name = doc.data().userLikes.indexOf(`${user.uid}`);
               const array = doc.data().userLikes;
               array.splice(name, 1);
               doc.ref.update({
@@ -47,7 +46,7 @@ const PostBoard = (props) => {
           } else {
             doc.ref.update({
               likes: 1,
-              userLikes: [displayName],
+              userLikes: [user.uid],
             });
           }
         });
@@ -91,7 +90,7 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <Interaction>
-              {e.userLikes.includes(displayName) || likeClick ? (
+              {e.userLikes.includes(user.uid) || likeClick ? (
                 <IoHeart
                   onClick={() => {
                     callAsync(`${e.postPic}`, "notLike");

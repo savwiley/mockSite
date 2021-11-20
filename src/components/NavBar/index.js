@@ -40,14 +40,13 @@ const NavBar = (props) => {
 
   // user profile variables
   const user = auth.currentUser;
-  const { photoURL, displayName } = user;
+  const { photoURL } = user;
 
   async function callAsync() {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("userLikes", "array-contains", `${displayName}`)
-      //FIX LIKES
+      .where("userLikes", "array-contains", `${user.uid}`)
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setLikedPosts(eachPost);

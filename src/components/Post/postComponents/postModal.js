@@ -24,7 +24,6 @@ const PostModal = (props) => {
   const post = postInfo[0];
 
   const user = firebase.auth().currentUser;
-  const { displayName } = user;
 
   async function callAsync(pic, didLike) {
     firebase
@@ -38,10 +37,10 @@ const PostModal = (props) => {
             if (didLike === "like") {
               doc.ref.update({
                 likes: doc.data().likes + 1,
-                userLikes: [...doc.data().userLikes, displayName],
+                userLikes: [...doc.data().userLikes, user.uid],
               });
             } else if (didLike === "notLike") {
-              const name = doc.data().userLikes.indexOf(`${displayName}`);
+              const name = doc.data().userLikes.indexOf(`${user.uid}`);
               const array = doc.data().userLikes;
               array.splice(name, 1);
               doc.ref.update({
@@ -52,7 +51,7 @@ const PostModal = (props) => {
           } else {
             doc.ref.update({
               likes: 1,
-              userLikes: [displayName],
+              userLikes: [user.uid],
             });
           }
         });
@@ -124,7 +123,7 @@ const PostModal = (props) => {
           {post.comment && commentLoop(post.commenter, post.comment)}
         </PostMessages>
         <Interaction>
-          {post.userLikes.includes(displayName) || likeClick ? (
+          {post.userLikes.includes(user.uid) || likeClick ? (
             <IoHeart
               onClick={() => {
                 callAsync(`${post.postPic}`, "notLike");
