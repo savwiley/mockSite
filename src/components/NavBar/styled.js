@@ -46,7 +46,7 @@ export const NavBarIcons = styled.div`
   flex-direction: row;
   justify-content: space-between;
   font-size: 25px;
-  width: 28%;
+  width: 15%;
   svg {
     cursor: pointer;
   }
@@ -58,6 +58,7 @@ export const NavBarIcons = styled.div`
     outline: none;
   }
 `;
+//width is 28% with all icons included
 
 export const UserButton = styled.button`
   background: transparent;
