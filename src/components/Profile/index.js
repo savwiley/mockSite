@@ -13,6 +13,8 @@ const Profile = () => {
   const [profilePic, setProfilePic] = useState();
   const [profileName, setProfileName] = useState();
   const [readyProfile, setReadyProfile] = useState(false);
+  const [readyFirebase, setReadyFirebase] = useState(false);
+  const [noPosts, setNoPosts] = useState(false);
   const id = useParams();
 
   async function callAsync() {
@@ -23,20 +25,25 @@ const Profile = () => {
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setProfilePosts(eachPost);
+    setReadyFirebase(true);
   }
 
   useEffect(() => {
-    if (!profilePosts) {
+    if (!readyFirebase) {
       callAsync();
     } else {
-      const postsArr = [];
-      profilePosts.forEach((e) => {
-        postsArr.push(e.data());
-        !profilePic && setProfilePic(e.data().ownerPic);
-        !profileName && setProfileName(e.data().postOwner);
-      });
-      setMakeProfilePosts(postsArr);
-      setReadyProfile(true);
+      if (!profilePosts) {
+        setNoPosts(true);
+      } else {
+        const postsArr = [];
+        profilePosts.forEach((e) => {
+          postsArr.push(e.data());
+          !profilePic && setProfilePic(e.data().ownerPic);
+          !profileName && setProfileName(e.data().postOwner);
+        });
+        setMakeProfilePosts(postsArr);
+        setReadyProfile(true);
+      }
     }
   }, [profilePosts]);
 
@@ -52,7 +59,11 @@ const Profile = () => {
         {readyProfile ? (
           <ProfilePosts profilePosts={makeProfilePosts} />
         ) : (
-          <Loading />
+          noPosts ? (
+            "There are no posts yet. Come back later!"
+          ) : (
+            <Loading />
+          )
         )}
       </PostSection>
       <Footer />
