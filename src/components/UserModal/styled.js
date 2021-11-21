@@ -42,6 +42,9 @@ export const ProfileInfo = styled.div`
   span {
     font-weight: bold;
     cursor: default;
+    a {
+      text-decoration: none;
+    }
   }
 `;
 
