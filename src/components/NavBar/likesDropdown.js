@@ -12,7 +12,7 @@ const LikeDropDown = (props) => {
       {likedPosts.map((e) => (
         <EachLike key={e.date} userPic={e.ownerPic}>
           <Link
-            to={`/${e.postOwner}`}
+            to={`/${e.userID}`}
             title="Profile"
             onMouseDown={(e) => {
               e.preventDefault();
@@ -25,7 +25,7 @@ const LikeDropDown = (props) => {
           </span>
           <PreviewLikePic imagePic={e.postPic}>
             <Link
-              to={`/${e.postOwner}/${e.date.seconds}`}
+              to={`/${e.userID}/${e.date.seconds}`}
               title="Post"
               onMouseDown={(e) => {
                 e.preventDefault();

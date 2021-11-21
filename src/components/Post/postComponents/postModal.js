@@ -59,11 +59,11 @@ const PostModal = (props) => {
       });
   }
 
-  const deletePost = () => {
+  const deletePost = (pic) => {
     firebase
       .firestore()
       .collection("posts")
-      .where(`date`, "==", `${post.date}`)
+      .where(`postPic`, "==", `${pic}`)
       .delete()
       .then(() => {
         alert("Post deleted!");
@@ -118,7 +118,7 @@ const PostModal = (props) => {
         <DeleteButton
           onClick={() => {
             if (confirm("Are you sure you want to delete this post?")) {
-              deletePost();
+              deletePost(`${post.postPic}`);
             }
           }}
         >
@@ -129,6 +129,7 @@ const PostModal = (props) => {
       <PostContent>
         <PostHeader background={post.ownerPic}>
           <div tabIndex="-1"
+            title="Summary"
             onMouseOver={(e) => {
               e.target.focus();
               userModal(true);

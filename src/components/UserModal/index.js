@@ -9,6 +9,7 @@ const UserModal = (props) => {
   const [posts, setPosts] = useState();
   const [makePosts, setMakePosts] = useState();
   const [profilePic, setProfilePic] = useState();
+  const [owner, setOwner] = useState();
   const [ready, setReady] = useState(false);
   const [number, setNumber] = useState(0);
   const { user } = props;
@@ -17,7 +18,7 @@ const UserModal = (props) => {
     const postRef = firebase
       .firestore()
       .collection("posts")
-      .where("postOwner", "==", `${user}`)
+      .where("userID", "==", `${user}`)
       .orderBy("date", "desc");
     const eachPost = await postRef.get();
     setPosts(eachPost);
@@ -35,19 +36,20 @@ const UserModal = (props) => {
           recent.push(e.data());
         }
         !profilePic && setProfilePic(e.data().ownerPic);
+        !owner && setOwner(e.data().postOwner);
       });
       setMakePosts(recent);
-      setReady(true);
       setNumber(postNumber);
+      setReady(true);
     }
   }, [posts]);
 
   return (
     <Modal>
       <ProfileInfo profilePic={profilePic}>
-        <div />
+        <div title="Icon" />
         <span>
-          <Link to={`/${user}`}>{user}</Link>
+          <Link to={`/${user}`}>{owner}</Link>
         </span>
       </ProfileInfo>
 

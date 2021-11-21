@@ -10,7 +10,7 @@ const UserModalPosts = (props) => {
     <>
       {posts.map((e) => (
         <Link to={`/${e.userID}/${e.date.seconds}`} key={e.date}>
-          <PostHolder background={e.postPic} />
+          <PostHolder background={e.postPic} title={e.postMessage} />
         </Link>
       ))}
     </>
