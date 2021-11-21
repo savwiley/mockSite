@@ -64,10 +64,15 @@ const PostModal = (props) => {
       .firestore()
       .collection("posts")
       .where(`postPic`, "==", `${pic}`)
-      .delete()
-      .then(() => {
-        alert("Post deleted!");
-        window.location.reload();
+      .get()
+      .then((query) => {
+        query.forEach((doc) => {
+          alert("Post deleted!");
+          doc.ref.delete().then(() => {
+            window.location.reload();
+            //window refreshes right into an error
+          });
+        })
       }).catch((err) => {
         alert("Something went wrong!");
         console.log(err);
