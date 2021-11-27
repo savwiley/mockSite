@@ -11,7 +11,6 @@ const PostPage = () => {
   const [allPostInfo, setAllPostInfo] = useState();
   const [makePostInfo, setMakePostInfo] = useState();
   const [readyPost, setReadyPost] = useState(false);
-  const [noPost, setNoPost] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userModal, setUserModal] = useState(false);
   const id = useParams();
@@ -36,12 +35,8 @@ const PostPage = () => {
           postsArr.push(e.data());
         }
       });
-      if (postsArr.length < 1) {
-        setNoPost(true);
-      } else {
-        setMakePostInfo(postsArr);
-        setReadyPost(true);
-      }
+      setMakePostInfo(postsArr);
+      setReadyPost(true);
     }
   }, [allPostInfo, date]);
 
@@ -59,11 +54,7 @@ const PostPage = () => {
           loading={setLoading}
         />
       ) : (
-        noPost ? (
-          "There is no post here."
-        ) : (
           <ModalLoading />
-        )
       )}
 
       <Footer />
