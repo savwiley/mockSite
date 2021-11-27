@@ -29,6 +29,8 @@ const AddMessage = (props) => {
   };
 
   const createPost = () => {
+    let name;
+    displayName === null ? name = "Anonymous" : name = displayName;
     imgRef
       .getDownloadURL()
       .then((url) => {
@@ -38,7 +40,7 @@ const AddMessage = (props) => {
           .doc()
           .set({
             postPic: `${url}`,
-            postOwner: `${displayName}`, //display names can change!!!
+            postOwner: `${name}`, //display names can change!!!
             ownerPic: `${profilePic}`, //so can this!!
             postMessage: `${message}`,
             userID: `${userID}`,
