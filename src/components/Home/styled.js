@@ -29,3 +29,10 @@ export const SwitchScreen = styled.button`
   border: none;
   outline: none;
 `;
+
+export const Text = styled.span`
+  font-size: 1.2rem;
+  font-family: var(--header);
+  color: var(--blue);
+  cursor: default;
+`;
