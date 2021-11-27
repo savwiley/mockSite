@@ -17,6 +17,7 @@ const Routes = () => {
       setSigned(true);
       setLoad(false);
     } else {
+      setSigned(false);
       setLoad(false);
     }
   });
