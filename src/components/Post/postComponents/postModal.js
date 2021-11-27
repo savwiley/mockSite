@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   IoHeartOutline,
@@ -22,6 +22,7 @@ import {
 const PostModal = (props) => {
   const { userModal, postInfo, firebase, loading } = props;
   const [likeClick, setLikeClick] = useState(false);
+  const history = useHistory();
   const post = postInfo[0];
 
   const user = firebase.auth().currentUser;
@@ -68,9 +69,9 @@ const PostModal = (props) => {
       .then((query) => {
         query.forEach((doc) => {
           alert("Post deleted!");
+          loading(true);
           doc.ref.delete().then(() => {
-            window.location.reload();
-            //window refreshes right into an error
+            history.push("/");
           });
         })
       }).catch((err) => {
