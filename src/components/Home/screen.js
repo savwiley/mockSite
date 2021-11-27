@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Loading } from "../Loading";
+import { ModalLoading } from "../Loading";
 import { SwitchScreen } from "./styled";
 import { auth } from "../firebase";
 
 // sign in screen
 const SignIn = (props) => {
   const { setShown, creds } = props;
-  const {loading, setLoading} = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const signIn = (email, password) => {
     auth
@@ -23,7 +23,7 @@ const SignIn = (props) => {
 
   return (
     <>
-      { loading && <Loading /> }
+      { loading && <ModalLoading /> }
       <input
         type="button"
         value="Sign In"
@@ -46,7 +46,7 @@ const SignIn = (props) => {
 // sign up screen
 const SignUp = (props) => {
   const { setShown, creds } = props;
-  const {loading, setLoading} = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const signUp = (email, password) => {
     auth
@@ -62,7 +62,7 @@ const SignUp = (props) => {
 
   return (
     <>
-      { loading && <Loading /> }
+      { loading && <ModalLoading /> }
       <SwitchScreen
         onClick={() => {
           setShown(false);
