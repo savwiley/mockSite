@@ -11,7 +11,7 @@ const DropDown = () => {
     auth
       .signOut()
       .then(() => {
-        alert("signed out");
+        alert("You have signed out.");
       })
       .catch((error) => {
         console.log(error);
@@ -29,9 +29,6 @@ const DropDown = () => {
       >
         <RiUser3Line /> Profile
       </Link>
-      {/**if you have no posts, the profile page won't work*/}
-      {/**this is the only way to view it if there are no posts*/}
-      {/**just change the profile if there are no images*/}
       <Link
         to="/settings"
         title="Settings"
