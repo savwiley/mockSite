@@ -28,6 +28,10 @@ input {
   padding: 5px;
   border-radius: 5px;
   outline: none;
+  font-size: 18px;
+}
+input:focus {
+  border: 1px solid var(--blue);
 }
 input[type="button"] {
   background: var(--blue);
