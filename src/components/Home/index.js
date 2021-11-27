@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { SignInSheet, SignInControls } from "./styled";
 import { SignIn, SignUp } from "./screen";
 import { auth } from "../firebase";
+import { SignInSheet, SignInControls, Text } from "./styled";
 
 const Home = () => {
   const [signUpScreen, setSignUpScreen] = useState(false);
@@ -23,6 +23,9 @@ const Home = () => {
   return (
     <SignInSheet>
       <h1>Notagram</h1>
+      <Text>
+        {signUpScreen ? "Join the Fun!" : "Welcome Back!"}
+      </Text>
 
       <input
         type="email"
