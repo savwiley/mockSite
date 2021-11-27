@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Loading } from "../Loading";
 import { SwitchScreen } from "./styled";
 import { auth } from "../firebase";
 
 // sign in screen
 const SignIn = (props) => {
   const { setShown, creds } = props;
+  const {loading, setLoading} = useState(false);
 
   const signIn = (email, password) => {
     auth
@@ -21,10 +23,12 @@ const SignIn = (props) => {
 
   return (
     <>
+      { loading && <Loading /> }
       <input
         type="button"
         value="Sign In"
         onClick={() => {
+          setLoading(true);
           signIn(creds[0], creds[1]);
         }}
       />
@@ -42,6 +46,7 @@ const SignIn = (props) => {
 // sign up screen
 const SignUp = (props) => {
   const { setShown, creds } = props;
+  const {loading, setLoading} = useState(false);
 
   const signUp = (email, password) => {
     auth
@@ -57,6 +62,7 @@ const SignUp = (props) => {
 
   return (
     <>
+      { loading && <Loading /> }
       <SwitchScreen
         onClick={() => {
           setShown(false);
@@ -68,6 +74,7 @@ const SignUp = (props) => {
         type="button"
         value="Sign Up"
         onClick={() => {
+          setLoading(true);
           signUp(creds[0], creds[1]);
         }}
       />
