@@ -10,6 +10,8 @@ const Comments = (props) => {
   const { displayName } = user;
 
   const postComment = () => {
+    let name;
+    displayName === null ? name = "Anon" : name = displayName;
     firebase
       .firestore()
       .collection("posts")
@@ -19,12 +21,12 @@ const Comments = (props) => {
         query.forEach((doc) => {
           if (doc.data().comment) {
             doc.ref.update({
-              commenter: [...doc.data().commenter, displayName],
+              commenter: [...doc.data().commenter, name],
               comment: [...doc.data().comment, message.current],
             });
           } else {
             doc.ref.update({
-              commenter: [displayName],
+              commenter: [name],
               comment: [message.current],
             });
           }
