@@ -32,7 +32,7 @@ const Profile = () => {
     if (!readyFirebase) {
       callAsync();
     } else {
-      if (!profilePosts) {
+      if (profilePosts.empty) {
         setNoPosts(true);
       } else {
         const postsArr = [];
