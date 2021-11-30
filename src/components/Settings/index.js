@@ -46,11 +46,10 @@ const Settings = () => {
 
     // profile image
     if (image) {
-      const file = image.files[0];
-      const imgURL = `/profile/${file.name}`;
+      const imgURL = `/profile/${image.name}`;
 
       const photoStore = firebase.storage().ref(imgURL);
-      photoStore.put(file);
+      photoStore.put(image);
 
       photoStore.getDownloadURL().then((url) => {
         user
@@ -142,7 +141,7 @@ const Settings = () => {
               type="file"
               accept="image/*"
               onChange={(e) => {
-                setImage(e.target.value);
+                setImage(e.target.files[0]);
               }}
             />
           </div>
