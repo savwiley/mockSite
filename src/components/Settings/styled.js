@@ -14,18 +14,19 @@ export const SettingsTop = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 50px 10px 10px;
+  margin: 50px auto 10px;
   font-size: 20px;
+  width: 0;
 `;
 
 export const SettingsPic = styled.div`
-  width: 48%;
-  text-align: right;
-  padding-right: 30px;
-  img {
+  width: 60px;
+  padding-right: 10px;
+  div {
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    background: center/cover no-repeat url(${(props) => props.picture});
   }
 `;
 
@@ -34,7 +35,7 @@ export const Form = styled.div`
   margin: 50px auto 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 200px;
   div {
     display: flex;
@@ -52,6 +53,9 @@ export const Form = styled.div`
     width: 100%;
     &[type="button"] {
       width: fit-content;
+      &:hover {
+        color: black;
+      }
     }
   }
 `;

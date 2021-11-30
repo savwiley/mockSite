@@ -115,9 +115,9 @@ const Settings = () => {
 
       <SettingsStyle>
         <SettingsTop>
-          <SettingsPic>
+          <SettingsPic picture={photoURL}>
             {photoBoo.current ? (
-              <img src={photoURL} alt="It's You!" />
+              <div title="It's You!" />
             ) : (
               <RiUser3Line />
             )}
