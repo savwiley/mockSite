@@ -78,7 +78,7 @@ const PostBoard = (props) => {
       {posts.map((e) => (
         <PostBlock key={e.date} background={e.ownerPic}>
           <header>
-            <div />
+            <div title={e.postOwner} />
             <Link to={`/${e.userID}`}>
               {e.postOwner}
             </Link>
@@ -97,6 +97,7 @@ const PostBoard = (props) => {
                     setLikeClick(false);
                   }}
                   className="heart"
+                  title="Unlike"
                 />
               ) : (
                 <IoHeartOutline
@@ -105,10 +106,11 @@ const PostBoard = (props) => {
                     setLikeClick(true);
                   }}
                   className="heart"
+                  title="Like"
                 />
               )}
               <Link to={`/${e.userID}/${e.date.seconds}`}>
-                <IoChatbubbleEllipsesOutline />
+                <IoChatbubbleEllipsesOutline title="Leave a Comment" />
               </Link>
             </Interaction>
             <div className="message">{e.postMessage}</div>
