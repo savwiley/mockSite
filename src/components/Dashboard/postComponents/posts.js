@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
@@ -51,7 +51,7 @@ const PostBoard = (props) => {
           }
         });
       });
-  }
+    }
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
@@ -72,6 +72,30 @@ const PostBoard = (props) => {
       })}`;
     }
   };
+
+  {/*
+  WANT
+  no + no = notLike
+  no + yes = like
+  yes + no = notLike
+  yes + yes = like
+
+  &&
+  no + no = notLike
+  no + yes = notLike
+  yes + no = notLike
+  yes + yes = like
+
+  ||
+  no + no = notLike
+  no + yes = like
+  yes + no = like
+  yes + yes = like
+  */}
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <PostColumn>
@@ -109,6 +133,26 @@ const PostBoard = (props) => {
                   title="Like"
                 />
               )}
+
+              {/*
+              WANT
+              no + no = notLike
+              no + yes = like
+              yes + no = notLike
+              yes + yes = like
+
+              &&
+              no + no = notLike
+              no + yes = notLike
+              yes + no = notLike
+              yes + yes = like
+
+              ||
+              no + no = notLike
+              no + yes = like
+              yes + no = like
+              yes + yes = like
+              */}
               <Link to={`/${e.userID}/${e.date.seconds}`}>
                 <IoChatbubbleEllipsesOutline title="Leave a Comment" />
               </Link>
