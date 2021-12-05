@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
-  IoHeartOutline,
   IoHeart,
   IoChatbubbleEllipsesOutline,
 } from "react-icons/io5";
@@ -16,7 +15,6 @@ import {
 
 const PostBoard = (props) => {
   const { posts, firebase } = props;
-  const [likeClick, setLikeClick] = useState(false);
 
   const user = firebase.auth().currentUser;
 
@@ -73,30 +71,6 @@ const PostBoard = (props) => {
     }
   };
 
-  {/*
-  WANT
-  no + no = notLike
-  no + yes = like
-  yes + no = notLike
-  yes + yes = like
-
-  &&
-  no + no = notLike
-  no + yes = notLike
-  yes + no = notLike
-  yes + yes = like
-
-  ||
-  no + no = notLike
-  no + yes = like
-  yes + no = like
-  yes + yes = like
-  */}
-
-  useEffect(() => {
-
-  }, [])
-
   return (
     <PostColumn>
       {posts.map((e) => (
@@ -114,45 +88,19 @@ const PostBoard = (props) => {
 
           <PostInteract>
             <Interaction>
-              {e.userLikes.includes(user.uid) || likeClick ? (
-                <IoHeart
-                  onClick={() => {
+              <IoHeart
+                className={e.userLikes.includes(user.uid) ? "liked" : "disliked"}
+                onClick={(element) => {
+                  const elem = element.nativeEvent.path[1];
+                  if (elem.className.baseVal === "liked") {
                     callAsync(`${e.postPic}`, "notLike");
-                    setLikeClick(false);
-                  }}
-                  className="heart"
-                  title="Unlike"
-                />
-              ) : (
-                <IoHeartOutline
-                  onClick={() => {
+                    elem.setAttribute("class", "disliked");
+                  } else {
                     callAsync(`${e.postPic}`, "like");
-                    setLikeClick(true);
-                  }}
-                  className="heart"
-                  title="Like"
-                />
-              )}
-
-              {/*
-              WANT
-              no + no = notLike
-              no + yes = like
-              yes + no = notLike
-              yes + yes = like
-
-              &&
-              no + no = notLike
-              no + yes = notLike
-              yes + no = notLike
-              yes + yes = like
-
-              ||
-              no + no = notLike
-              no + yes = like
-              yes + no = like
-              yes + yes = like
-              */}
+                    elem.setAttribute("class", "liked");
+                  }
+                }}
+              />
               <Link to={`/${e.userID}/${e.date.seconds}`}>
                 <IoChatbubbleEllipsesOutline title="Leave a Comment" />
               </Link>

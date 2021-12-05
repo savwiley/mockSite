@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  IoHeartOutline,
-  IoHeart,
-  //IoPaperPlaneOutline,
-} from "react-icons/io5";
+import { IoHeart } from "react-icons/io5";
 import Comments from "./comments";
 import {
   PostBlock,
@@ -21,7 +17,6 @@ import {
 
 const PostModal = (props) => {
   const { userModal, postInfo, firebase, loading } = props;
-  const [likeClick, setLikeClick] = useState(false);
   const history = useHistory();
   const post = postInfo[0];
 
@@ -158,25 +153,21 @@ const PostModal = (props) => {
           {post.comment && commentLoop(post.commenter, post.comment)}
         </PostMessages>
         <Interaction>
-          {post.userLikes.includes(user.uid) || likeClick ? (
-            <IoHeart
-              onClick={() => {
+          <IoHeart
+            className={post.userLikes.includes(user.uid) ? "liked" : "disliked"}
+            onClick={(element) => {
+              const elem = element.nativeEvent.path[1];
+              if (elem.className.baseVal === "liked") {
                 callAsync(`${post.postPic}`, "notLike");
-                setLikeClick(false);
-              }}
-              className="heart"
-              title="Unlike Post"
-            />
-          ) : (
-            <IoHeartOutline
-              onClick={() => {
+                elem.setAttribute("class", "disliked");
+                post.likes += 1;
+              } else {
                 callAsync(`${post.postPic}`, "like");
-                setLikeClick(true);
-              }}
-              className="heart"
-              title="Like Post"
-            />
-          )}
+                elem.setAttribute("class", "liked");
+                post.likes -= 1;
+              }
+            }}
+          />
         </Interaction>
         <Statistics>
           <b>
