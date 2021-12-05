@@ -105,7 +105,13 @@ export const Interaction = styled.div`
     width: 30px;
     height: 30px;
   }
-  .heart {
+  .disliked {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: 30;
+    margin-right: 10px;
+  }
+  .liked {
     fill: #ed6175;
     margin-right: 10px;
   }
