@@ -2,8 +2,10 @@
 
 <div align="center">
 
-![Preview](/src/images/preview2.png "Preview")
-Preview image taken on 09/03/21
+![Preview Dash](/src/images/previewDash.png "Preview Dash")
+![Preview Post](/src/images/previewPost.png "Preview Post")
+![Preview Profile](/src/images/previewProfile.png "Preview Profile")
+Preview images taken on 12/05/21
 
 **This is not a social media competitor.**</div>
 
@@ -29,13 +31,14 @@ To test my skills as a front-end developer, I began to create a working clone of
 * Individual pages for each post
 * Interaction with posts
   * Users can 'like' posts
+  * Users can add messages to post
+  * Users can delete their own posts
 * Modal featuring all posts 'liked' by the logged in user
+* Search features with user names and posts
 
 ## Upcoming Features
 
-* More interaction with posts
-  * Users can add messages to any post
-* Search features
+* TBD
 
 ## Possible Future Features
 
