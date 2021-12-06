@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PostColumn = styled.div`
   margin: 80px auto 0;
-  width: 100%;
+  width: auto;
   height: fit-content;
   max-width: 614px;
 `;
@@ -19,7 +19,6 @@ export const PostBlock = styled.div`
   header {
     display: flex;
     align-items: center;
-    width: 100%;
     padding: 10px;
     text-align: left;
     font-weight: bold;
@@ -37,7 +36,7 @@ export const PostBlock = styled.div`
 `;
 
 export const PostImage = styled.div`
-  width: 100%;
+  width: auto;
   max-width: 613px;
   height: 750px;
   border: 1px solid var(--border);
@@ -52,10 +51,11 @@ export const PostInteract = styled.div`
   font-size: 15px;
   .message,
   .date {
-    width: 100%;
+    width: auto;
   }
   .message {
     padding: 10px;
+    width: auto;
   }
   .date {
     font-size: 12px;
@@ -65,7 +65,7 @@ export const PostInteract = styled.div`
 `;
 
 export const Interaction = styled.div`
-  width: 100%;
+  width: auto;
   padding: 10px;
   display: flex;
   flex-direction: row;

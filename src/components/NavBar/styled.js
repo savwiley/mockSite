@@ -19,6 +19,7 @@ export const NavBarStyle = styled.div`
     width: 100%;
     max-width: 975px;
     margin: auto;
+    padding: 0 10px;
   }
   a {
     text-decoration: none;
@@ -38,6 +39,9 @@ export const NavBarStyle = styled.div`
     &:focus {
       text-align: left;
     }
+    @media (max-width: 800px) {
+      width: 40%;
+    }
   }
 `;
 
@@ -56,6 +60,9 @@ export const NavBarIcons = styled.div`
     font-size: 25px;
     padding: 0;
     outline: none;
+  }
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 //width is 28% with all icons included
@@ -82,7 +89,7 @@ export const DropDownStyle = styled.div`
   width: 200px;
   position: absolute;
   top: 54px;
-  margin-left: 8%;
+  margin-left: -3%;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
   overflow: hidden;
@@ -109,7 +116,11 @@ export const SearchDropStyle = styled.div`
   box-shadow: 0 0 8px var(--border);
   overflow: hidden;
   padding: 14px 16px;
+  @media (max-width: 800px) {
+    left: 50%;
+  }
 `;
+//figure out how to find the search modal. left: 50% incorrect
 
 export const SearchHead = styled.div`
   width: 100%;
