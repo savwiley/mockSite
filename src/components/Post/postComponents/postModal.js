@@ -160,11 +160,9 @@ const PostModal = (props) => {
               if (elem.className.baseVal === "liked") {
                 callAsync(`${post.postPic}`, "notLike");
                 elem.setAttribute("class", "disliked");
-                post.likes += 1;
               } else {
                 callAsync(`${post.postPic}`, "like");
                 elem.setAttribute("class", "liked");
-                post.likes -= 1;
               }
             }}
           />
