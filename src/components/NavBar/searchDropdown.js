@@ -43,7 +43,6 @@ const SearchDrop = (props) => {
           userArr.push([e.data().postOwner, e.data().ownerPic, e.data().userID]);
         }
       });
-      console.log(userArr);
       setMakePosts(postsArr);
       setMakeUsers(userArr);
     }
