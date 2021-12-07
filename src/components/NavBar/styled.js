@@ -23,6 +23,9 @@ export const NavBarStyle = styled.div`
   }
   a {
     text-decoration: none;
+    @media (max-width: 400px) {
+      display: none;
+    }
   }
   h1 {
     display: block;
@@ -41,6 +44,9 @@ export const NavBarStyle = styled.div`
     }
     @media (max-width: 800px) {
       width: 40%;
+    }
+    @media (max-width: 400px) {
+      width: 100%;
     }
   }
 `;
@@ -89,7 +95,7 @@ export const DropDownStyle = styled.div`
   width: 200px;
   position: absolute;
   top: 54px;
-  margin-left: -3%;
+  left: 78%;
   border-radius: 8px;
   box-shadow: 0 0 8px var(--border);
   overflow: hidden;
@@ -117,7 +123,12 @@ export const SearchDropStyle = styled.div`
   overflow: hidden;
   padding: 14px 16px;
   @media (max-width: 800px) {
-    left: 50%;
+    width: auto;
+    height: 450px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
   }
 `;
 //figure out how to find the search modal. left: 50% incorrect
