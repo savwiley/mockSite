@@ -16,13 +16,21 @@ import {
   // IoHeart,
   IoHeartOutline,
   // IoBookmarkOutline,
+  IoMenu,
 } from "react-icons/io5";
 import firebase, { auth } from "../firebase";
-import { NavBarStyle, NavBarIcons, UserPic, UserButton } from "./styled";
+import {
+  NavBarStyle,
+  NavBarIcons,
+  UserPic,
+  UserButton,
+  MenuButton,
+} from "./styled";
 import SearchDrop from "./searchDropdown";
 import LikeDropDown from "./likesDropdown";
 import DropDown from "./dropdown";
 import NewPost from "./newPost";
+import MobileMenu from "./mobileMenu";
 // commented out icons are to be implemented in future versions
 
 const NavBar = (props) => {
@@ -35,6 +43,7 @@ const NavBar = (props) => {
   const [likedPosts, setLikedPosts] = useState();
   const [makeLikedPosts, setMakeLikedPosts] = useState();
   const [post, setPost] = useState(false);
+  const [menu, setMenu] = useState(false);
   const dash = useRef(false);
   const userPic = useRef(false);
 
@@ -77,6 +86,16 @@ const NavBar = (props) => {
   return (
     <NavBarStyle>
       <div className="inner">
+        {/*Menu*/}
+        <MenuButton>
+          <IoMenu
+            onClick={() => {
+              setMenu(true);
+            }}
+          />
+        </MenuButton>
+        {menu && <MobileMenu />}
+
         {/* Header */}
         <Link to="/">
           <h1>Notagram</h1>
