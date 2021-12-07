@@ -94,7 +94,7 @@ const NavBar = (props) => {
             }}
           />
         </MenuButton>
-        {menu && <MobileMenu />}
+        {menu && <MobileMenu setShown={setMenu} />}
 
         {/* Header */}
         <Link to="/">
