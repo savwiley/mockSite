@@ -148,22 +148,21 @@ const NavBar = (props) => {
               <RiUser3Line title="It's You!" />
             )}
           </UserButton>
-
-          {/* Dropdowns & Modals */}
-          {search && (
-            <SearchDrop
-              criteria={searchCriteria}
-              firebase={firebase}
-              clear={setSearchCriteria}
-              inputValue={setSearchValue}
-            />
-          )}
-          {likeDrop && (
-            <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
-          )}
-          {drop && <DropDown />}
-          {post && <NewPost setShown={setPost} />}
         </NavBarIcons>
+        {/* Dropdowns & Modals */}
+        {search && (
+          <SearchDrop
+            criteria={searchCriteria}
+            firebase={firebase}
+            clear={setSearchCriteria}
+            inputValue={setSearchValue}
+          />
+        )}
+        {likeDrop && (
+          <LikeDropDown likedPosts={makeLikedPosts} likeDrop={setLikeDrop} />
+        )}
+        {drop && <DropDown />}
+        {post && <NewPost setShown={setPost} />}
       </div>
     </NavBarStyle>
   );
