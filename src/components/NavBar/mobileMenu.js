@@ -7,7 +7,7 @@ import {
   RiUser3Line,
   RiSettings3Fill,
 } from "react-icons/ri";
-//import { IoClose } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import { auth } from "../firebase";
 import NewPost from "./newPost";
 import { SideMenu, PostLink } from "./styled";
@@ -37,7 +37,7 @@ const MobileMenu = (props) => {
       />
 
       <Link to="/">
-        <h1>Notagram</h1>
+        <h2>Notagram</h2>
       </Link>
 
       <PostLink
