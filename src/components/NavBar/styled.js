@@ -358,3 +358,39 @@ export const MessageCenter = styled.div`
     width: fit-content;
   }
 `;
+
+export const SideMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  svg {
+    cursor: pointer;
+  }
+  h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+    padding: 10px;
+    &:hover {
+      background: var(--background);
+    }
+  }
+`;
+
+export const PostLink = styled.div`
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background: var(--background);
+  }
+`;

@@ -90,11 +90,3 @@ MobileMenu.propTypes = {
 };
 
 export default MobileMenu;
-
-/**
- * Dashboard - could be logo?
- * New Post - should this be its own button somewhere?
- * Profile
- * Settings
- * Log Out
- */
