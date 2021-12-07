@@ -23,15 +23,15 @@ export const NavBarStyle = styled.div`
   }
   a {
     text-decoration: none;
-    @media (max-width: 400px) {
-      display: none;
-    }
   }
   h1 {
     display: block;
     font-size: 25px;
     width: 28%;
     cursor: pointer;
+    @media (max-width: 400px) {
+      display: none;
+    }
   }
   input {
     height: 2ch;
@@ -151,6 +151,7 @@ export const SearchHead = styled.div`
 
 export const SearchResults = styled.div`
   display: flex;
+  height: auto;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
@@ -244,6 +245,12 @@ export const PostModal = styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    @media (max-width: 800px) {
+      width: auto;
+      height: 100vh;
+      border-radius: 0;
+      margin: 0;
+    }
   }
   input {
     background: var(--blue);
@@ -320,6 +327,12 @@ export const CreateMessage = styled.div`
   grid-template-columns: fit-content(1fr) 50%;
   grid-template-areas: "image message";
   overflow: hidden;
+  @media (max-width: 800px) {
+    grid-template-rows: 70% 1fr;
+    grid-template-columns: 100%;
+    grid-template-areas: "image" "message";
+    overflow: auto;
+  }
 `;
 
 export const MessagePic = styled.div`
@@ -332,6 +345,10 @@ export const MessagePic = styled.div`
     max-width: 100%;
     max-height: 100%;
     margin: auto;
+  }
+  @media (max-width: 800px) {
+    max-width: 100%;
+    max-height: 100%;
   }
 `;
 
@@ -351,45 +368,81 @@ export const MessageCenter = styled.div`
     outline: none;
     border-radius: 5px;
     padding: 3px;
+    @media (max-width: 800px) {
+      display: block;
+    }
   }
   input {
     margin: 0 5px;
     height: fit-content;
     width: fit-content;
+    @media (max-width: 800px) {
+      margin: 2px;
+    }
+  }
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    width: 50vw;
+    padding: 0;
+  }
+`;
+
+export const MenuButton = styled.div`
+  display: none;
+  @media (max-width: 800px) {
+    display: block;
+    font-size: 25px;
+  }
+  @media (max-width: 400px) {
+    padding-right: 10px;
   }
 `;
 
 export const SideMenu = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 18px;
   background: #fff;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 50%;
+  border-right: 1px solid var(--border);
   overflow-x: auto;
   overflow-y: hidden;
+  padding: 5px;
   svg {
     cursor: pointer;
-  }
-  h1 {
     font-size: 25px;
+    padding-right: 10px;
+  }
+  h2 {
+    font-family: var(--header);
+    font-weight: normal;
+    width: 100%;
+    font-size: 28px;
     text-align: center;
   }
   a {
     text-decoration: none;
-    padding: 10px;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
     &:hover {
       background: var(--background);
     }
   }
+  @media (max-width: 400px) {
+    right: 0;
+  }
 `;
 
 export const PostLink = styled.div`
-  padding: 10px;
+  padding: 20px 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   &:hover {
     background: var(--background);
   }
