@@ -12,6 +12,11 @@ export const PostBlock = styled.div`
   border: 1px solid var(--border);
   border-radius: 3px;
   overflow: hidden;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    height: auto;
+    max-height: auto;
+  }
 `;
 
 export const PostImage = styled.div`
@@ -26,6 +31,10 @@ export const PostImage = styled.div`
   &:hover {
     background: center/cover no-repeat url(${(props) => props.background});
   }
+  @media (max-width: 800px) {
+    width: auto;
+    height: 80vh;
+  }
 `;
 
 export const PostContent = styled.div`
@@ -35,6 +44,9 @@ export const PostContent = styled.div`
   height: 100%;
   background: #fff;
   font-size: 14px;
+  @media (max-width: 800px) {
+    width: auto;
+  }
 `;
 
 export const PostHeader = styled.div`
