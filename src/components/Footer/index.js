@@ -7,8 +7,11 @@ const Footer = () => {
       <a href="https://github.com/savwiley/mockSite/blob/master/README.md">
         About
       </a>{" "}
-      ⋅ <a href="https://github.com/savwiley/mockSite/issues">Report Bugs/Abuse</a> ⋅{" "}
-      <a href="https://github.com/savwiley/mockSite">Code</a> ⋅{" "}
+      ⋅{" "}
+      <a href="https://github.com/savwiley/mockSite/issues">
+        Report Bugs/Abuse
+      </a>{" "}
+      ⋅ <a href="https://github.com/savwiley/mockSite">Code</a> ⋅{" "}
       <a href="https://savwiley.com/">Creator&apos;s Portfolio</a>
     </FooterComp>
   );

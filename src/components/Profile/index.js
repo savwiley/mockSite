@@ -58,12 +58,10 @@ const Profile = () => {
       <PostSection>
         {readyProfile ? (
           <ProfilePosts profilePosts={makeProfilePosts} />
+        ) : noPosts ? (
+          "There are no posts yet. Come back later!"
         ) : (
-          noPosts ? (
-            "There are no posts yet. Come back later!"
-          ) : (
-            <ModalLoading />
-          )
+          <ModalLoading />
         )}
       </PostSection>
       <Footer />

@@ -23,9 +23,7 @@ const Home = () => {
   return (
     <SignInSheet>
       <h1>Notagram</h1>
-      <Text>
-        {signUpScreen ? "Join the Fun!" : "Welcome Back!"}
-      </Text>
+      <Text>{signUpScreen ? "Join the Fun!" : "Welcome Back!"}</Text>
 
       <input
         type="email"

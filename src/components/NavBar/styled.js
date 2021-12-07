@@ -131,7 +131,6 @@ export const SearchDropStyle = styled.div`
     border-radius: 0;
   }
 `;
-//figure out how to find the search modal. left: 50% incorrect
 
 export const SearchHead = styled.div`
   width: 100%;
@@ -173,7 +172,8 @@ export const SearchItem = styled.div`
     margin-right: 10px;
     &:hover {
       fill: rgba(250, 250, 250, 0.8);
-      background: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), center/cover no-repeat url(${(props) => props.image});
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        center/cover no-repeat url(${(props) => props.image});
     }
   }
   &:hover {

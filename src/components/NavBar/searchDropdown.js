@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { RiUser3Line, RiChat3Line } from "react-icons/ri";
-import { SearchDropStyle, SearchHead, SearchResults, SearchItem } from "./styled";
+import {
+  SearchDropStyle,
+  SearchHead,
+  SearchResults,
+  SearchItem,
+} from "./styled";
 
 const SearchDrop = (props) => {
   const { criteria, firebase, clear, inputValue } = props;
@@ -35,12 +40,20 @@ const SearchDrop = (props) => {
         if (dataOwner.includes(searching) && userArr.length > 0) {
           userIDs.map((a) => {
             if (!a.includes(e.data().userID)) {
-              userArr.push([e.data().postOwner, e.data().ownerPic, e.data().userID]);
+              userArr.push([
+                e.data().postOwner,
+                e.data().ownerPic,
+                e.data().userID,
+              ]);
               userIDs.push(e.data().userID);
             }
           });
         } else if (dataOwner.includes(searching)) {
-          userArr.push([e.data().postOwner, e.data().ownerPic, e.data().userID]);
+          userArr.push([
+            e.data().postOwner,
+            e.data().ownerPic,
+            e.data().userID,
+          ]);
         }
       });
       setMakePosts(postsArr);
@@ -81,7 +94,7 @@ const SearchDrop = (props) => {
             </Link>
           ))}
         {makePosts &&
-          makePosts.map((e) => 
+          makePosts.map((e) => (
             <Link
               to={`/${e.userID}/${e.date.seconds}`}
               title="Post"
@@ -95,7 +108,7 @@ const SearchDrop = (props) => {
                 {e.postMessage}
               </SearchItem>
             </Link>
-          )}
+          ))}
       </SearchResults>
     </SearchDropStyle>
   );

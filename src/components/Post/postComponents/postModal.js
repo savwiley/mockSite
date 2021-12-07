@@ -68,12 +68,13 @@ const PostModal = (props) => {
           doc.ref.delete().then(() => {
             history.push("/");
           });
-        })
-      }).catch((err) => {
+        });
+      })
+      .catch((err) => {
         alert("Something went wrong!");
         console.log(err);
-      })
-  }
+      });
+  };
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
@@ -115,7 +116,7 @@ const PostModal = (props) => {
     <PostBlock>
       <PostImage background={post.postPic} />
 
-      {post.userID === user.uid &&
+      {post.userID === user.uid && (
         <DeleteButton
           onClick={() => {
             if (confirm("Are you sure you want to delete this post?")) {
@@ -125,11 +126,12 @@ const PostModal = (props) => {
         >
           Delete
         </DeleteButton>
-      }
+      )}
 
       <PostContent>
         <PostHeader background={post.ownerPic}>
-          <div tabIndex="-1"
+          <div
+            tabIndex="-1"
             title="Summary"
             onMouseOver={(e) => {
               e.target.focus();

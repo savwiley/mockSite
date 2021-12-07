@@ -49,10 +49,11 @@ export const PostOverlay = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   font-weight: bold;
   font-size: 22px;
-  div, path {
+  div,
+  path {
     color: #fff;
   }
   ${PostSquare}:hover & {

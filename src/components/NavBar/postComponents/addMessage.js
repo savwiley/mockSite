@@ -30,7 +30,7 @@ const AddMessage = (props) => {
 
   const createPost = () => {
     let name;
-    displayName === null ? name = "Anonymous" : name = displayName;
+    displayName === null ? (name = "Anonymous") : (name = displayName);
     imgRef
       .getDownloadURL()
       .then((url) => {

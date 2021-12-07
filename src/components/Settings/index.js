@@ -106,8 +106,8 @@ const Settings = () => {
       .catch((err) => {
         alert("Something went wrong!");
         console.log(err);
-      })
-  }
+      });
+  };
 
   return (
     <>
@@ -116,11 +116,7 @@ const Settings = () => {
       <SettingsStyle>
         <SettingsTop>
           <SettingsPic picture={photoURL}>
-            {photoBoo.current ? (
-              <div title="It's You!" />
-            ) : (
-              <RiUser3Line />
-            )}
+            {photoBoo.current ? <div title="It's You!" /> : <RiUser3Line />}
           </SettingsPic>
           {nameBoo.current ? displayName : email}
         </SettingsTop>
@@ -171,12 +167,16 @@ const Settings = () => {
                 saveChanges();
               }}
             />
-            <input 
-              type="button" 
-              value="Delete Account" 
+            <input
+              type="button"
+              value="Delete Account"
               id="delBtn"
               onClick={() => {
-                if (confirm("Are you sure you want to delete your Notagram account?")) {
+                if (
+                  confirm(
+                    "Are you sure you want to delete your Notagram account?"
+                  )
+                ) {
                   deleteAccount();
                 }
               }}

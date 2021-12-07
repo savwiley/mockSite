@@ -54,7 +54,7 @@ const PostPage = () => {
           loading={setLoading}
         />
       ) : (
-          <ModalLoading />
+        <ModalLoading />
       )}
 
       <Footer />

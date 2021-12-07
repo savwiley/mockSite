@@ -23,7 +23,7 @@ const SignIn = (props) => {
 
   return (
     <>
-      { loading && <ModalLoading /> }
+      {loading && <ModalLoading />}
       <input
         type="button"
         value="Sign In"
@@ -62,7 +62,7 @@ const SignUp = (props) => {
 
   return (
     <>
-      { loading && <ModalLoading /> }
+      {loading && <ModalLoading />}
       <SwitchScreen
         onClick={() => {
           setShown(false);
@@ -85,11 +85,11 @@ const SignUp = (props) => {
 SignIn.propTypes = {
   setShown: PropTypes.func,
   creds: PropTypes.array,
-}
+};
 
 SignUp.propTypes = {
   setShown: PropTypes.func,
   creds: PropTypes.array,
-}
+};
 
-export {SignIn, SignUp};
+export { SignIn, SignUp };

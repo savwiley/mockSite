@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {
-  IoHeart,
-  IoChatbubbleEllipsesOutline,
-} from "react-icons/io5";
+import { IoHeart, IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import {
   PostColumn,
   PostBlock,
@@ -49,7 +46,7 @@ const PostBoard = (props) => {
           }
         });
       });
-    }
+  }
 
   const readDate = (postDate) => {
     //postDate is e.date.toDate()
@@ -77,9 +74,7 @@ const PostBoard = (props) => {
         <PostBlock key={e.date} background={e.ownerPic}>
           <header>
             <div title={e.postOwner} />
-            <Link to={`/${e.userID}`}>
-              {e.postOwner}
-            </Link>
+            <Link to={`/${e.userID}`}>{e.postOwner}</Link>
           </header>
 
           <Link to={`/${e.userID}/${e.date.seconds}`}>
@@ -89,7 +84,9 @@ const PostBoard = (props) => {
           <PostInteract>
             <Interaction>
               <IoHeart
-                className={e.userLikes.includes(user.uid) ? "liked" : "disliked"}
+                className={
+                  e.userLikes.includes(user.uid) ? "liked" : "disliked"
+                }
                 onClick={(element) => {
                   const elem = element.nativeEvent.path[1];
                   if (elem.className.baseVal === "liked") {

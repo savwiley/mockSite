@@ -11,7 +11,7 @@ const Comments = (props) => {
 
   const postComment = () => {
     let name;
-    displayName === null ? name = "Anon" : name = displayName;
+    displayName === null ? (name = "Anon") : (name = displayName);
     firebase
       .firestore()
       .collection("posts")
