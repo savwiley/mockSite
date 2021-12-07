@@ -13,7 +13,7 @@ const ChooseFile = ({ pickedImage }) => (
       }}
       hidden
     />
-    <label htmlFor="uploadButton">Select From Computer</label>
+    <label htmlFor="uploadButton">Select From Device</label>
   </ChoosePic>
 );
 
