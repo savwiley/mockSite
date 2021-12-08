@@ -18,6 +18,7 @@ const Settings = () => {
   const { displayName } = user;
   const { email } = user;
   const { photoURL } = user;
+  const oldPass = user.providerData[0].providerId;
   // const anonBoo = user.isAnonymous;
 
   // changes booleans
@@ -29,6 +30,40 @@ const Settings = () => {
   }
 
   const saveChanges = () => {
+    userName ? null : setUserName(displayName);
+    newEmail ? null : setEmail(email);
+    password ? null : setPassword(oldPass);
+    let photoStore;
+
+    if (image) {
+      const imgURL = `/profile/${image.name}`;
+      photoStore = firebase.storage().ref(imgURL);
+      photoStore.put(image);
+    } else {
+      photoStore = firebase.storage().ref().child(`/profile/${photoURL}`);
+    }
+
+    photoStore.getDownloadURL().then((url) => {
+      user
+        .updateProfile({
+          displayName: userName,
+          email: newEmail,
+          photoURL: url,
+        })
+        .updatePassword(password)
+        .then(() => {
+          alert(`Settings changed!`);
+          window.location.reload();
+        })
+        .catch((err) => {
+          alert("Something went wrong!");
+          console.log(err);
+        })
+      })
+    };
+
+
+      /*
     // user name
     if (userName) {
       user
@@ -93,7 +128,7 @@ const Settings = () => {
           console.log(err);
         });
     }
-  };
+  };*/
 
   const deleteAccount = () => {
     user
