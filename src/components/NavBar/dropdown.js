@@ -12,6 +12,7 @@ const DropDown = () => {
       .signOut()
       .then(() => {
         alert("You have signed out.");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
