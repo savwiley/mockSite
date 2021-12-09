@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
-import { RiUser3Line } from "react-icons/ri";
+import { ModalLoading } from "../Loading";
+import { RiImageEditLine } from "react-icons/ri";
 import firebase, { auth } from "../firebase";
 import { SettingsStyle, SettingsTop, SettingsPic, Form } from "./styled";
 
 const Settings = () => {
   const [userName, setUserName] = useState();
-  const [image, setImage] = useState();
+  const [loading, setLoading] = useState(false);
   const [newEmail, setEmail] = useState();
   const [password, setPassword] = useState();
   const nameBoo = useRef(false);
@@ -18,127 +19,90 @@ const Settings = () => {
   const { displayName } = user;
   const { email } = user;
   const { photoURL } = user;
-  const oldPass = user.providerData[0].providerId;
-  // const anonBoo = user.isAnonymous;
 
   // changes booleans
   if (displayName !== null) {
     nameBoo.current = true;
-  }
+  };
   if (photoURL !== null) {
     photoBoo.current = true;
-  }
+  };
 
-  const saveChanges = () => {
-    userName ? null : setUserName(displayName);
-    newEmail ? null : setEmail(email);
-    password ? null : setPassword(oldPass);
-    let photoStore;
-
-    if (image) {
-      const imgURL = `/profile/${image.name}`;
-      photoStore = firebase.storage().ref(imgURL);
-      photoStore.put(image);
-    } else {
-      photoStore = firebase.storage().ref().child(`/profile/${photoURL}`);
-    }
+  const changeImage = (image) => {
+    const imgURL = `/profile/${image.name}`;
+    const photoStore = firebase.storage().ref(imgURL);
+    photoStore.put(image);
 
     photoStore.getDownloadURL().then((url) => {
       user
         .updateProfile({
-          displayName: userName,
-          email: newEmail,
           photoURL: url,
         })
-        .updatePassword(password)
         .then(() => {
-          alert(`Settings changed!`);
+          setLoading(false);
+          alert("Image uploaded!");
           window.location.reload();
         })
         .catch((err) => {
-          alert("Something went wrong!");
-          console.log(err);
-        })
-      })
-    };
-
-
-      /*
-    // user name
-    if (userName) {
-      user
-        .updateProfile({
-          displayName: userName,
-        })
-        .then(() => {
-          alert(`Name changed to ${userName}!`);
-        })
-        .catch((err) => {
+          setLoading(false);
           alert("Something went wrong!");
           console.log(err);
         });
-    }
+    });
+  };
 
-    // profile image
-    if (image) {
-      const imgURL = `/profile/${image.name}`;
-
-      const photoStore = firebase.storage().ref(imgURL);
-      photoStore.put(image);
-
-      photoStore.getDownloadURL().then((url) => {
-        user
-          .updateProfile({
-            photoURL: url,
-          })
-          .then(() => {
-            alert("Image uploaded!");
-          })
-          .catch((err) => {
-            alert("Something went wrong!");
-            console.log(err);
-          });
-      });
-    }
-
-    // email
-    if (newEmail) {
-      user
-        .updateProfile({
-          email: newEmail,
-        })
-        .then(() => {
-          alert(`Email changed to ${newEmail}!`);
-        })
-        .catch((err) => {
-          alert("Something went wrong!");
-          console.log(err);
-        });
-    }
-
-    // password
+  const savePassword = () => {
     if (password) {
       user
         .updatePassword(password)
         .then(() => {
-          alert("Password changed!");
+          setLoading(false);
+          alert(`Password changed!`);
+          window.location.reload();
         })
         .catch((err) => {
+          setLoading(false);
           alert("Something went wrong!");
           console.log(err);
-        });
+        })
+    } else {
+      setLoading(false);
+      alert("Please input new password.")
     }
-  };*/
+  };
+
+  const saveChanges = () => {
+    userName ? null : setUserName(displayName);
+    newEmail ? null : setEmail(email);
+    
+    user
+      .updateProfile({
+        displayName: userName,
+        email: newEmail,
+      })
+      .then(() => {
+        setLoading(false);
+        alert(`Settings changed!`);
+        window.location.reload();
+      })
+      .catch((err) => {
+        setLoading(false);
+        alert("Something went wrong!");
+        console.log(err);
+      })
+  };
 
   const deleteAccount = () => {
     user
       .delete()
       .then(() => {
+        setLoading(false);
         alert("Account deleted.");
         window.location.reload();
         //will send to home screen via Route.js
       })
       .catch((err) => {
+        setLoading(false);
         alert("Something went wrong!");
         console.log(err);
       });
@@ -146,12 +110,20 @@ const Settings = () => {
 
   return (
     <>
+      {loading && <ModalLoading />}
       <NavBar />
 
       <SettingsStyle>
         <SettingsTop>
           <SettingsPic picture={photoURL}>
-            {photoBoo.current ? <div title="It's You!" /> : <RiUser3Line />}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                changeImage(e.target.files[0]);
+              }}
+            />
+            {photoBoo.current ? <RiImageEditLine className="icon" /> : <RiImageEditLine />}
           </SettingsPic>
           {nameBoo.current ? displayName : email}
         </SettingsTop>
@@ -167,16 +139,6 @@ const Settings = () => {
             />
           </div>
           <div>
-            <label>Display Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                setImage(e.target.files[0]);
-              }}
-            />
-          </div>
-          <div>
             <label>Email</label>
             <input
               type="email"
@@ -185,6 +147,18 @@ const Settings = () => {
               }}
             />
           </div>
+          <div>
+            <input
+              type="button"
+              value="Save Changes"
+              onClick={() => {
+                setLoading(true);
+                saveChanges();
+              }}
+            />
+          </div>
+
+
           <div>
             <label>Password</label>
             <input
@@ -197,11 +171,15 @@ const Settings = () => {
           <div>
             <input
               type="button"
-              value="Save Changes"
+              value="Change Password"
               onClick={() => {
-                saveChanges();
+                setLoading(true);
+                savePassword();
               }}
             />
+          </div>
+
+          <div>
             <input
               type="button"
               value="Delete Account"
@@ -212,6 +190,7 @@ const Settings = () => {
                     "Are you sure you want to delete your Notagram account?"
                   )
                 ) {
+                  setLoading(true);
                   deleteAccount();
                 }
               }}
