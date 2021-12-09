@@ -48,11 +48,22 @@ const SignUp = (props) => {
   const { setShown, creds } = props;
   const [loading, setLoading] = useState(false);
 
-  const signUp = (email, password) => {
+  const signUp = (email, password, userName) => {
     auth
       .createUserWithEmailAndPassword(email, password)
-      .then((/*userCredential*/) => {
-        // const user = userCredential.user;
+      .then((userCredential) => {
+        const user = userCredential.user;
+        user
+          .updateProfile({
+            displayName: userName,
+          })
+          .then(() => {
+            //...
+          })
+          .catch((error) => {
+            console.log(error.code);
+            alert(error.message);
+          });
       })
       .catch((error) => {
         console.log(error.code);
@@ -75,7 +86,7 @@ const SignUp = (props) => {
         value="Sign Up"
         onClick={() => {
           setLoading(true);
-          signUp(creds[0], creds[1]);
+          signUp(creds[0], creds[1], creds[2]);
         }}
       />
     </>

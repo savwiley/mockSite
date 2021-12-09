@@ -7,6 +7,7 @@ const Home = () => {
   const [signUpScreen, setSignUpScreen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
 
   const signAnon = () => {
     auth
@@ -33,6 +34,16 @@ const Home = () => {
           setEmail(e.target.value);
         }}
       />
+      {signUpScreen && 
+        <input
+          type="text"
+          placeholder="Display Name"
+          value={userName}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        />
+      }
       <input
         type="password"
         placeholder="Password"
@@ -47,7 +58,7 @@ const Home = () => {
           <SignIn creds={[email, password]} setShown={setSignUpScreen} />
         )}
         {signUpScreen && (
-          <SignUp creds={[email, password]} setShown={setSignUpScreen} />
+          <SignUp creds={[email, password, userName]} setShown={setSignUpScreen} />
         )}
       </SignInControls>
 
