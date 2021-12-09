@@ -11,7 +11,7 @@ Preview images taken on 12/05/21
 
 To test my skills as a front-end developer, I began to create a working clone of a popular social media site (in this case, Instagram) from scratch. This clone utilizes Firebase as the back-end and is being made with React.JS.
 
-[Check out the To-Do List!](https://github.com/savwiley/mockSite/issues/1)
+[View the site here!!](https://mockproject-881e2.web.app/)
 
 ## Current Features
 
