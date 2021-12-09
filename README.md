@@ -1,10 +1,10 @@
-# Notagram - Instagram Clone; WIP
+# Notagram - Instagram Clone
 
 <div align="center">
 
-![Preview Dash](/src/images/previewDash.png "Preview Dash")
-![Preview Post](/src/images/previewPost.png "Preview Post")
-![Preview Profile](/src/images/previewProfile.png "Preview Profile")
+![Dashboard Preview](/src/images/previewDash.png "Dashboard Preview")
+![Post Preview](/src/images/previewPost.png "Post Preview")
+![Profile Preview](/src/images/previewProfile.png "Profile Preview")
 Preview images taken on 12/05/21
 
 **This is not a social media competitor.**</div>
