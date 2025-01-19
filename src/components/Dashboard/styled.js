@@ -14,7 +14,7 @@ export const PostBlock = styled.div`
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background: #fff;
   header {
     display: flex;
